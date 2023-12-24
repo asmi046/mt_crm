@@ -14,6 +14,16 @@ return new class extends Migration
         Schema::create('punkts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name')->comment('Имя');
+            $table->string('koordinate')->nullable()->comment('Координаты для вывода на карту');
+            $table->string('big_city')->nullable()->comment('принадлежность к району или городу');
+            $table->string('description')->comment('Описание');
+        });
+
+        Schema::create('direction_punct', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('direction_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('punct_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -22,6 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('direction_punct');
         Schema::dropIfExists('punkts');
     }
 };

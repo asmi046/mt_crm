@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('directions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name')->comment('Имя');
+            $table->string('start_punkt')->comment('Стартовая точка');
+            $table->string('end_punkt')->comment('Конечная точка');
+            $table->string('description')->comment('Описание');
         });
     }
 
