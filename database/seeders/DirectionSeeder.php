@@ -14,7 +14,7 @@ class DirectionSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("file_users")->insert(
+        DB::table("directions")->insert(
             [
                 [
                     "name" => "Курск - Ялта",

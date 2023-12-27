@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('description')->comment('Описание');
         });
 
-        Schema::create('direction_punct', function (Blueprint $table) {
+        Schema::create('direction_punkt', function (Blueprint $table) {
             $table->id();
             $table->foreignId('direction_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('punct_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('punkt_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -32,7 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('direction_punct');
+        Schema::dropIfExists('direction_punkt');
         Schema::dropIfExists('punkts');
     }
 };

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class CreateUser extends Command
@@ -30,11 +31,17 @@ class CreateUser extends Command
         $name = $this->option('name')?$this->option('name'):"Пользователь";
         $email = $this->option('email')?$this->option('email'):"user".date("d.m.i.s")."@mail.ru";
         $agency = $this->option('agency')?$this->option('agency'):"Рога и капыта";
+        $pass_nh = $this->option('pass')?$this->option('pass'):'123';
         $pass = $this->option('pass')?Hash::make($this->option('pass')):Hash::make('123');
 
         $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'agency' => $agency,
+            'password' => $pass
+        ]);
 
-        ])
-        $this->option('name');
+        printf("Создан пользователь: \n\r%s \n\r%s \n\r%s", $name, $email, $pass_nh);
+
     }
 }
