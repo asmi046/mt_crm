@@ -1,18 +1,23 @@
+@import "vars";
+@import "null";
+@import "fonts";
+@import "text-styles";
+@import "form/all-form";
+@import "elements/box";
 
-@media screen and (max-width:480px) {
-
-.nb_login_form_head {
-    .nb_icon {
-        padding-bottom: 0;
-    }
-
-    .nb_text {
-        padding-top: 0;
-    }
-}
+body{
+    font-family: $main_fonts;
+    font-size: 16px;
 }
 
-.logo_ndp {
-    font-family: 'Shantell Sans', cursive;
-    font-size: 24px;
+section{
+    width: 100%;
+    padding-top: $section_space;
+    padding-bottom: $section_space;
+}
+
+.container{
+    width:100%;
+    max-width: $conteiner_max_w;
+    margin: 0 auto;
 }
