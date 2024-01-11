@@ -10,20 +10,30 @@
 
 @section('main')
 
-<div class="columns">
-    <div class="column is-2 has-background-primary">
+<section class="cabinet_section">
+    <div class="sidebar">
+        <header>
+            <x-logo-elements></x-logo-elements>
+        </header>
 
+        <nav>
+            <x-sb-nav-btn active href="#" icon="fa-solid fa-house">Главная</x-sb-nav-btn>
+            <x-sb-nav-btn href="#" icon="fa-solid fa-bus">Проезд (+ отель)</x-sb-nav-btn>
+            <x-sb-nav-btn href="#" icon="fa-solid fa-square-h">Бронирование отеля</x-sb-nav-btn>
+            <x-sb-nav-btn href="#" icon="fa-solid fa-list">Мои брони</x-sb-nav-btn>
+        </nav>
+
+        <footer>
+            <x-a-icon href="#" icon="fa-solid fa-door-open">Выйти</x-a-icon>
+        </footer>
     </div>
 
-    <div class="column is-10">
-        <section class="section">
-            <div class="container is-fullhd">
-                <h1 class="is-size-4 is-size-2-tablet is-size-2-desktop  has-text-weight-bold">Добро пожаловать в систему бронирования</h1>
-                <p class="my-3">В данной системе Вы можете произвести бронирование проезда а так же бронирования отелей</p>
-            </div>
-        </section>
+    <div class="main">
+        <div class="page_container box">
+
+        </div>
     </div>
-</div>
+</section>
 
 
 

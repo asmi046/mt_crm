@@ -1,9 +1,10 @@
 @import "vars";
 @import "null";
 @import "fonts";
+@import "scroll";
 @import "text-styles";
 @import "form/all-form";
-@import "elements/box";
+@import "elements/all-elements";
 
 body{
     font-family: $main_fonts;
@@ -21,3 +22,32 @@ section{
     max-width: $conteiner_max_w;
     margin: 0 auto;
 }
+
+
+.start-form {
+    max-width: 420px;
+    margin:  0 auto;
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: 0 auto 30px auto;
+
+        h2{
+            margin: 0;
+        }
+        figure{
+            margin: 0 auto;
+        }
+    }
+
+    footer {
+        margin: 30px 0 0 0;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@import "cabinet-section";

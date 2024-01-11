@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             DirectionSeeder::class,
+            UserSeeder::class,
         ]);
 
     }
