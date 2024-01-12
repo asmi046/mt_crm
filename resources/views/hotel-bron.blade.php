@@ -21,7 +21,12 @@
             </div>
 
             <div class="box pt_10">
-
+                <div class="directs">
+                    <x-direction></x-direction>
+                    <x-direction></x-direction>
+                    <x-direction></x-direction>
+                    <x-direction></x-direction>
+                </div>
             </div>
 
         </div>
