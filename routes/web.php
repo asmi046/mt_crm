@@ -18,3 +18,6 @@ use App\Http\Controllers\DashBoardController;
 
 Route::get('/', [IndexController::class, "index"])->name('home');
 Route::get('/main', [DashBoardController::class, "index"])->name('dash-board');
+Route::get('/proezd-bron', [DashBoardController::class, "index"])->name('proezd-bron');
+Route::get('/hotel-bron', [DashBoardController::class, "index"])->name('hotel-bron');
+Route::get('/user-bron', [DashBoardController::class, "index"])->name('user-bron');

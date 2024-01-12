@@ -17,6 +17,19 @@ section{
     padding-bottom: $section_space;
 }
 
+h1{
+    font-size: 2rem;
+}
+
+h2{
+    font-size: 1.5rem;
+}
+
+h3{
+    font-size: 1rem;
+}
+
+
 .container{
     width:100%;
     max-width: $conteiner_max_w;
@@ -51,3 +64,4 @@ section{
 }
 
 @import "cabinet-section";
+@import "informers";

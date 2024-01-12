@@ -1,1 +1,1 @@
-<a @class(['active' => isset($active)]) href="{{ $href }}"><i class="{{ $icon }}"></i> <span>{{ $slot }}</span></a>
+<a @class(['active' => $active]) href="{{ $href }}"><i class="{{ $icon }}"></i> <span>{{ $slot }}</span></a>

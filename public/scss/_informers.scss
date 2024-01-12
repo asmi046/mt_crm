@@ -1,0 +1,36 @@
+.informers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .informer {
+        border: 1px solid lightgray;
+        box-shadow: $box_shadow;
+        border-radius: $border_rad;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        .carecter {
+            color:$main_color;
+            font-size: 78px;
+        }
+
+        .info {
+            margin-top: 10px;
+        }
+    }
+
+    &_i2 .informer{
+        width:47%;
+    }
+
+    &_i3 .informer{
+        width:30%;
+    }
+
+    &_i4 .informer{
+        width:22%;
+    }
+
+
+}
