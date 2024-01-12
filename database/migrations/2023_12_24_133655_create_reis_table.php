@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('reis', function (Blueprint $table) {
             $table->id();
+            $table->date("start_to_date")->comment('Отправление из Курска');
+            $table->date("prib_to_date")->comment('Прибытие на курорт');
+            $table->date("start_out_date")->comment('Отправление в Курск');
+            $table->date("prib_out_date")->comment('Прибытие в Курск');
+            $table->text('information')->nullable()->comment('Информация по рейсу');
+
             $table->timestamps();
         });
     }

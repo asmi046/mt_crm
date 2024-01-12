@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
         });
+
+        Schema::create('buses_reis', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('buses_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('reis_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+        });
     }
 
     /**
@@ -22,6 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('buses_reis');
         Schema::dropIfExists('buses');
     }
 };
