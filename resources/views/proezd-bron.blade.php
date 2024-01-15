@@ -22,10 +22,9 @@
 
             <div class="box pt_10">
                 <div class="directs">
-                    <x-direction></x-direction>
-                    <x-direction></x-direction>
-                    <x-direction></x-direction>
-                    <x-direction></x-direction>
+                    @foreach ($direction as $item)
+                        <x-direction :selecteddirection="$sel_d" :selected="$sel_p" :direction="$item->id" :puncts="$item->puncts"></x-direction>
+                    @endforeach
                 </div>
             </div>
 

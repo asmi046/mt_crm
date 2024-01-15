@@ -22,6 +22,6 @@ use App\Http\Controllers\UserBronController;
 
 Route::get('/', [IndexController::class, "index"])->name('home');
 Route::get('/main', [DashBoardController::class, "index"])->name('dash-board');
-Route::get('/proezd-bron', [ProezdBronController::class, "index"])->name('proezd-bron');
+Route::get('/proezd-bron/{direction?}/{punct?}', [ProezdBronController::class, "index"])->name('proezd-bron');
 Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
 Route::get('/user-bron', [UserBronController::class, "index"])->name('user-bron');
