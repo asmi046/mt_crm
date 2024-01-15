@@ -6,6 +6,6 @@
     <x-sidebar.navigation></x-sidebar.navigation>
 
     <footer>
-        <x-a-icon href="#" icon="fa-solid fa-door-open">Выйти</x-a-icon>
+        <x-a-icon href="{{ route('logout') }}" icon="fa-solid fa-door-open">Выйти</x-a-icon>
     </footer>
 </div>

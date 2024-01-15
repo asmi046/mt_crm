@@ -33,7 +33,7 @@
             </div>
 
             <div class="box pt_10">
-                <h2>Найденные рейсы</h2>
+                <h2>Актуальные рейсы</h2>
                 @if (!$reises)
                     <p>К сожалению актуальные рейсы не найдены</p>
                 @else
@@ -53,8 +53,8 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ !empty($sel_p)?"Курск - ".$sel_p:$item->direction->start_punkt." - ".$item->direction->end_punkt }}</td>
-                                    <td>{{ $item->start_to_date }}</td>
-                                    <td>{{ $item->start_out_date }}</td>
+                                    <td>{{ date("d.m.Y", strtotime($item->start_to_date)) }}</td>
+                                    <td>{{ date("d.m.Y", strtotime($item->start_out_date)) }}</td>
                                     <td>
                                         <x-a-icon href="#" icon="fa-solid fa-ticket">Купить билет</x-a-icon>
                                     </td>

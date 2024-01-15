@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Direction;
 use App\Models\Reis;
 
+use Illuminate\Support\Carbon;
+
 class ProezdBronController extends Controller
 {
     public function index($direction=null, $punct=null) {
         $all_direction = Direction::with('puncts', 'reises')->get();
-        $all_reis = Reis::where("direction_id", 'LIKE', empty($direction)?"%":$direction)->get();
+        $all_reis = Reis::where("direction_id", 'LIKE', empty($direction)?"%":$direction)->where('start_out_date', ">", Carbon::today())->get();
         return view('proezd-bron', [
             'direction' => $all_direction,
             'reises' => $all_reis,

@@ -7,6 +7,7 @@ use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\HotelBronController;
 use App\Http\Controllers\ProezdBronController;
 use App\Http\Controllers\UserBronController;
+use App\Http\Controllers\Auth\AuthController;
 
 
 /*
@@ -20,8 +21,20 @@ use App\Http\Controllers\UserBronController;
 |
 */
 
-Route::get('/', [IndexController::class, "index"])->name('home');
-Route::get('/main', [DashBoardController::class, "index"])->name('dash-board');
-Route::get('/proezd-bron/{direction?}/{punct?}', [ProezdBronController::class, "index"])->name('proezd-bron');
-Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
-Route::get('/user-bron', [UserBronController::class, "index"])->name('user-bron');
+
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/logout', [AuthController::class, "logout"])->name("logout");
+
+    Route::get('/main', [DashBoardController::class, "index"])->name('dash-board');
+    Route::get('/proezd-bron/{direction?}/{punct?}', [ProezdBronController::class, "index"])->name('proezd-bron');
+    Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
+    Route::get('/user-bron', [UserBronController::class, "index"])->name('user-bron');
+});
+
+Route::middleware('guest')->group(function () {
+    Route::get('/', [IndexController::class, "index"])->name('login');
+    Route::post('/login_do', [AuthController::class, "login"])->name("login_do");
+});
