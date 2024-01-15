@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DirectionSeeder::class,
             ReisSeeder::class,
+            PunktSeeder::class,
             UserSeeder::class,
         ]);
 

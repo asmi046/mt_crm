@@ -1,0 +1,46 @@
+.directs {
+    display: flex;
+    flex-wrap: wrap;
+
+    .direct {
+        width:25%;
+        min-height: 250px;
+        flex-direction: column;
+        position: relative;
+        min-height: 50px;
+
+        .line {
+            position: absolute;
+            left:30px;
+            height: 100%;
+            width: 4px;
+            border-radius: 10px;
+            background-color: #3CB371;
+            z-index: 1;
+        }
+
+        .punkt {
+            display: flex;
+            z-index: 1000;
+            position: relative;
+            .circle {
+                margin: 10px 10px 10px 22px;
+                width:16px;
+                height: 16px;
+                border:2px solid white;
+                border-radius: 20px;
+                background-color: #3CB371;
+            }
+
+            .text {
+                margin: 10px 0;
+                font-size: 14px;
+            }
+
+            &.active .circle{
+                background-color: #FF4500;
+            }
+        }
+    }
+
+}

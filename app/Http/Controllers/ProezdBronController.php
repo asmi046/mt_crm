@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Direction;
+
 class ProezdBronController extends Controller
 {
     public function index() {
-        return view('proezd-bron');
+        $all_direction = Direction::with('puncts')->get();
+        return view('proezd-bron', ['direction' => $all_direction]);
     }
 }

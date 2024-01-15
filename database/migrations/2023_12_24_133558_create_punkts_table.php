@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->comment('Имя');
             $table->string('koordinate')->nullable()->comment('Координаты для вывода на карту');
             $table->string('big_city')->nullable()->comment('принадлежность к району или городу');
-            $table->string('description')->comment('Описание');
+            $table->string('description')->nullable()->comment('Описание');
         });
 
         Schema::create('direction_punkt', function (Blueprint $table) {

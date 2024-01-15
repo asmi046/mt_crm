@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Direction extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'name',
+        'start_punkt',
+        'end_punkt',
+        'description',
+    ];
+
+    public function puncts() {
+        return $this->belongsToMany(Punkt::class);
+    }
 }
