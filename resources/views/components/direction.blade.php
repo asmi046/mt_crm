@@ -12,7 +12,6 @@
                 <div class="circle"></div>
                 <div class="text">{{ $item->name }}</div>
             </a>
-
         @endforeach
     </div>
 

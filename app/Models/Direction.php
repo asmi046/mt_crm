@@ -14,7 +14,6 @@ class Direction extends Model
         'start_punkt',
         'end_punkt',
         'description',
-        'direction_id',
     ];
 
     public function puncts() {
