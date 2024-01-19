@@ -5,9 +5,13 @@
     .direct {
         width:25%;
         min-height: 250px;
-        flex-direction: column;
-        position: relative;
-        min-height: 50px;
+
+
+        .direct_line_wrapper {
+            flex-direction: column;
+            position: relative;
+            min-height: 50px;
+        }
 
         .line {
             position: absolute;
@@ -23,8 +27,9 @@
             display: flex;
             z-index: 1000;
             position: relative;
+
             .circle {
-                margin: 10px 10px 10px 22px;
+                margin: 10px 10px 10px 23px;
                 width:16px;
                 height: 16px;
                 border:2px solid white;

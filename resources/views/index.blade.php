@@ -14,7 +14,9 @@
     <section class="section">
         <div class="container is-fullhd">
 
-            <form class="box start-form">
+            <form action="{{route('login_do')}}" method="post" class="box start-form">
+                @csrf
+
                 <header>
                     <x-logo-elements></x-logo-elements>
                 </header>
@@ -22,19 +24,27 @@
                 <div class="field">
                   <label class="label">E-mail</label>
                   <div class="control">
-                    <input class="input" type="email" placeholder="e.g. alex@example.com">
+                    <input name="email" class="input" type="email" placeholder="e.g. alex@example.com">
                   </div>
+
+                  @error('email')
+                    <p class="error">{{$message}}</p>
+                  @enderror
                 </div>
 
                 <div class="field">
                   <label class="label">Пароль</label>
                   <div class="control">
-                    <input class="input" type="password" placeholder="********">
+                    <input name="password" class="input" type="password" placeholder="********">
                   </div>
+
+                  @error('password')
+                      <p class="error">{{$message}}</p>
+                  @enderror
                 </div>
 
                 <footer>
-                    <a class="button ">Войти</a>
+                    <button type="submit" class="button ">Войти</button>
                     <a class="button" href="#">Забыл пароль?</a>
                 </footer>
 

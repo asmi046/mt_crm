@@ -7,6 +7,7 @@ button,
     cursor: pointer;
     transition: $main_transition;
     border-radius: 5px;
+    display: inline-block;
 
     &:hover {
         background-color: $hover_color;

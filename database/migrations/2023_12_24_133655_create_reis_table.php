@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date("start_out_date")->comment('Отправление в Курск');
             $table->date("prib_out_date")->comment('Прибытие в Курск');
             $table->text('information')->nullable()->comment('Информация по рейсу');
+            $table->foreignId('direction_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });

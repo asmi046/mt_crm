@@ -14,6 +14,15 @@ class Reis extends Model
         "prib_to_date",
         "start_out_date",
         "prib_out_date",
-        "information"
+        "information",
+        "direction_id"
     ];
+
+    public $with = [
+        'direction'
+    ];
+
+    public function direction() {
+        return $this->hasOne(Direction::class,'id', 'direction_id');
+    }
 }

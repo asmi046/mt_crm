@@ -19,4 +19,8 @@ class Direction extends Model
     public function puncts() {
         return $this->belongsToMany(Punkt::class);
     }
+
+    public function reises() {
+        return $this->hasMany(Reis::class);
+    }
 }
