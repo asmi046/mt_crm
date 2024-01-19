@@ -57,7 +57,7 @@
                                         <td>{{ date("d.m.Y", strtotime($item->start_to_date)) }}</td>
                                         <td>{{ date("d.m.Y", strtotime($item->start_out_date)) }}</td>
                                         <td>
-                                            <x-a-icon href="#" icon="fa-solid fa-ticket">Купить билет</x-a-icon>
+                                            <x-a-icon href="{{ route('buy-ticket', ['reis' => $item->id, 'punkt' => $sel_p], ) }}" icon="fa-solid fa-ticket">Купить билет</x-a-icon>
                                         </td>
                                     </tr>
                                 @endforeach

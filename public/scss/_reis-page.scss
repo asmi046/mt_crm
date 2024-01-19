@@ -1,0 +1,13 @@
+.page_reis_info {
+    background-color: #44944A;
+    border-radius: $border_rad;
+    padding: 10px;
+    color:white;
+    display: inline-block;
+    strong{
+        font-weight: 500;
+    }
+    p{
+        margin: 5px 0;
+    }
+}

@@ -8,6 +8,8 @@ use App\Http\Controllers\HotelBronController;
 use App\Http\Controllers\ProezdBronController;
 use App\Http\Controllers\UserBronController;
 use App\Http\Controllers\UserDataController;
+use App\Http\Controllers\BuyTicketController;
+
 use App\Http\Controllers\Auth\AuthController;
 
 
@@ -34,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
     Route::get('/user-bron', [UserBronController::class, "index"])->name('user-bron');
     Route::get('/user-data', [UserDataController::class, "index"])->name('user-data');
+    Route::get('/buy-ticket/{reis}/{punkt?}', [BuyTicketController::class, "index"])->name('buy-ticket');
 });
 
 Route::middleware('guest')->group(function () {
