@@ -21,7 +21,28 @@
             </div>
 
             <div class="box pt_10">
+                <form class="city_select_form" method="GET" action="{{route('hotel-bron')}}">
+                    <div class="field">
+                        <label for="city_select">Выберите город</label>
+                        <select name="city" id="city_select">
 
+                            <option @selected($selcity === "" || $selcity === "%" ) value="%">Все города</option>
+                            @foreach ($citys as $item)
+                                <option @selected($selcity === $item->city) value="{{$item->city}}">{{$item->city}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <button class="button" type="submit">Выбрать отели</button>
+
+                </form>
+
+                <div class="hotel_list">
+                    @foreach ($hotels as $item)
+                        <x-hotel.card :item="$item"></x-hotel.card>
+                    @endforeach
+
+                </div>
             </div>
 
         </div>

@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name')->comment('Название отеля');
+            $table->string('city')->comment('Город');
+            $table->string('geo')->nullable()->comment('Координаты');
+            $table->string('img')->nullable()->comment('Фото отеля');
+            $table->string('short_description')->nullable()->comment('Краткое описание отеля');
+            $table->text('description')->nullable()->comment('Полное описание отеля');
         });
     }
 

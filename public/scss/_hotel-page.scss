@@ -1,0 +1,70 @@
+.hotel_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.city_select_form {
+display: flex;
+flex-direction: column;
+margin-bottom: 20px;
+}
+
+.hotel_card {
+    width:48%;
+    display: flex;
+    flex-wrap: wrap;
+
+    border:1px solid lightgray;
+    border-radius: $border_rad;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    .img_wrapper{
+        width:200px;
+
+        img{
+            width:100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        margin-right: 10px;
+    }
+
+    .hotel_info {
+        flex: 1;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        p{
+            margin-bottom: 20px;
+        }
+
+        a{
+            color:$main_color;
+            &:hover {
+                color:$hover_color;
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .hotel_card {
+        width:100%;
+    }
+}
+
+@media (max-width:480px) {
+    .hotel_card {
+        flex-direction: column;
+
+        .hotel_info {
+            padding-left: 20px;
+        }
+
+        .img_wrapper {
+            margin-right: 0;
+            width:100%
+        }
+    }
+}

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             DirectionSeeder::class,
             ReisSeeder::class,
             PunktSeeder::class,
+            HotelSeeder::class,
             UserSeeder::class,
         ]);
 
