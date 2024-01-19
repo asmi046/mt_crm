@@ -7,6 +7,7 @@ use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\HotelBronController;
 use App\Http\Controllers\ProezdBronController;
 use App\Http\Controllers\UserBronController;
+use App\Http\Controllers\UserDataController;
 use App\Http\Controllers\Auth\AuthController;
 
 
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/proezd-bron/{direction?}/{punct?}', [ProezdBronController::class, "index"])->name('proezd-bron');
     Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
     Route::get('/user-bron', [UserBronController::class, "index"])->name('user-bron');
+    Route::get('/user-data', [UserDataController::class, "index"])->name('user-data');
 });
 
 Route::middleware('guest')->group(function () {

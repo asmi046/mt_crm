@@ -49,3 +49,25 @@
     }
 
 }
+
+
+@media (max-width:768px) {
+    .directs .direct {
+        width:50%;
+    }
+}
+
+@media (max-width:640px) {
+    .table_wrapper {
+        overflow: auto;
+    }
+}
+
+@media (max-width:480px) {
+    .directs .direct {
+        width:100%;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+    }
+}

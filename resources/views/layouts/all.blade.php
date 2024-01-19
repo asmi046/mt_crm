@@ -28,7 +28,8 @@
     @vite([
         'resources/css/app.css',
         'resources/js/app.js',
-        'public/scss/main.scss'
+        'public/scss/main.scss',
+        'public/js/mob-menu.js'
     ])
 </head>
 <body>

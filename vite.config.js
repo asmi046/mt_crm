@@ -7,7 +7,12 @@ export default defineConfig({
     plugins: [
         vue(),
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+                'public/scss/main.scss',
+                'public/js/mob-menu.js'
+            ],
             refresh: true,
         }),
     ],

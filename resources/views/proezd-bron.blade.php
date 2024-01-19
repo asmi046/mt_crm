@@ -37,32 +37,35 @@
                 @if (!$reises)
                     <p>К сожалению актуальные рейсы не найдены</p>
                 @else
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Рейс</th>
-                                <th>Направление</th>
-                                <th>Выезд из Курска</th>
-                                <th>Возвращение в Курск</th>
-                                <th>Действие</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @foreach ($reises as $item)
+                    <div class="table_wrapper">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ !empty($sel_p)?"Курск - ".$sel_p:$item->direction->start_punkt." - ".$item->direction->end_punkt }}</td>
-                                    <td>{{ date("d.m.Y", strtotime($item->start_to_date)) }}</td>
-                                    <td>{{ date("d.m.Y", strtotime($item->start_out_date)) }}</td>
-                                    <td>
-                                        <x-a-icon href="#" icon="fa-solid fa-ticket">Купить билет</x-a-icon>
-                                    </td>
+                                    <th>Рейс</th>
+                                    <th>Направление</th>
+                                    <th>Выезд из Курска</th>
+                                    <th>Возвращение в Курск</th>
+                                    <th>Действие</th>
                                 </tr>
-                            @endforeach
+                            </thead>
 
-                        </tbody>
-                    </table>
+                            <tbody>
+                                @foreach ($reises as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ !empty($sel_p)?"Курск - ".$sel_p:$item->direction->start_punkt." - ".$item->direction->end_punkt }}</td>
+                                        <td>{{ date("d.m.Y", strtotime($item->start_to_date)) }}</td>
+                                        <td>{{ date("d.m.Y", strtotime($item->start_out_date)) }}</td>
+                                        <td>
+                                            <x-a-icon href="#" icon="fa-solid fa-ticket">Купить билет</x-a-icon>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 @endif
             </div>
         </div>
