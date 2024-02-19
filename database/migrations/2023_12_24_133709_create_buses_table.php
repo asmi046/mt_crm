@@ -14,13 +14,16 @@ return new class extends Migration
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name')->comment("Название автобуса");
+            $table->integer('mest')->comment("Количество мест");
+            $table->string('schema')->comment("Схема посадки");
         });
 
-        Schema::create('buses_reis', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('buses_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('reis_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-        });
+        // Schema::create('buses_reis', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('buses_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+        //     $table->foreignId('reis_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+        // });
     }
 
     /**
@@ -28,7 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('buses_reis');
+        // Schema::dropIfExists('buses_reis');
         Schema::dropIfExists('buses');
     }
 };

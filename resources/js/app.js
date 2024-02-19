@@ -2,12 +2,15 @@ import './bootstrap';
 import {createApp} from 'vue/dist/vue.esm-bundler';
 
 import { store } from "./storage"
+import { useStore } from 'vuex'
 
 import MainForm from "./components/Form.vue"
+import BussSchemm from "./components/BussSchemm.vue"
 
 const global_app = createApp({
     components:{
-        MainForm
+        MainForm,
+        BussSchemm
     },
 
     setup() {

@@ -14,6 +14,7 @@ class BuyTicketController extends Controller
         if (empty($punkt))
             $punkt = $reis->direction->end_punkt;
 
-        return view('buy-ticket', ['reis' => $reis, 'punkt' => $punkt]);
+        $schema = buss_schemm($reis->reis_bus->schema);
+        return view('buy-ticket', ['reis' => $reis, 'punkt' => $punkt, "schema" => $schema ]);
     }
 }

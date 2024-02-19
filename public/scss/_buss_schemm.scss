@@ -1,0 +1,28 @@
+.buss_schema {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:  space-between;
+    width: 100%;
+    .buss_coll {
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .mesta {
+            display: flex;
+            flex-direction: column;
+            width:100%;
+            .riad {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                .mesto {
+                    background-color: $main_color;
+                    color: white;
+                    border: 1px solid $main_color;
+                    width: 18%;
+                }
+            }
+        }
+    }
+}

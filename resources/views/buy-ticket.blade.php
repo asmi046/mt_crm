@@ -25,6 +25,7 @@
                     <p><strong>Прибытие на место: </strong>{{date("d.m.Y", strtotime($reis->prib_to_date)) }}</p>
                     <p><strong>Выезд обратно: </strong>{{date("d.m.Y", strtotime($reis->start_out_date)) }}</p>
                     <p><strong>Прибытие в Курск: </strong>{{date("d.m.Y", strtotime($reis->prib_out_date)) }}</p>
+                    <p><strong>Автобус: </strong>{{ $reis->reis_bus->name }}</p>
                 </div>
                 <br>
                 <br>
@@ -32,7 +33,7 @@
             </div>
 
             <div class="box pt_10">
-
+                <buss-schemm :schema="{{ json_encode($schema); }}"></buss-schemm>
             </div>
 
         </div>

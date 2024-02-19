@@ -26,6 +26,7 @@ class ReisSeeder extends Seeder
                     "prib_to_date" => $item['prib_to_date'],
                     "start_out_date" => $item['start_out_date'],
                     "prib_out_date" => $item['prib_out_date'],
+                    "bus" => 1,
                     "information" => "",
                     "direction_id" => $item['turtype'],
                 ]
