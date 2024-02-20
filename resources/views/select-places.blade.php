@@ -33,7 +33,7 @@
             </div>
 
             <div class="box pt_10">
-                <buss-schemm :schema="{{ json_encode($schema); }}"></buss-schemm>
+                <buss-schemm :schema="{{ json_encode($schema); }}"  reis="{{ $reis->id }}" punkt="{{ $punkt }}"></buss-schemm>
             </div>
 
         </div>

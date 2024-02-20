@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('user_id')->comment('Пользователь оформивший заказ');
+            $table->integer('reis_id')->comment('id рейса');
+            $table->text('comment')->comment('Комментарий к заказу');
         });
     }
 

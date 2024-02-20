@@ -14,6 +14,18 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('number')->comment('Номер места');
+            $table->integer('reis_id')->comment('ID рейса');
+            $table->string('punkt')->comment('Пункт прибывания');
+            $table->string('direction',5)->comment('Направление');
+            $table->string('direction_text')->comment('Направление тест');
+            $table->string('f')->nullable()->comment('Фамилия');
+            $table->string('i')->nullable()->comment('Имя');
+            $table->string('o')->nullable()->comment('Отчество');
+            $table->string('doc_type')->nullable()->comment('Вид документа');
+            $table->string('dr')->nullable()->comment('Дата рождения');
+            $table->string('phone')->nullable()->comment('Контактный телефон');
+            $table->text('comment')->comment('Комментарий');
         });
     }
 

@@ -3,6 +3,21 @@
     flex-wrap: wrap;
     justify-content:  space-between;
     width: 100%;
+
+    .comment {
+        margin-bottom: 10px;
+    }
+
+    .voditel {
+        text-align: center;
+        padding: 5px 1px;
+        background-color: $main_color;
+        color: white;
+        border: 1px solid $main_color;
+        border-radius: $border_rad;
+        margin-bottom: 10px;
+    }
+
     .buss_coll {
         max-width: 320px;
         display: flex;
@@ -16,13 +31,53 @@
                 display: flex;
                 flex-wrap: wrap;
                 width: 100%;
+                justify-content: space-between;
+                margin-bottom: 10px;
                 .mesto {
                     background-color: $main_color;
                     color: white;
                     border: 1px solid $main_color;
                     width: 18%;
+                    padding: 5px 1px;
+                    text-align: center;
+                    border-radius: $border_rad;
+                    cursor:pointer;
+
+                    &.empty {
+                        background-color: white;
+                        border: none;
+                        padding: 5px 0;
+                        &:hover{
+                            background-color: white;
+                        }
+                    }
+
+                    &.selected,
+                    &.active,
+                    &:hover {
+                        background-color:$green_color;
+                        border-color: $green_color;
+                    }
                 }
+
+
             }
+        }
+    }
+
+    .selected_list {
+        flex:1;
+        max-width: 320px;
+        .napr{
+            font-size: 32px;
+            line-height: 0.1;
+        }
+        .selected_element {
+            margin-bottom: 10px;
+            padding: 5px 20px;
+            border-radius: $border_rad;
+            background-color: $green_color;
+            color: white;
         }
     }
 }
