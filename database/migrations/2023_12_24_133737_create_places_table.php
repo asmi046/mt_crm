@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('number')->comment('Номер места');
             $table->integer('reis_id')->comment('ID рейса');
+            $table->integer('order_id')->comment('ID заказа');
             $table->string('punkt')->comment('Пункт прибывания');
             $table->string('direction',5)->comment('Направление');
             $table->string('direction_text')->comment('Направление тест');
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->string('doc_type')->nullable()->comment('Вид документа');
             $table->string('dr')->nullable()->comment('Дата рождения');
             $table->string('phone')->nullable()->comment('Контактный телефон');
-            $table->text('comment')->comment('Комментарий');
+            $table->text('comment')->nullable()->comment('Комментарий');
         });
     }
 

@@ -29,7 +29,7 @@
                 </div> --}}
                 <br>
                 <br>
-                <x-a-icon href="#" icon="fa-solid fa-arrow-rotate-left">К писку заказов</x-a-icon>
+                <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-arrow-rotate-left">К писку заказов</x-a-icon>
             </div>
 
             <div class="box pt_10">

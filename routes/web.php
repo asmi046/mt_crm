@@ -34,10 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/main', [DashBoardController::class, "index"])->name('dash-board');
     Route::get('/proezd-bron/{direction?}/{punct?}', [ProezdBronController::class, "index"])->name('proezd-bron');
     Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
-    Route::get('/user-bron', [UserBronController::class, "index"])->name('user-bron');
     Route::get('/user-data', [UserDataController::class, "index"])->name('user-data');
     Route::get('/select-places/{reis}/{punkt?}', [TicketController::class, "index"])->name('select-places');
-    Route::get('/order-edit/{id}', [TicketController::class, "order_edit"])->name('order-edit');
+    Route::get('/orders', [TicketController::class, "all_orders"])->name('all_orders');
+    Route::get('/orders/order-edit/{id}', [TicketController::class, "order_edit"])->name('order-edit');
 });
 
 Route::middleware('guest')->group(function () {

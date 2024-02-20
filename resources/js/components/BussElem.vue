@@ -10,7 +10,11 @@
                 <div @click.prevent="selectMesto(mesto)"
                     v-for="mesto in item"
                     :key="'mesto_'+mesto"
-                    :class="{empty: mesto == -1, selected: modelValue.includes(mesto) }"
+                    :class="{
+                            empty: mesto == -1,
+                            selected: modelValue.includes(mesto),
+                            reserved: reserved.includes(mesto)
+                        }"
                     class="mesto">
                     {{ (mesto >= 0)?mesto:'' }}
                 </div>
@@ -25,7 +29,8 @@ export default {
     props: {
         schema: Array,
         napr: String,
-        modelValue: Array
+        modelValue: Array,
+        reserved: Array
     },
 
     emits:[
@@ -36,6 +41,7 @@ export default {
 
         const selectMesto = (item) =>  {
             if (item == -1) return
+            if (props.reserved.includes(item)) return
 
             if (props.modelValue == undefined) return
 
@@ -52,6 +58,7 @@ export default {
         return {
             schema:props.schema,
             napr:props.napr,
+            reserved:props.reserved,
             modelValue:props.modelValue,
             selectMesto
         }

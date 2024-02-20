@@ -58,6 +58,11 @@
                         background-color:$green_color;
                         border-color: $green_color;
                     }
+
+                    &.reserved{
+                        background-color:red;
+                        border-color: red;
+                    }
                 }
 
 

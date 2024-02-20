@@ -1,8 +1,8 @@
 <template>
     <div class="buss_schema">
 
-        <buss-elem :schema="schema" :napr="'Курск - '+punkt" :modelValue="todaSelect"></buss-elem>
-        <buss-elem :schema="schema" :napr="punkt + ' - Курск'" :modelValue="obratnoSelect"></buss-elem>
+        <buss-elem :schema="schema" :napr="'Курск - '+punkt" :modelValue="todaSelect" :reserved="reservedt"></buss-elem>
+        <buss-elem :schema="schema" :napr="punkt + ' - Курск'" :modelValue="obratnoSelect" :reserved="reservedo"></buss-elem>
         <div class="selected_list">
             <h2>Выбранные места</h2>
             <p v-show="(todaSelect.length == 0) && (obratnoSelect.length == 0)">Нет выбранных мест.</p>
@@ -32,7 +32,7 @@ import { jsx } from 'vue/jsx-runtime'
 
 export default {
   components: { BussElem },
-    props: ['schema', 'punkt', 'reis'],
+    props: ['schema', 'punkt', 'reis', 'reservedt', 'reservedo'],
 
     setup(props) {
 
@@ -44,12 +44,18 @@ export default {
 
             axios.post('/order/create', {
                 'reis_id': props.reis,
+                'punkt': props.punkt,
                 'comment': "Заказ зарегистрирован",
                 'tuda': todaSelect.value,
                 'obratno': obratnoSelect.value,
             })
             .then((resp) => {
-                window.location.href = "/edit-order/"+resp.data.order.id
+                console.log(resp.data)
+                if (resp.data.order != null)
+                    window.location.href = "/orders/order-edit/"+resp.data.order.id
+                else {
+                    alert(resp.data.message);
+                }
             })
             .catch(error => console.log(error));
         }
@@ -57,6 +63,8 @@ export default {
         return {
             schema:props.schema,
             punkt:props.punkt,
+            reservedt:props.reservedt,
+            reservedo:props.reservedo,
             todaSelect,
             obratnoSelect,
             createOrder

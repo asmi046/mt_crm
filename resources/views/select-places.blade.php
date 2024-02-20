@@ -33,7 +33,13 @@
             </div>
 
             <div class="box pt_10">
-                <buss-schemm :schema="{{ json_encode($schema); }}"  reis="{{ $reis->id }}" punkt="{{ $punkt }}"></buss-schemm>
+                <buss-schemm
+                    :schema="{{ json_encode($schema); }}"
+                    reis="{{ $reis->id }}"
+                    punkt="{{ $punkt }}"
+                    :reservedt="{{ json_encode($reserved_t); }}"
+                    :reservedo="{{ json_encode($reserved_o); }}"
+                    ></buss-schemm>
             </div>
 
         </div>

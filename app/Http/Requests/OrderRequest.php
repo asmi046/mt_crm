@@ -38,6 +38,7 @@ class OrderRequest extends FormRequest
         return [
             "comment" => [],
             "reis_id" => ['required', 'integer'],
+            "punkt" => [],
             "tuda" => [],
             "obratno" => [],
         ];
