@@ -17,23 +17,33 @@
         <div class="page_container ">
             <div class="box">
                 <h1>Редактирование заказа №{{$order->id}}</h1>
-                {{-- <div class="page_reis_info">
-                    <p><strong>Пункт следования: </strong> {{$punkt}}</p>
-                    <br>
-                    <p><strong>Направление: </strong> {{$reis->direction->name}}</p>
-                    <p><strong>Выезд из Курска: </strong> {{date("d.m.Y", strtotime($reis->start_to_date)) }}</p>
-                    <p><strong>Прибытие на место: </strong>{{date("d.m.Y", strtotime($reis->prib_to_date)) }}</p>
-                    <p><strong>Выезд обратно: </strong>{{date("d.m.Y", strtotime($reis->start_out_date)) }}</p>
-                    <p><strong>Прибытие в Курск: </strong>{{date("d.m.Y", strtotime($reis->prib_out_date)) }}</p>
-                    <p><strong>Автобус: </strong>{{ $reis->reis_bus->name }}</p>
-                </div> --}}
+                <div class="page_reis_info">
+                    <p><strong>Состояние: </strong> {{$order->state}}</p>
+                    <p><strong>Направление: </strong> {{$order->reis->direction->name}}</p>
+                    <p><strong>Пункт следования: </strong> {{$order->punkt}}</p>
+                    <p><strong>Рейс: </strong> №{{ $order->reis->id }}
+                        {{ date("d.m.Y", strtotime($order->reis->start_to_date))}}
+                        {{ $order->reis->direction->start_punkt }} - {{ $order->reis->direction->end_punkt }}</p>
+                </div>
                 <br>
                 <br>
                 <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-arrow-rotate-left">К писку броней</x-a-icon>
             </div>
 
             <div class="box pt_10">
+                @foreach ($order->mesta as $item)
+                <details>
+                    <summary>
+                        <span>Место №  {{$item->number}}</span>
+                    </summary>
+                    <div class="response">
+                        <form action="">
 
+                            <button type="submit" class="button">Сохранит</button>
+                        </form>
+                    </div>
+                </details>
+                @endforeach
             </div>
 
         </div>
