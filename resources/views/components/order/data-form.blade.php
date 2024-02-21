@@ -1,0 +1,60 @@
+<form method="POST" action="{{route("save_order", $item->id)}}">
+@csrf
+<input type="hidden" name="reis_id" value="{{ $item->reis_id }}">
+<input type="hidden" name="punkt" value="{{ $item->punkt }}">
+<div class="wrapper c_2">
+    <div class="field">
+        <label class="label">Цена</label>
+        <div class="control">
+            <input name="price" class="input" type="text" value="{{ $item->price }}" placeholder="">
+        </div>
+
+        @error('price')
+            <p class="error">{{$message}}</p>
+        @enderror
+    </div>
+
+    <div class="field">
+        <label class="label">Аванс</label>
+        <div class="control">
+            <input name="avanc" class="input" type="text" value="{{ $item->avanc }}" placeholder="">
+        </div>
+
+        @error('avanc')
+            <p class="error">{{$message}}</p>
+        @enderror
+    </div>
+
+</div>
+
+<div class="field">
+    <label class="label">Статус заказ</label>
+    <div class="control">
+        <select name="state" id="">
+            <option value="" disabled selected>Выберите вид документа</option>
+            <option @selected($item->state === "Черновик") value="Черновик">Черновик</option>
+            <option @selected($item->state === "Подтвержденный") value="Подтвержденный">Подтвержденный</option>
+        </select>
+    </div>
+
+    @error('state')
+        <p class="error">{{$message}}</p>
+    @enderror
+</div>
+
+<div class="field">
+    <label class="label">Комментарий</label>
+    <div class="control">
+        <textarea name="comment" value="{{ $item->comment }}" rows="5"></textarea>
+    </div>
+
+    @error('comment')
+        <p class="error">{{$message}}</p>
+    @enderror
+</div>
+@if (session('success_order'))
+    <p class="success">{{ session('success_order') }}</p>
+@endif
+<button type="submit" class="button">Сохранить</button>
+
+</form>

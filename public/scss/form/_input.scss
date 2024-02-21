@@ -5,6 +5,7 @@ input:-webkit-autofill:active{
     box-shadow: inset 0 0 20px 20px #FFFFFFFF;
 }
 
+textarea,
 select,
 input{
     box-sizing: border-box;
@@ -16,7 +17,11 @@ input{
     border: 1px solid #dbdbdb;
     border-radius: 0.375em;
     color: #353535;
-    height: 3.5em;
+    height: 2.8em;
     outline: none;
 }
 
+textarea {
+    height: unset;
+    padding: 5px calc(.75em - 1px);
+}

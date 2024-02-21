@@ -1,0 +1,48 @@
+
+.places_list {
+    details{
+        border: 1px solid lightgray;
+        margin-bottom: 10px;
+        border-radius: $border_rad;
+        overflow: hidden;
+
+        &[open] {
+            border-color: $main_color;
+        }
+
+        summary {
+            list-style: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        &[open] summary{
+            color: white;
+            background-color: $main_color;
+        }
+
+        summary::after {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width:33px;
+            right: 15px;
+            top:10px;
+            background-image: url(../img/icon/arrow.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        &[open] summary::after {
+            background-image: url(../img/icon/arrow_white.svg);
+            transform: rotate(180deg);
+        }
+
+        .response {
+            padding: 10px 20px;
+        }
+    }
+}

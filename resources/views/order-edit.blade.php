@@ -17,33 +17,76 @@
         <div class="page_container ">
             <div class="box">
                 <h1>Редактирование заказа №{{$order->id}}</h1>
-                <div class="page_reis_info">
-                    <p><strong>Состояние: </strong> {{$order->state}}</p>
-                    <p><strong>Направление: </strong> {{$order->reis->direction->name}}</p>
-                    <p><strong>Пункт следования: </strong> {{$order->punkt}}</p>
-                    <p><strong>Рейс: </strong> №{{ $order->reis->id }}
-                        {{ date("d.m.Y", strtotime($order->reis->start_to_date))}}
-                        {{ $order->reis->direction->start_punkt }} - {{ $order->reis->direction->end_punkt }}</p>
+                <div class="wrapper c_2">
+                    <div class="coll">
+                        <div class="page_reis_info">
+                            <p><strong>Состояние: </strong> {{$order->state}}</p>
+                            <p><strong>Направление: </strong> {{$order->reis->direction->name}}</p>
+                            <p><strong>Пункт следования: </strong> {{$order->punkt}}</p>
+                            <p><strong>Рейс: </strong> №{{ $order->reis->id }}
+                                {{ date("d.m.Y", strtotime($order->reis->start_to_date))}}
+                                {{ $order->reis->direction->start_punkt }} - {{ $order->reis->direction->end_punkt }}</p>
+                        </div>
+                        <br>
+                        <br>
+                        <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-arrow-rotate-left">К писку броней</x-a-icon>
+                    </div>
+                    <div class="coll">
+                        <x-order.data-form :item="$order"></x-order.data-form>
+                    </div>
                 </div>
-                <br>
-                <br>
-                <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-arrow-rotate-left">К писку броней</x-a-icon>
+
             </div>
 
             <div class="box pt_10">
-                @foreach ($order->mesta as $item)
-                <details>
-                    <summary>
-                        <span>Место №  {{$item->number}}</span>
-                    </summary>
-                    <div class="response">
-                        <form action="">
+                <h2>Зерезервированные места</h2>
+                @if (session('success_user'))
+                    <p class="success">{{ session('success_user') }}</p>
+                @endif
 
-                            <button type="submit" class="button">Сохранит</button>
-                        </form>
+                <div class="wrapper c_2 places_list">
+                    <div class="coll">
+                        <p class="mb_20"><strong>{{ $order->reis->direction->start_punkt }} - {{ $order->reis->direction->end_punkt }}</strong></p>
+
+                        @foreach ($order->mesta as $item)
+                            @if ($item->direction === 't')
+                                <details
+                                    @if (session('success_user_id') && session('success_user_id') == $item->id )
+                                        open
+                                    @endisset
+                                >
+                                    <summary>
+                                        <span>Место №  {{$item->number}}</span>
+                                    </summary>
+                                    <div class="response">
+                                        <x-places.data-form :item="$item"></x-places.data-form>
+                                    </div>
+                                </details>
+                            @endif
+                        @endforeach
                     </div>
-                </details>
-                @endforeach
+
+                    <div class="coll">
+                        <p class="mb_20"><strong>{{ $order->reis->direction->end_punkt }} - {{ $order->reis->direction->start_punkt }}</strong></p>
+                        @foreach ($order->mesta as $item)
+                            @if ($item->direction === 'o')
+                            <details
+                                @if (session('success_user_id') && session('success_user_id') == $item->id )
+                                    open
+                                @endisset
+                            >
+                                    <summary>
+                                        <span>Место №  {{$item->number}}</span>
+                                    </summary>
+                                    <div class="response">
+                                        <x-places.data-form :item="$item"></x-places.data-form>
+                                    </div>
+                                </details>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+
             </div>
 
         </div>

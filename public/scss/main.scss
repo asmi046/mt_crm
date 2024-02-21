@@ -37,6 +37,10 @@ h3{
     margin-top: 20px;
 }
 
+.mb_20 {
+    margin-bottom: 20px;
+}
+
 a:hover{
     color: $main_color;
 }
@@ -79,6 +83,10 @@ a:hover{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    &.c_2 > *{
+        width:48%
+    }
+
     &.c_3 > *{
         width:30%
     }
@@ -90,6 +98,7 @@ a:hover{
 }
 
 
+@import "bron-styles";
 @import "buss_schemm";
 @import "cabinet-section";
 @import "informers";

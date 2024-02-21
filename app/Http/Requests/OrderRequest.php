@@ -25,8 +25,15 @@ class OrderRequest extends FormRequest
         return [
             'state.required' => 'Неизвестно состояние заказа',
             'punkt.required' => 'Неизвестен пункт назначения',
+
             'email.required' => 'Неизвестен номер рейса',
             'email.integer' => 'Номер рейса не целое число',
+
+            'price.required' => 'Поле Цена не должна быть пустой',
+            'price.integer' => 'Поле Цена должна быть числом',
+
+            'avanc.required' => 'Поле Аванс не должна быть пустой',
+            'avanc.integer' => 'Поле Аванс должна быть числом',
         ];
     }
 
@@ -40,9 +47,10 @@ class OrderRequest extends FormRequest
         return [
             "comment" => [],
             "reis_id" => ['required', 'integer'],
-            "punkt" => [],
             "tuda" => [],
             "obratno" => [],
+            "price" => ['required', 'integer'],
+            "avanc" => ['required', 'integer'],
             "state" => ['required', 'string'],
             "punkt" => ['required', 'string'],
         ];

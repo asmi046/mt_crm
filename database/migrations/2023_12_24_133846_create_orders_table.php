@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('reis_id')->comment('id рейса');
             $table->string('punkt')->comment('Пункт следования');
             $table->string('state')->comment('Состояник');
+            $table->float('price',10, 2)->default(0)->comment('Полная стоимость');
+            $table->float('avanc',10, 2)->default(0)->comment('Внесенный аванс');
             $table->text('comment')->nullable()->comment('Комментарий к заказу');
         });
     }

@@ -11,4 +11,14 @@
         border-radius: $border_rad;
         padding: 3px 10px;
     }
+
+}
+
+p.success {
+    background-color: green;
+    color: white;
+    display: block;
+    margin: 7px 0;
+    border-radius: $border_rad;
+    padding: 3px 10px;
 }

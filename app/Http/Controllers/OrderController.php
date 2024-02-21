@@ -40,4 +40,16 @@ class OrderController extends Controller
     public function delete_order($id) {
 
     }
+
+    public function save_order(OrderRequest $request, int $id) {
+        $data = $request->validated();
+
+        $order = Order::where('id', $id)->first();
+
+
+        $order->update($data);
+        // dd($data,$order);
+
+        return redirect()->route('order-edit', $id)->with('success_order', 'Данные заказа сохранены');
+    }
 }

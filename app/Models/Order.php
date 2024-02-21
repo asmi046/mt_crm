@@ -15,6 +15,8 @@ class Order extends Model
         "comment",
         "reis_id",
         "punkt",
+        "price",
+        "avanc",
         "state",
     ];
 

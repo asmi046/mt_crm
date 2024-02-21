@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('i')->nullable()->comment('Имя');
             $table->string('o')->nullable()->comment('Отчество');
             $table->string('doc_type')->nullable()->comment('Вид документа');
+            $table->string('doc_n')->nullable()->comment('Номер документа');
             $table->string('dr')->nullable()->comment('Дата рождения');
             $table->string('phone')->nullable()->comment('Контактный телефон');
             $table->text('comment')->nullable()->comment('Комментарий');

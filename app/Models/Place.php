@@ -20,6 +20,7 @@ class Place extends Model
         'i',
         'o',
         'doc_type',
+        'doc_n',
         'dr',
         'phone',
         'comment'
