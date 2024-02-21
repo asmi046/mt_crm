@@ -45,6 +45,7 @@ export default {
             axios.post('/order/create', {
                 'reis_id': props.reis,
                 'punkt': props.punkt,
+                'state': "Черновик",
                 'comment': "Заказ зарегистрирован",
                 'tuda': todaSelect.value,
                 'obratno': obratnoSelect.value,

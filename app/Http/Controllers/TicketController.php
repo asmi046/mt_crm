@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reis;
 
 use App\Models\Order;
+use App\Filters\OrderFilter;
 use Illuminate\Http\Request;
 use App\Services\PlacesServices;
 use Illuminate\Support\Facades\Auth;
@@ -39,9 +40,23 @@ class TicketController extends Controller
         return view('order-edit', ['order' => $order]);
     }
 
-    public function all_orders() {
+    public function all_orders(OrderFilter $request) {
         $user_id = Auth::user()->id;
-        $all_user_order =  Order::where('user_id', $user_id)->get();
-        return view('user-orders', ['all_order' => $all_user_order]);
+        $all_user_order =  Order::where('user_id', $user_id)
+                            ->filter($request)
+                            ->get();
+
+        $filter = Order::where('user_id', $user_id)->get();
+        $filter_setings = [
+            'punkt' => [],
+            'reis' => [],
+        ];
+
+        foreach ($filter as $item) {
+            $filter_setings['punkt'][$item->punkt] = 1;
+            $filter_setings['reis'][$item->reis_id] = "№".$item->reis->id." ".date("d.m.Y", strtotime($item->reis->start_to_date))." ".$item->reis->direction->start_punkt." - ".$item->reis->direction->end_punkt;
+        }
+        // dd($filter_setings);
+        return view('user-orders', ['all_order' => $all_user_order, 'filter_settings' => $filter_setings]);
     }
 }

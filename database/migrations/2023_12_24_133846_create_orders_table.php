@@ -16,7 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('user_id')->comment('Пользователь оформивший заказ');
             $table->integer('reis_id')->comment('id рейса');
-            $table->text('comment')->comment('Комментарий к заказу');
+            $table->string('punkt')->comment('Пункт следования');
+            $table->string('state')->comment('Состояник');
+            $table->text('comment')->nullable()->comment('Комментарий к заказу');
         });
     }
 

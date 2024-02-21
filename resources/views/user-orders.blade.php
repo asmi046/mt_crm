@@ -17,10 +17,100 @@
         <div class="page_container ">
             <div class="box">
                 <h1>Мои брони</h1>
-                <p>Забронировано моей учетной записью</p>
+                <p>Полный список моих заказов</p>
             </div>
 
             <div class="box pt_10">
+                <form class="filter_form" action="{{ route('all_orders') }}">
+                    <div class="wrapper c_3">
+                        <div class="field">
+                            <label class="label">Выберите состояние</label>
+                            <div class="control">
+                                <select name="state" id="f_reis_id">
+                                    <option value="%" selected disabled>Выберите состояние</option>
+                                    <option value="Черновик" @selected("Черновик" === request('state')) >Черновик</option>
+                                    <option value="Оформлен" @selected("Оформлен" === request('state')) >Оформлен</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Выберите рейс</label>
+                            <div class="control">
+                                <select name="punkt" id="f_places_count">
+                                    <option value="%" selected disabled>Пункт следования</option>
+                                    @foreach ($filter_settings['punkt'] as $key => $item)
+                                        <option value="{{ $key }}" @selected($key === request('punkt'))>{{ $key }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Пункт следования</label>
+                            <div class="control">
+                                <select name="reis_id" id="f_places_count">
+                                    <option value="%" selected disabled>Пункт следования</option>
+                                    @foreach ($filter_settings['reis'] as $key => $item)
+                                        <option @selected($key === request('reis')) value="{{$key}}" >{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper c_1">
+                        <div class="field">
+                            <label class="label">Свободный поиск</label>
+                            <div class="control">
+                                <input name="serch" class="input" type="text" placeholder="Введите часть комментария, или часть имени клиента">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="button">Найти</button>
+                    <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-ban pl_10">Сбросить</x-a-icon>
+                </form>
+            </div>
+
+            <div class="box pt_10">
+                @if ($all_order->count() > 0 )
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>№ брони</th>
+                                <th>Состояние</th>
+                                <th>Дата брони</th>
+                                <th>Рейс</th>
+                                <th>Пункт следования</th>
+                                <th>Мест</th>
+                                <th>Управление</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($all_order as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->state }}</td>
+                                    <td>{{ date("d.m.Y H:i", strtotime($item->created_at)) }}</td>
+                                    <td>№{{ $item->reis->id }}
+                                        <strong>{{ date("d.m.Y", strtotime($item->reis->start_to_date))}}</strong>
+                                        {{ $item->reis->direction->start_punkt }} - {{ $item->reis->direction->end_punkt }}</td>
+                                    <td>{{ $item->punkt }}</td>
+                                    <td>{{ count($item->mesta)}}</td>
+                                    <td>
+
+                                        <x-a-icon href="{{ route('order-edit', $item->id) }}" icon="fa-solid fa-pen-to-square">Редактировать</x-a-icon>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <p>Нет ни одной брони. <br><br><a class="button" href="{{ route('proezd-bron') }}">Оформить бронь</a></p>
+                @endif
 
             </div>
 

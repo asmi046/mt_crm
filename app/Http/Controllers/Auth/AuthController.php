@@ -56,7 +56,7 @@ class AuthController extends Controller
         $user_data = $request->validated();
 
         if(auth('web')->attempt($user_data)) {
-            return redirect(route('dash-board'));
+            return redirect(route('proezd-bron'));
         }
 
         return redirect(route('login'))->withErrors(['email'=>'Неверный логин или пароль']);

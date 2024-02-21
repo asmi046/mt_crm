@@ -23,6 +23,8 @@ class OrderRequest extends FormRequest
     public function messages()
     {
         return [
+            'state.required' => 'Неизвестно состояние заказа',
+            'punkt.required' => 'Неизвестен пункт назначения',
             'email.required' => 'Неизвестен номер рейса',
             'email.integer' => 'Номер рейса не целое число',
         ];
@@ -41,6 +43,8 @@ class OrderRequest extends FormRequest
             "punkt" => [],
             "tuda" => [],
             "obratno" => [],
+            "state" => ['required', 'string'],
+            "punkt" => ['required', 'string'],
         ];
     }
 }
