@@ -21,4 +21,12 @@ class PlaceController extends Controller
             ->with('success_user', 'Данные пользователя сохранены')
             ->with('success_user_id', $id);
     }
+
+    public function place_delete(int $id) {
+        $place = Place::where('id', $id)->first();
+        $order_id = $place->order_id;
+        $place->delete();
+
+        return redirect()->route('order-edit', $order_id)->with('success_user', 'Место удалено!');
+    }
 }

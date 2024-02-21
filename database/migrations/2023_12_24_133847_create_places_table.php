@@ -16,7 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('number')->comment('Номер места');
             $table->integer('reis_id')->comment('ID рейса');
-            $table->integer('order_id')->comment('ID заказа');
+            $table->foreignId('order_id')->comment('ID заказа')
+                                        ->constrained()
+                                        ->onUpdate('cascade')
+                                        ->onDelete('cascade');
             $table->string('punkt')->comment('Пункт прибывания');
             $table->string('direction',5)->comment('Направление');
             $table->string('direction_text')->comment('Направление тест');

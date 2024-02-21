@@ -38,7 +38,9 @@ class OrderController extends Controller
     }
 
     public function delete_order($id) {
+        $order = Order::where('id', $id)->delete();
 
+        return redirect()->route('all_orders');
     }
 
     public function save_order(OrderRequest $request, int $id) {

@@ -8,9 +8,20 @@ button,
     transition: $main_transition;
     border-radius: 5px;
     display: inline-block;
+    font-size: 14px;
 
     &:hover {
         background-color: $hover_color;
         color: white;
+    }
+}
+
+.b_red{
+    background-color: red;
+    border-color: red;
+
+    &:hover {
+        background-color: orangered;
+        border-color: orangered;
     }
 }

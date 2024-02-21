@@ -104,5 +104,13 @@
         @enderror
     </div>
 
-    <button type="submit" class="button">Сохранит</button>
+    <div class="wrapper c2">
+        <div class="coll">
+            <button type="submit" class="button">Сохранить</button>
+        </div>
+
+        <div class="coll">
+            <a href="{{ route('place_delete', $item->id) }}" onclick="if (!confirm('Место будет удалено из заказа! Вы уверенны?')) return false;" class="button b_red">Удалить место</a>
+        </div>
+    </div>
 </form>

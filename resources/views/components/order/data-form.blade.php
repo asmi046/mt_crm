@@ -55,6 +55,14 @@
 @if (session('success_order'))
     <p class="success">{{ session('success_order') }}</p>
 @endif
-<button type="submit" class="button">Сохранить</button>
+<div class="wrapper c2">
+    <div class="coll">
+        <button type="submit" class="button">Сохранить</button>
+    </div>
+
+    <div class="coll">
+        <a href="{{ route('delete_order', $item->id) }}" onclick="if (!confirm('Бронь будет удалена! Вы уверенны?')) return false;" class="button b_red">Удалить бронь</a>
+    </div>
+</div>
 
 </form>
