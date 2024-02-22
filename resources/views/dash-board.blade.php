@@ -16,8 +16,8 @@
     <div class="main">
         <div class="page_container ">
             <div class="box">
-                <h1>Добро пожаловать в систему бронирования проезда</h1>
-                <p>В нашей системе вы можете забронировать проезд на автобусе до черноморского побережя а так же отель или гостевой дом на время своего отдыха.</p>
+                <h1>Статистика по системе бронирования</h1>
+                <p>Основные показатели по бронированию проезда на море</p>
             </div>
             <br>
             <div class="box">
@@ -25,8 +25,8 @@
                 <div class="informers informers_i3">
 
                     <div class="informer ">
-                        <p class="carecter">{{ $direction_count }}</p>
-                        <p class="info">направления зарегистрировано в системе бронирования</p>
+                        <p class="carecter">{{ $place_count }}</p>
+                        <p class="info">Забронированно мест на всех рейсах</p>
                     </div>
 
                     <div class="informer ">

@@ -56,7 +56,16 @@
                                     @endisset
                                 >
                                     <summary>
-                                        <span>Место №  {{$item->number}}</span>
+                                        <span>
+                                            Место №  {{$item->number}}
+                                            @isset($item->i)
+                                                {{ $item->i}}
+                                            @endisset
+
+                                            @isset($item->f)
+                                                {{ $item->f}}
+                                            @endisset
+                                        </span>
                                     </summary>
                                     <div class="response">
                                         <x-places.data-form :item="$item"></x-places.data-form>
@@ -77,6 +86,13 @@
                             >
                                     <summary>
                                         <span>Место №  {{$item->number}}</span>
+                                        @isset($item->i)
+                                            {{ $item->i}}
+                                        @endisset
+
+                                        @isset($item->f)
+                                            {{ $item->f}}
+                                        @endisset
                                     </summary>
                                     <div class="response">
                                         <x-places.data-form :item="$item"></x-places.data-form>
