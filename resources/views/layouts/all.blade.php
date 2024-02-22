@@ -28,6 +28,7 @@
     @vite([
         'resources/css/app.css',
         'resources/js/app.js',
+        'resources/js/place_copy.js',
         'public/scss/main.scss',
         'public/js/mob-menu.js',
     ])

@@ -1,11 +1,11 @@
 <form method="POST" action="{{ route('place_edit', $item->id) }}">
     <div class="wrapper c_2 mb_20">
         <div class="coll">
-            <x-a-icon href="#" icon="fa-solid fa-copy">Копировать</x-a-icon>
+            <x-a-icon href="#" dataname="placeid" datavalue="{{ $item->id }}" wrapclass="place_copy" icon="fa-solid fa-copy">Копировать</x-a-icon>
         </div>
 
         <div class="coll">
-            <x-a-icon href="#" icon="fa-solid fa-paste">Вставить</x-a-icon>
+            <x-a-icon href="#" dataname="placeid" datavalue="{{ $item->id }}" wrapclass="place_paste" icon="fa-solid fa-paste ">Вставить</x-a-icon>
         </div>
     </div>
     @csrf
@@ -14,7 +14,7 @@
     <div class="field">
         <label class="label">Фамилия</label>
         <div class="control">
-            <input name="f" class="input" type="text" value="{{ $item->f }}" placeholder="">
+            <input name="f" class="input" type="text" value="{{ $item->f }}" id="place_f_{{$item->id}}" placeholder="">
         </div>
 
         @error('f')
@@ -25,7 +25,7 @@
     <div class="field">
         <label class="label">Имя</label>
         <div class="control">
-            <input name="i" class="input" type="text" value="{{ $item->i }}" placeholder="">
+            <input name="i" class="input" type="text" value="{{ $item->i }}" id="place_i_{{$item->id}}" placeholder="">
         </div>
 
         @error('i')
@@ -36,7 +36,7 @@
     <div class="field">
         <label class="label">Отчество</label>
         <div class="control">
-            <input name="o" class="input" type="text" value="{{ $item->o }}" placeholder="">
+            <input name="o" class="input" type="text" value="{{ $item->o }}" id="place_o_{{$item->id}}" placeholder="">
         </div>
 
         @error('o')
@@ -85,7 +85,7 @@
     <div class="field">
         <label class="label">Телефон</label>
         <div class="control">
-            <input name="phone" class="input" type="tel" value="{{ $item->phone }}" placeholder="">
+            <input name="phone" class="input" type="tel" value="{{ $item->phone }}" id="place_phone_{{$item->id}}" placeholder="">
         </div>
 
         @error('phone')
@@ -96,7 +96,7 @@
     <div class="field">
         <label class="label">Комментарий</label>
         <div class="control">
-            <textarea name="comment" value="{{ $item->comment }}" rows="5"></textarea>
+            <textarea name="comment" value="{{ $item->comment }}" id="place_comment_{{$item->id}}" rows="5"></textarea>
         </div>
 
         @error('comment')
