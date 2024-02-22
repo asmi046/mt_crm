@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("users")->insertGetId(
+        DB::table("users")->insert([
             [
                     'name' => "Администратор",
                     'agency' => "Мир туризма",
@@ -41,6 +41,8 @@ class UserSeeder extends Seeder
                     'password' => Hash::make("0003"),
                     'email_verified_at' => date("Y-m-d H:i:s")
             ]
+        ]
+
         );
     }
 }
