@@ -46,7 +46,7 @@
 
                 <div class="wrapper c_2 places_list">
                     <div class="coll">
-                        <p class="mb_20"><strong>{{ $order->reis->direction->start_punkt }} - {{ $order->reis->direction->end_punkt }}</strong></p>
+                        <p class="mb_20"><strong>{{ $order->reis->direction->start_punkt }} - {{ $order->punkt }}</strong></p>
 
                         @foreach ($order->mesta as $item)
                             @if ($item->direction === 't')
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="coll">
-                        <p class="mb_20"><strong>{{ $order->reis->direction->end_punkt }} - {{ $order->reis->direction->start_punkt }}</strong></p>
+                        <p class="mb_20"><strong>{{ $order->punkt }} - {{ $order->reis->direction->start_punkt }}</strong></p>
                         @foreach ($order->mesta as $item)
                             @if ($item->direction === 'o')
                             <details

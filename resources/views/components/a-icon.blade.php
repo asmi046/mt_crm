@@ -9,5 +9,5 @@
 
 href="{{$href}}">
     <i class="{{ $icon }}"></i>
-    <span>{{ $slot}}</span>
+    <span class="ml_5">{{ $slot}}</span>
 </a>
