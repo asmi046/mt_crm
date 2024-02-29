@@ -17,28 +17,44 @@ class UserSeeder extends Seeder
     {
         DB::table("users")->insert([
             [
-                    'name' => "Администратор",
+                    'name' => "Ирина",
                     'agency' => "Мир туризма",
-                    'phone' => "+7 (903) 633 08 01",
-                    'email' => "asmi046@gmail.com",
+                    'phone' => "+7 (000) 000 00 01",
+                    'email' => "irina_mirturizma-kursk2@yandex.ru",
                     'password' => Hash::make("0001"),
                     'email_verified_at' => date("Y-m-d H:i:s")
             ],
 
             [
-                    'name' => "Павел",
+                    'name' => "Елена",
                     'agency' => "Мир туризма",
-                    'phone' => "+7 (903) 633 00 00",
-                    'email' => "litvinov-pa@yandex.ru",
+                    'phone' => "+7 (000) 000 00 02",
+                    'email' => "elena_mirturizma-kursk2@yandex.ru",
                     'password' => Hash::make("0002"),
                     'email_verified_at' => date("Y-m-d H:i:s")
             ],
             [
-                    'name' => "Менеджер",
+                    'name' => "Кристина",
                     'agency' => "Мир туризма",
-                    'phone' => "+7 (903) 633 00 01",
-                    'email' => "mirturizma-kursk2@yandex.ru",
+                    'phone' => "+7 (000) 000 00 03",
+                    'email' => "kristina_mirturizma-kursk2@yandex.ru",
                     'password' => Hash::make("0003"),
+                    'email_verified_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                    'name' => "Павел Алексеевич",
+                    'agency' => "Мир туризма",
+                    'phone' => "+7 (000) 000 00 04",
+                    'email' => "mirturizma-kursk2@yandex.ru",
+                    'password' => Hash::make("0004"),
+                    'email_verified_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                    'name' => "Елена Владимировна",
+                    'agency' => "Мир туризма",
+                    'phone' => "+7 (000) 000 00 05",
+                    'email' => "ev_mirturizma-kursk2@yandex.ru",
+                    'password' => Hash::make("0005"),
                     'email_verified_at' => date("Y-m-d H:i:s")
             ]
         ]
