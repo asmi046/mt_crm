@@ -6,9 +6,13 @@ use App\Models\Order;
 
 use Illuminate\Http\Request;
 use App\Services\PlacesServices;
+use App\Actions\TelegramSendAction;
 use App\Http\Requests\OrderRequest;
-use Illuminate\Support\Facades\Auth;
 
+use App\Mail\Order\OrderMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Actions\OrderMessageGetAction;
 
 class OrderController extends Controller
 {
@@ -30,6 +34,12 @@ class OrderController extends Controller
 
         $tmp = $place_service->rezerv_places($data['tuda'], $order->id, $data['reis_id'], $data['punkt'], 't', "Курск - ".$data['punkt']);
         $place_service->rezerv_places($data['obratno'], $order->id, $data['reis_id'], $data['punkt'], 'o', $data['punkt']." - Курск");
+
+        $tgsender = new TelegramSendAction();
+        $message_get = new OrderMessageGetAction();
+        $tmp = $tgsender->handle($message_get->handle($order));
+
+        Mail::to(explode(",",config('consultation.mailadresat')))->send(new OrderMail($order));
 
         return [
             "order" => $order,

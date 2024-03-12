@@ -5688,16 +5688,16 @@
     "packages-dev": [
         {
             "name": "asmi046/site_skelet",
-            "version": "1.0.12",
+            "version": "1.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asmi046/site_skelet.git",
-                "reference": "bea234ed744b9a8a35de9d18c4201fd5fb7a582b"
+                "reference": "d9655cbb52f5da830607652f51327efe91f831ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asmi046/site_skelet/zipball/bea234ed744b9a8a35de9d18c4201fd5fb7a582b",
-                "reference": "bea234ed744b9a8a35de9d18c4201fd5fb7a582b",
+                "url": "https://api.github.com/repos/asmi046/site_skelet/zipball/d9655cbb52f5da830607652f51327efe91f831ac",
+                "reference": "d9655cbb52f5da830607652f51327efe91f831ac",
                 "shasum": ""
             },
             "require": {
@@ -5728,9 +5728,9 @@
             ],
             "support": {
                 "issues": "https://github.com/asmi046/site_skelet/issues",
-                "source": "https://github.com/asmi046/site_skelet/tree/1.0.12"
+                "source": "https://github.com/asmi046/site_skelet/tree/1.0.19"
             },
-            "time": "2024-02-21T13:21:09+00:00"
+            "time": "2024-03-12T11:18:51+00:00"
         },
         {
             "name": "fakerphp/faker",
