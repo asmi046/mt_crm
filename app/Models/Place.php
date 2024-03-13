@@ -26,4 +26,18 @@ class Place extends Model
         'comment'
     ];
 
+    // public $with = [
+    //     'order',
+    //     'reis'
+    // ];
+
+    public function order()
+    {
+        return $this->hasOne(Order::class, "id", "order_id");
+    }
+
+    public function reis()
+    {
+        return $this->hasOne(Reis::class, "id", "reis_id");
+    }
 }

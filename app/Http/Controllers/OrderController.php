@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
+use App\Mail\Order\OrderMail;
 use App\Services\PlacesServices;
 use App\Actions\TelegramSendAction;
-use App\Http\Requests\OrderRequest;
 
-use App\Mail\Order\OrderMail;
+use App\Http\Requests\OrderRequest;
+use App\Mail\Order\DeleteOrderMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Actions\OrderMessageGetAction;
+use App\Actions\OrderDeleteMessageGetAction;
 
 class OrderController extends Controller
 {
@@ -48,7 +50,18 @@ class OrderController extends Controller
     }
 
     public function delete_order($id) {
-        $order = Order::where('id', $id)->delete();
+        $order = Order::where('id', $id)->first();
+
+        $tgsender = new TelegramSendAction();
+        $message_get = new OrderDeleteMessageGetAction();
+        $tmp = $tgsender->handle($message_get->handle($order));
+
+        Mail::to(explode(",",config('consultation.mailadresat')))->send(new DeleteOrderMail($order));
+
+
+        $order->delete();
+
+
 
         return redirect()->route('all_orders');
     }

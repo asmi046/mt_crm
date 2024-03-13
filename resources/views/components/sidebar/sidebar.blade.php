@@ -8,6 +8,11 @@
         <x-logo-elements></x-logo-elements>
     </header>
 
+    <div class="user_catd">
+        <p>Агентство: <strong>{{ auth()->user()->agency }}</strong></p>
+        <p>Пользователь: <strong>{{ auth()->user()->name }}</strong></p>
+    </div>
+
     <x-sidebar.navigation></x-sidebar.navigation>
 
     <footer>
