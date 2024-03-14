@@ -17,23 +17,26 @@ class DirectionSeeder extends Seeder
         DB::table("directions")->insert(
             [
                 [
-                    "name" => "Курск - Ялта",
+                    "name" => "Курск - Лазаревское",
                     "start_punkt" => "Курск",
-                    "end_punkt" => "Ялта",
-                    'description' => 'Курск - Ялта',
+                    "end_punkt" => "Лазаревское",
+                    'description' => 'Курск - Лазаревское',
                 ],
+
                 [
                     "name" => "Курск - Геленджик",
                     "start_punkt" => "Курск",
                     "end_punkt" => "Геленджик",
                     'description' => 'Курск - Геленджик',
                 ],
+
                 [
-                    "name" => "Курск - Лазаревское",
+                    "name" => "Курск - Ялта",
                     "start_punkt" => "Курск",
-                    "end_punkt" => "Лазаревское",
-                    'description' => 'Курск - Лазаревское',
+                    "end_punkt" => "Ялта",
+                    'description' => 'Курск - Ялта',
                 ],
+
 
             ]
         );
