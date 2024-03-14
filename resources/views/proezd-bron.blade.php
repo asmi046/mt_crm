@@ -55,7 +55,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ !empty($sel_p)?"Курск - ".$sel_p:$item->direction->start_punkt." - ".$item->direction->end_punkt }}</td>
                                         <td>{{ date("d.m.Y", strtotime($item->start_to_date)) }}</td>
-                                        <td>{{ date("d.m.Y", strtotime($item->start_out_date)) }}</td>
+                                        <td>{{ date("d.m.Y", strtotime($item->prib_out_date)) }}</td>
                                         <td>
                                             <x-a-icon href="{{ route('select-places', ['reis' => $item->id, 'punkt' => $sel_p], ) }}" icon="fa-solid fa-ticket">Купить билет</x-a-icon>
                                         </td>
