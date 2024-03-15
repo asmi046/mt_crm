@@ -22,23 +22,13 @@
 
             <div class="box pt_10">
                 <form class="filter_form" action="{{ route('all_orders') }}">
-                    <div class="wrapper c_3">
-                        <div class="field">
-                            <label class="label">Выберите состояние</label>
-                            <div class="control">
-                                <select name="state" id="f_reis_id">
-                                    <option value="%" selected disabled>Выберите состояние</option>
-                                    <option value="Черновик" @selected("Черновик" === request('state')) >Черновик</option>
-                                    <option value="Оформлен" @selected("Оформлен" === request('state')) >Оформлен</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="wrapper c_2">
 
                         <div class="field">
-                            <label class="label">Выберите рейс</label>
+                            <label class="label">Пункт следования</label>
                             <div class="control">
                                 <select name="punkt" id="f_places_count">
-                                    <option value="%" selected disabled>Пункт следования</option>
+                                    <option value="%" @selected(("%" == request('punkt')) || (empty(request('punkt'))) ) disabled>Все пункты</option>
                                     @foreach ($filter_settings['punkt'] as $key => $item)
                                         <option value="{{ $key }}" @selected($key === request('punkt'))>{{ $key }}</option>
                                     @endforeach
@@ -47,12 +37,13 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Пункт следования</label>
+                            <label class="label">Выберите рейс</label>
                             <div class="control">
                                 <select name="reis_id" id="f_places_count">
-                                    <option value="%" selected disabled>Пункт следования</option>
+                                    <option value="%" @selected(("%" == request('reis_id')) || (empty(request('reis_id'))) ) disabled>Все рейсы</option>
+
                                     @foreach ($filter_settings['reis'] as $key => $item)
-                                        <option @selected($key === request('reis')) value="{{$key}}" >{{ $item }}</option>
+                                        <option @selected($key == request('reis_id')) value="{{$key}}" >{{ $item }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -79,6 +70,7 @@
                         <thead>
                             <tr>
                                 <th>№ брони</th>
+                                <th>Забронировал</th>
                                 <th>Состояние</th>
                                 <th>Дата брони</th>
                                 <th>Рейс</th>
@@ -92,6 +84,7 @@
                             @foreach ($all_order as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
+                                    <td>{{ $item->user->name }} <br>({{ $item->user->agency }})</td>
                                     <td>{{ $item->state }}</td>
                                     <td>{{ date("d.m.Y H:i", strtotime($item->created_at)) }}</td>
                                     <td>№{{ $item->reis->id }}

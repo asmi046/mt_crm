@@ -44,18 +44,20 @@ class TicketController extends Controller
     public function all_orders(OrderFilter $request) {
         $user_id = Auth::user()->id;
 
-        if (! Gate::allows('get_all_orders')) {
+        if (Gate::allows('get_all_orders')) {
+            $filter = Order::all();
             $all_user_order =  Order::select()
                     ->filter($request)
                     ->get();
         } else {
+            $filter = Order::where('user_id', $user_id)->get();
             $all_user_order =  Order::where('user_id', $user_id)
                     ->filter($request)
                     ->get();
         }
 
 
-        $filter = Order::where('user_id', $user_id)->get();
+
         $filter_setings = [
             'punkt' => [],
             'reis' => [],
