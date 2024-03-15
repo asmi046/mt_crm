@@ -51,18 +51,11 @@ class OrderController extends Controller
 
     public function delete_order($id) {
         $order = Order::where('id', $id)->first();
-
         $tgsender = new TelegramSendAction();
         $message_get = new OrderDeleteMessageGetAction();
         $tmp = $tgsender->handle($message_get->handle($order));
-
         Mail::to(explode(",",config('consultation.mailadresat')))->send(new DeleteOrderMail($order));
-
-
         $order->delete();
-
-
-
         return redirect()->route('all_orders');
     }
 
