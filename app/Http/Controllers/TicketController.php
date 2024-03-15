@@ -9,6 +9,7 @@ use App\Filters\OrderFilter;
 use Illuminate\Http\Request;
 use App\Services\PlacesServices;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TicketController extends Controller
 {
