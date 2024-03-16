@@ -16,7 +16,7 @@
         "migrate_rep": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan migrate\"",
         "rollback_rep": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan migrate:rollback\"",
         "seed_rep": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan DB:seed\"",
-        "seed_rep_one": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan DB:seed PageSeeder\"",
+        "seed_rep_one": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan DB:seed AgencySeeder\"",
         "optimized_rep": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php composer.phar update --optimize-autoloader --no-dev\"",
         "dump_autoload": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php composer.phar dump-autoload\"",
         "storage_link": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan storage:link\"",
