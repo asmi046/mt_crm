@@ -63,7 +63,7 @@
     <div class="field">
         <label class="label">№ документа</label>
         <div class="control">
-            <input name="doc_n" class="input" type="text" value="{{ $item->doc_n }}" placeholder="">
+            <input name="doc_n" class="input" type="text" id="place_nd_{{$item->id}}" value="{{ $item->doc_n }}" placeholder="">
         </div>
 
         @error('doc_n')
@@ -74,7 +74,7 @@
     <div class="field">
         <label class="label">Дата рождения</label>
         <div class="control">
-            <input name="dr" class="input" type="date" value="{{ $item->dr }}" placeholder="">
+            <input name="dr" class="input" type="date" id="place_dr_{{$item->id}}" value="{{ $item->dr }}" placeholder="">
         </div>
 
         @error('dr')
