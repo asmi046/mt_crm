@@ -37,6 +37,8 @@ class CreateUser extends Command
         $user = User::create([
             'name' => $name,
             'email' => $email,
+            'phone' => "+7 (000) 000 00 00",
+            'role' => "admin",
             'agency' => $agency,
             'password' => $pass
         ]);

@@ -1,8 +1,8 @@
 @extends('layouts.all')
 
 @php
-    $title = "Система бронировани Мир Туризма";
-    $description = "Система бронировани проезда Мир Туризма";
+    $title = "Смена пароля - Система бронировани Мир Туризма";
+    $description = "Смена пароля - Система бронировани проезда Мир Туризма";
 @endphp
 
 @section('title', $title)
@@ -14,13 +14,13 @@
     <section class="section">
         <div class="container is-fullhd">
 
-            <form action="{{route('login_do')}}" method="post" class="box start-form">
+            <form action="{{route('pass_rec_do')}}" method="post" class="box start-form">
                 @csrf
 
                 <header>
                     <x-logo-elements></x-logo-elements>
                 </header>
-
+                <h3>Восстановить пароль</h4>
                 <div class="field">
                   <label class="label">E-mail</label>
                   <div class="control">
@@ -30,22 +30,18 @@
                   @error('email')
                     <p class="error">{{$message}}</p>
                   @enderror
+
+                  @if (request('confirm'))
+                    <p class="success">Ваш новый пароль отправлен на электронную почту аккаунта</p>
+                  @endif
+
                 </div>
 
-                <div class="field">
-                  <label class="label">Пароль</label>
-                  <div class="control">
-                    <input name="password" class="input" type="password" placeholder="********">
-                  </div>
 
-                  @error('password')
-                      <p class="error">{{$message}}</p>
-                  @enderror
-                </div>
 
                 <footer>
-                    <button type="submit" class="button ">Войти</button>
-                    <a class="button" href="{{ route('passrec') }}">Забыл пароль?</a>
+                    <button type="submit" class="button ">Восстановить</button>
+                    <a class="button" href="{{route('login')}}">Я вспомнил!</a>
                 </footer>
 
             </form>

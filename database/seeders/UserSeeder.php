@@ -10,6 +10,7 @@ use DB;
 
 class UserSeeder extends Seeder
 {
+    // pa app:create-user --name Asmi --email asmi046@gmail.com --pass 123 --agency MT
     /**
      * Run the database seeds.
      */

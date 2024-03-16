@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterFormRequest;
-use App\Http\Requests\LoginFormRequest;
-use Illuminate\Http\Request;
-
-use Illuminate\Auth\Events\Registered;
-
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Mail\Auth\PassRecMail;
+
+use App\Actions\TelegramSendAction;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\PassRecMail;
+use Illuminate\Auth\Events\Registered;
+use App\Http\Requests\LoginFormRequest;
+use App\Http\Requests\RegisterFormRequest;
+
 
 class AuthController extends Controller
 {
@@ -29,7 +31,7 @@ class AuthController extends Controller
     }
 
     public function show_passrec_form(Request $request) {
-        return view('auth.password-recovery', ['confirm' => $request->get('confirm')]);
+        return view('pass-rec', ['confirm' => $request->get('confirm')]);
     }
 
     public function logout() {
@@ -47,6 +49,10 @@ class AuthController extends Controller
         $new_password = uniqid();
         $user->password = bcrypt($new_password);
         $user->save();
+
+        $tgsender = new TelegramSendAction();
+        $t_msg = "<b>Пользователь: ".$user->name." (".$user->agency.")</b>\n\rВосстановил пароль";
+        $tmp = $tgsender->handle($t_msg);
 
         Mail::to($user)->send(new PassRecMail($new_password));
         return redirect(route('passrec',['confirm' => 1]));
