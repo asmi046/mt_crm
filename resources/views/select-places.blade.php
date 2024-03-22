@@ -37,6 +37,7 @@
                     :schema="{{ json_encode($schema); }}"
                     reis="{{ $reis->id }}"
                     punkt="{{ $punkt }}"
+                    user="{{ auth()->user()->role }}"
                     :reservedt="{{ json_encode($reserved_t); }}"
                     :reservedo="{{ json_encode($reserved_o); }}"
                     ></buss-schemm>

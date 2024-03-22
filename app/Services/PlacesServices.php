@@ -15,7 +15,8 @@ class PlacesServices {
         ];
         foreach ($all_places as $item)
         {
-            $returned_data[$item->direction][] = $item->number;
+            // $returned_data[$item->direction][] = $item->number;
+            $returned_data[$item->direction][$item->number] = $item;
         }
 
         return $returned_data;

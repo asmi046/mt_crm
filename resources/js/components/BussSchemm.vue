@@ -1,8 +1,8 @@
 <template>
     <div class="buss_schema">
 
-        <buss-elem :schema="schema" :napr="'Курск - '+punkt" :modelValue="todaSelect" :reserved="reservedt"></buss-elem>
-        <buss-elem :schema="schema" :napr="punkt + ' - Курск'" :modelValue="obratnoSelect" :reserved="reservedo"></buss-elem>
+        <buss-elem :schema="schema" :user="user" :napr="'Курск - '+punkt" :modelValue="todaSelect" :reserved="reservedt"></buss-elem>
+        <buss-elem :schema="schema" :user="user" :napr="punkt + ' - Курск'" :modelValue="obratnoSelect" :reserved="reservedo"></buss-elem>
         <div class="selected_list">
             <h2>Выбранные места</h2>
             <p v-show="(todaSelect.length == 0) && (obratnoSelect.length == 0)">Нет выбранных мест.</p>
@@ -32,7 +32,7 @@ import { jsx } from 'vue/jsx-runtime'
 
 export default {
   components: { BussElem },
-    props: ['schema', 'punkt', 'reis', 'reservedt', 'reservedo'],
+    props: ['schema', 'punkt', 'reis', 'reservedt', 'reservedo', 'user'],
 
     setup(props) {
 
@@ -70,6 +70,7 @@ export default {
             reservedo:props.reservedo,
             todaSelect,
             obratnoSelect,
+            user:props.user,
             createOrder
         }
     }

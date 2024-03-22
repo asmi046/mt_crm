@@ -13,9 +13,13 @@
                     :class="{
                             empty: mesto == -1,
                             selected: modelValue.includes(mesto),
-                            reserved: reserved.includes(mesto)
+                            reserved: reserved[mesto]
+                            // reserved: reserved.find(rmesto => rmesto.number === mesto)
+                            // reserved: reserved.includes(mesto)
                         }"
-                    class="mesto">
+                    class="mesto"
+                    :title="get_pasenger_name(reserved[mesto])"
+                    >
                     {{ (mesto >= 0)?mesto:'' }}
                 </div>
             </div>
@@ -30,7 +34,8 @@ export default {
         schema: Array,
         napr: String,
         modelValue: Array,
-        reserved: Array
+        user: String,
+        reserved: Object
     },
 
     emits:[
@@ -41,7 +46,10 @@ export default {
 
         const selectMesto = (item) =>  {
             if (item == -1) return
-            if (props.reserved.includes(item)) return
+
+            // if (props.reserved.includes(item)) return
+            // if (props.reserved.find(rmesto => rmesto.number === item)) return
+            if (props.reserved[item]) return
 
             if (props.modelValue == undefined) return
 
@@ -55,12 +63,20 @@ export default {
             context.emit('update:modelValue', props.modelValue)
         }
 
+        const get_pasenger_name = (mesto) => {
+            if (props.user == "agent")  return ""
+
+            if (!mesto) return ""
+            return  ((mesto.f)?mesto.f:"")+' '+((mesto.i)?mesto.i:"")+' '+((mesto.o)?mesto.o:"")
+        }
+
         return {
             schema:props.schema,
             napr:props.napr,
             reserved:props.reserved,
             modelValue:props.modelValue,
-            selectMesto
+            selectMesto,
+            get_pasenger_name
         }
     }
 
