@@ -37,11 +37,9 @@
 
                 </div>
 
-
-
                 <footer>
                     <button type="submit" class="button ">Восстановить</button>
-                    <a class="button" href="{{route('login')}}">Я вспомнил!</a>
+                    <a class="button" href="{{route('login')}}">Войти в систему</a>
                 </footer>
 
             </form>

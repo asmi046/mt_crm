@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body {font-family: Arial, sans-serif; font-size: 14px; color: #333; background-color: #e4efef;}
+            table{
+                max-width: 600px;
+                width: 600px;
+                margin: auto;
+                border-radius: 20px;
+                overflow: hidden;
+                border-collapse: separate;
+                border-spacing: unset;
+            }
+            thead{
+                background-color: white;
+            }
+            tfoot{
+                background-color: #00B4F1;
+                color: white;
+                height: 50px;
+            }
+
+            tbody{
+                background-color: white;
+
+            }
+
+            tbody td{
+                padding: 0 20px;
+                border-top: 1px solid lightgrey;
+            }
+
+            tfoot td{
+                padding: 0 20px;
+            }
+            tfoot a{
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <img src="https://crm.mirturizma46.ru/img/logo.png" alt="">
+                        <h3>Туристическое агентство «МирТуризма 46»</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>Оформлена бронь</h1>
+                <p><strong>Оформил:</strong> {{ $formData['user']['name']}} ({{ $formData['user']['agency']}})</P>
+                <p><strong>Рейс:</strong> № {{ $formData['reis']['id']}} {{date("d.m.Y", strtotime($formData['reis']['start_to_date']))." ".date("d.m.Y", strtotime($formData['reis']['start_to_date']))}}
+                 {{ $formData['reis']['direction']['start_punkt'] }} {{ $formData['reis']['direction']['end_punkt'] }}
+                </p>
+                <p> <strong>Пункт прибывания</strong> {{  $formData['punkt'] }}</p>
+                <P><strong>Коментарий:</strong> {{ $formData['comment']}}</P>
+                <p><strong>Места:</strong></p>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <a href="https://www.mirturizma46.ru/">Сайт «МирТуризма46»</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>
