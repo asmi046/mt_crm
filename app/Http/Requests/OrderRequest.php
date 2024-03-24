@@ -49,6 +49,7 @@ class OrderRequest extends FormRequest
             "reis_id" => ['required', 'integer'],
             "tuda" => [],
             "obratno" => [],
+            "hotel_id" => [],
             "price" => ['required', 'integer'],
             "avanc" => ['required', 'integer'],
             "state" => ['required', 'string'],

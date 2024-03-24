@@ -27,13 +27,19 @@
 
 </div>
 
+<input name="state" type="hidden" value="Подтвержден">
+
 <div class="field">
-    <label class="label">Статус заказ</label>
+    <label class="label">Проживание в отеле</label>
     <div class="control">
-        <select name="state" id="">
-            <option value="" disabled selected>Выберите вид документа</option>
-            <option @selected($item->state === "Черновик") value="Черновик">Черновик</option>
-            <option @selected($item->state === "Подтвержденный") value="Подтвержденный">Подтвержденный</option>
+        <select name="hotel_id" id="">
+            <option value="" @selected($item->hotel_id == null)>Без проживания</option>
+
+            @foreach ($hotels as $hotel)
+                <option @selected($item->hotel_id === $hotel->id) value="{{ $hotel->id }}">{{ $hotel->name }}</option>
+            @endforeach
+            {{-- <option @selected($item->state === "Черновик") value="Черновик">Черновик</option>
+            <option @selected($item->state === "Подтвержденный") value="Подтвержденный">Подтвержденный</option> --}}
         </select>
     </div>
 

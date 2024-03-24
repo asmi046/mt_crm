@@ -32,7 +32,7 @@
                         <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-arrow-rotate-left">К писку броней</x-a-icon>
                     </div>
                     <div class="coll">
-                        <x-order.data-form :item="$order"></x-order.data-form>
+                        <x-order.data-form :hotels="$hotels" :item="$order"></x-order.data-form>
                     </div>
                 </div>
 

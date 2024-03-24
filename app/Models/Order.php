@@ -14,6 +14,7 @@ class Order extends Model
         "user_id",
         "comment",
         "reis_id",
+        "hotel_id",
         "punkt",
         "price",
         "avanc",
@@ -25,6 +26,11 @@ class Order extends Model
         'user',
         'mesta'
     ];
+
+    public function hotel()
+    {
+        return $this->hasOne(Hotel::class, "id", "hotel_id");
+    }
 
     public function reis()
     {

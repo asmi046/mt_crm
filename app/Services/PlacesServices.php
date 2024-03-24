@@ -17,6 +17,22 @@ class PlacesServices {
         {
             // $returned_data[$item->direction][] = $item->number;
             $returned_data[$item->direction][$item->number] = $item;
+            if (
+                (auth()->user()->role === 'agent') &&
+                ($returned_data[$item->direction][$item->number]->order->user_id !== auth()->user()->id)
+            )
+            {
+                $returned_data[$item->direction][$item->number]->order_id = 0;
+                $returned_data[$item->direction][$item->number]->f = "";
+                $returned_data[$item->direction][$item->number]->i = "";
+                $returned_data[$item->direction][$item->number]->o = "";
+                $returned_data[$item->direction][$item->number]->dr = "";
+                $returned_data[$item->direction][$item->number]->doc_type = "";
+                $returned_data[$item->direction][$item->number]->doc_n = "";
+                $returned_data[$item->direction][$item->number]->phone = "";
+                $returned_data[$item->direction][$item->number]->comment = "";
+            }
+
         }
 
         return $returned_data;

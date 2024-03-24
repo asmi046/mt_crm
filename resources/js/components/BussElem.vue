@@ -49,7 +49,15 @@ export default {
 
             // if (props.reserved.includes(item)) return
             // if (props.reserved.find(rmesto => rmesto.number === item)) return
-            if (props.reserved[item]) return
+            if (props.reserved[item])
+            {
+                if (props.reserved[item].order_id == 0)  return
+
+                if (confirm('Хотите перейти к редактированию данной брони № '+props.reserved[item].order_id))
+                    document.location.href = '/orders/order-edit/'+props.reserved[item].order_id
+
+                return
+            }
 
             if (props.modelValue == undefined) return
 
@@ -64,7 +72,7 @@ export default {
         }
 
         const get_pasenger_name = (mesto) => {
-            if (props.user == "agent")  return ""
+            // if (props.user == "agent")  return ""
 
             if (!mesto) return ""
             return  ((mesto.f)?mesto.f:"")+' '+((mesto.i)?mesto.i:"")+' '+((mesto.o)?mesto.o:"")

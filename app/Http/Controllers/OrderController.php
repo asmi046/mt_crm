@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 
+use App\Actions\LogAction;
 use Illuminate\Http\Request;
 use App\Mail\Order\OrderMail;
 use App\Services\PlacesServices;
-use App\Actions\TelegramSendAction;
 
+use App\Actions\TelegramSendAction;
 use App\Http\Requests\OrderRequest;
 use App\Mail\Order\DeleteOrderMail;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ use App\Actions\OrderDeleteMessageGetAction;
 
 class OrderController extends Controller
 {
-    public function create_order(OrderRequest $request) {
+    public function create_order(OrderRequest $request, LogAction $log) {
         $place_service = new PlacesServices();
         $data = $request->validated();
 
@@ -39,7 +40,10 @@ class OrderController extends Controller
 
         $tgsender = new TelegramSendAction();
         $message_get = new OrderMessageGetAction();
-        $tmp = $tgsender->handle($message_get->handle($order));
+        $tg_msg = $message_get->handle($order);
+        $tmp = $tgsender->handle($tg_msg);
+
+        $log->handle("Создана бронь", $tg_msg);
 
         Mail::to(explode(",",config('consultation.mailadresat')))->send(new OrderMail($order));
 
@@ -51,11 +55,19 @@ class OrderController extends Controller
 
     public function delete_order($id) {
         $order = Order::where('id', $id)->first();
+
         $tgsender = new TelegramSendAction();
         $message_get = new OrderDeleteMessageGetAction();
-        $tmp = $tgsender->handle($message_get->handle($order));
+        $tg_msg = $message_get->handle($order);
+        $tmp = $tgsender->handle($tg_msg);
+
         Mail::to(explode(",",config('consultation.mailadresat')))->send(new DeleteOrderMail($order));
+
+        $log = new LogAction();
+        $log->handle("Удалена бронь", $tg_msg);
+
         $order->delete();
+
         return redirect()->route('all_orders');
     }
 
@@ -64,6 +76,8 @@ class OrderController extends Controller
 
         $order = Order::where('id', $id)->first();
 
+        $log = new LogAction();
+        $log->handle("Обновлена информация о брони", "Обновлена информация о брони №".$id);
 
         $order->update($data);
         // dd($data,$order);

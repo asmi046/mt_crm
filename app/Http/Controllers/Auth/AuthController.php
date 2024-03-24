@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Actions\LogAction;
 use Illuminate\Http\Request;
+
 use App\Mail\Auth\PassRecMail;
 
 use App\Actions\TelegramSendAction;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\LoginFormRequest;
@@ -34,7 +35,8 @@ class AuthController extends Controller
         return view('pass-rec', ['confirm' => $request->get('confirm')]);
     }
 
-    public function logout() {
+    public function logout(LogAction $log) {
+        $log->handle("Выход из системы", "Пользователь вышел из системы");
         auth('web')->logout();
         return redirect(route('login'));
     }
@@ -58,12 +60,15 @@ class AuthController extends Controller
         return redirect(route('passrec',['confirm' => 1]));
     }
 
-    public function login(LoginFormRequest $request) {
+    public function login(LoginFormRequest $request, LogAction $log) {
         $user_data = $request->validated();
 
         if(auth('web')->attempt($user_data)) {
+            $log->handle("Вход в систему", "Пользователь вошел в систему");
             return redirect(route('proezd-bron'));
         }
+
+
 
         return redirect(route('login'))->withErrors(['email'=>'Неверный логин или пароль']);
     }

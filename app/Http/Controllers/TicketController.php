@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reis;
 
+use App\Models\Hotel;
 use App\Models\Order;
 use App\Filters\OrderFilter;
 use Illuminate\Http\Request;
@@ -37,8 +38,10 @@ class TicketController extends Controller
 
     public function order_edit(int $id) {
         $order = Order::where('id', $id)->first();
+        if ($order->punkt)
+            $hotels = Hotel::where('city', $order->punkt)->get();
 
-        return view('order-edit', ['order' => $order]);
+        return view('order-edit', ['order' => $order, 'hotels' => $hotels]);
     }
 
     public function all_orders(OrderFilter $request) {

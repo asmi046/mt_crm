@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Place;
+use App\Actions\LogAction;
 use App\Mail\Place\PlaceMail;
 use App\Actions\TelegramSendAction;
 use App\Mail\Place\DeletePlaceMail;
@@ -26,7 +27,11 @@ class PlaceController extends Controller
 
         $tgsender = new TelegramSendAction();
         $message_get = new PlaceEditMessageGetAction();
-        $tmp = $tgsender->handle($message_get->handle($place));
+        $msg_t = $message_get->handle($place);
+        $tmp = $tgsender->handle($msg_t);
+
+        $log = new LogAction();
+        $log->handle("Обновлено место", $msg_t);
 
         Mail::to(explode(",",config('consultation.mailadresat')))->send(new PlaceMail($place));
 
@@ -42,7 +47,11 @@ class PlaceController extends Controller
 
         $tgsender = new TelegramSendAction();
         $message_get = new PlaceDeleteMessageGetAction();
-        $tmp = $tgsender->handle($message_get->handle($place));
+        $msg_t = $message_get->handle($place);
+        $tmp = $tgsender->handle($msg_t);
+
+        $log = new LogAction();
+        $log->handle("Удалено место", $msg_t);
 
         Mail::to(explode(",",config('consultation.mailadresat')))->send(new DeletePlaceMail($place));
 
