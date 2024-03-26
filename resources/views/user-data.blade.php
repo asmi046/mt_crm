@@ -22,13 +22,15 @@
 
             <div class="box pt_10">
                 <h3>Данные пользователя</h3>
-                <form action="#" method="post" class="box">
+                <form action="{{ route('save_user_data') }}" method="post">
                     @csrf
-
+                    @if (session('success_user_data'))
+                        <p class="success">{{ session('success_user_data') }}</p>
+                    @endif
                     <div class="field">
                         <label class="label">Ф.И.О<span class="require">*</span></label>
                         <div class="control">
-                          <input name="name" class="input" type="text" placeholder="Введите имя">
+                          <input name="name" class="input" type="text" value="{{ $user->name }}" placeholder="Введите имя">
                         </div>
 
                         @error('name')
@@ -39,14 +41,18 @@
                     <div class="field">
                         <label class="label">E-mail</label>
                         <div class="control">
-                          <input name="email" class="input" type="email" disabled placeholder="e.g. alex@example.com">
+                          <input name="email" class="input" type="email" value="{{ $user->email }}" readonly placeholder="e.g. alex@example.com">
                         </div>
+
+                        @error('email')
+                            <p class="error">{{$message}}</p>
+                        @enderror
                     </div>
 
                     <div class="field">
                         <label class="label">Телефон<span class="require">*</span></label>
                         <div class="control">
-                          <input name="phone" class="input" type="tel" placeholder="Введите телефон">
+                          <input name="phone" class="input" type="tel" value="{{ $user->phone }}" placeholder="Введите телефон">
                         </div>
 
                         @error('phone')
@@ -57,7 +63,7 @@
                     <div class="field">
                         <label class="label">Агентство<span class="require">*</span></label>
                         <div class="control">
-                            <input name="agency" class="input" type="text" placeholder="Введите название агентства">
+                            <input name="agency" class="input" type="text" value="{{ $user->agency }}" placeholder="Введите название агентства">
                         </div>
 
                         @error('agency')
@@ -74,8 +80,12 @@
                 <hr>
                 <br>
                 <h3>Смена пароля</h3>
-                <form action="#" method="post" class="box">
+                <form action="{{ route('chenge_user_password') }}" method="post">
                     @csrf
+
+                    @if (session('success_user_pass'))
+                        <p class="success">{{ session('success_user_pass') }}</p>
+                    @endif
 
                     <div class="field">
                         <label class="label">Введите новый пароль</label>

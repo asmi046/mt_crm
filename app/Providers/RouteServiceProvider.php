@@ -44,6 +44,12 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/asmi_consultation.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/asmi_password_req.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/asmi_user_data.php'));
         });
     }
 }
