@@ -40,10 +40,21 @@ class AuthController extends Controller
     public function login(LoginFormRequest $request, LogAction $log) {
         $user_data = $request->validated();
 
+        // if (empty($user_data->email_verified_at)) {
+        //     return redirect(route('login'))->withErrors(['email'=>'Ваша учетная запись не активирована']);
+        // }
+
         if(auth('web')->attempt($user_data)) {
             $log->handle("Вход в систему", "Пользователь вошел в систему");
+            if (auth()->user()->hasVerifiedEmail() === false) {
+
+                auth('web')->logout();
+
+                return redirect(route('login'))->withErrors(['email'=>'Ваша учетная запись не активирована']);
+            }
             return redirect(route('proezd-bron'));
         }
+
 
 
 
