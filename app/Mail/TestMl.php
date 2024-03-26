@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail\Order;
+namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,58 +9,44 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-use Illuminate\Mail\Mailables\Address;
-
-class OrderMail extends Mailable
+class TestMl extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
-     *
-     * @return void
      */
-
-    public $formData;
-
-    public function __construct($formData)
+    public function __construct()
     {
-        $this->formData = $formData;
+        //
     }
 
     /**
      * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope()
+    public function envelope(): Envelope
     {
         return new Envelope(
-            // from: new Address("mirturizma046@yandex.ru", "МирТуризма"),
-            subject: 'Оформлена бронь',
+            subject: 'Test Ml',
         );
-
-
     }
 
     /**
      * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
      */
-    public function content()
+    public function content(): Content
     {
         return new Content(
-            view: 'mail.order.set',
+            view: 'view.name',
         );
     }
 
     /**
      * Get the attachments for the message.
      *
-     * @return array
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
-    public function attachments()
+    public function attachments(): array
     {
         return [];
     }

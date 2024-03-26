@@ -1,7 +1,7 @@
 @extends('layouts.mail')
 
 @section('main')
-    <h1>Удалено место</h1>
+    <h1>Отредактировано место</h1>
     <p><strong>№ места:</strong> {{ $formData['number'] }} </P>
     <p><strong>№ заказа:</strong> {{ $formData['order_id'] }} </P>
     <p><strong>Рейс:</strong> № {{ $formData['reis']['id']}} {{date("d.m.Y", strtotime($formData['reis']['start_to_date']))." ".date("d.m.Y", strtotime($formData['reis']['start_to_date']))}}

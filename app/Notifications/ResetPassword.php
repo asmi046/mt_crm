@@ -40,13 +40,11 @@ class ResetPassword extends Notification
     {
         return (new MailMessage)
                     ->subject('Восстановление пароля для входа в систему бронирования')
+                    ->from("mirturizma046@yandex.ru", "МирТуризма")
+                    ->replyTo("mirturizma-kursk2@yandex.ru", "МирТуризма")
                     ->view(
                         'mail.auth.pass-rec', ['url' => $this->url, 'email' => $this->email]
                     );
-
-                    // ->line('The introduction to the notification.')
-                    // ->action('Notification Action', url('/'))
-                    // ->line('Thank you for using our application!');
     }
 
     /**
