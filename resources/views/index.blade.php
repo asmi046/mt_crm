@@ -21,6 +21,10 @@
                     <x-logo-elements></x-logo-elements>
                 </header>
 
+                @if (Session::has('status'))
+                    <p class="success">Ваш пароль успешно восстановлен можете войти в систему</p>
+                @endif
+
                 <div class="field">
                   <label class="label">E-mail</label>
                   <div class="control">

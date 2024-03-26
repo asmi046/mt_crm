@@ -20,28 +20,30 @@
                 <header>
                     <x-logo-elements></x-logo-elements>
                 </header>
-                <h3>Восстановить пароль</h4>
-                <div class="field">
-                  <label class="label">E-mail</label>
-                  <div class="control">
-                    <input name="email" class="input" type="email" placeholder="e.g. alex@example.com">
-                  </div>
+                @if (Session::has('status'))
+                    <p class="success">Ссылка на восстановление пароля отправлен на электронную почту аккаунта</p>
 
-                  @error('email')
-                    <p class="error">{{$message}}</p>
-                  @enderror
+                    <footer>
+                        <a class="button" href="{{route('login')}}">Войти в систему</a>
+                    </footer>
+                @else
+                    <h3>Восстановить пароль</h4>
+                    <div class="field">
+                        <label class="label">E-mail</label>
+                        <div class="control">
+                            <input name="email" class="input" type="email" placeholder="e.g. alex@example.com">
+                        </div>
 
-                  @if (request('confirm'))
-                    <p class="success">Ваш новый пароль отправлен на электронную почту аккаунта</p>
-                  @endif
+                        @error('email')
+                            <p class="error">{{$message}}</p>
+                        @enderror
+                    </div>
 
-                </div>
-
-                <footer>
-                    <button type="submit" class="button ">Восстановить</button>
-                    <a class="button" href="{{route('login')}}">Войти в систему</a>
-                </footer>
-
+                    <footer>
+                        <button type="submit" class="button ">Восстановить</button>
+                        <a class="button" href="{{route('login')}}">Войти в систему</a>
+                    </footer>
+                @endif
             </form>
         </div>
     </section>
