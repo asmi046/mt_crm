@@ -43,6 +43,25 @@
             </div>
             <br>
             <div class="box">
+                <h2>Финансы:</h2>
+                <p>по данным введенным в систему</p>
+                <br>
+                <div class="informers informers_i2">
+
+                    <div class="informer ">
+                        <p class="carecter sm_size">{{ number_format($many['total_sum'], 2, ',', ' ') }} ₽</p>
+                        <p class="info">Cуума проданных туров</p>
+                    </div>
+
+                    <div class="informer ">
+                        <p class="carecter sm_size">{{ number_format($many['avanc_sum'], 2, ',', ' ') }} ₽</p>
+                        <p class="info">Внесенная предоплата</p>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="box">
                 <h2>Загрузка по рейсам:</h2>
 
                 <table>

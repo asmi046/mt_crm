@@ -30,12 +30,18 @@ class DashBoardController extends Controller
             $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] =
             $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] + 1;
 
+        $total_sum = Order::all()->sum('price');
+        $avanc_sum = Order::all()->sum('avanc');
 
         return view('dash-board', [
             "place_count" => $place_count,
             "reis_count" => $reis_count,
             "actual_reis_count" => $actual_reis_count,
-            "zagruzka" => $zagruzka
+            "zagruzka" => $zagruzka,
+            "many" => [
+                'total_sum' => $total_sum,
+                'avanc_sum' => $avanc_sum,
+            ]
         ]);
     }
 }

@@ -13,6 +13,9 @@
         .carecter {
             color:$main_color;
             font-size: 78px;
+            &.sm_size {
+                font-size: 48px;
+            }
         }
 
         .info {
