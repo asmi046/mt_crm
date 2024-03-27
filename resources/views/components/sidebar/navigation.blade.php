@@ -7,4 +7,8 @@
         <x-sb-nav-btn :active="(Route::currentRouteName() === 'dash-board')?true:''" :href="route('dash-board')" icon="fa-solid fa-house">Статистика</x-sb-nav-btn>
     @endcan
 
+    @can('see_stat')
+        <x-sb-nav-btn :active="(Route::currentRouteName() === 'show_log')?true:''" :href="route('show_log')" icon="fa-solid fa-microscope">Лог системы</x-sb-nav-btn>
+    @endcan
+
 </nav>
