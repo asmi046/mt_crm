@@ -126,6 +126,13 @@ a:hover{
     }
 }
 
+.logo_elem {
+    width:104px;
+    img{
+        width:100%;
+    }
+}
+
 @import "bron-styles";
 @import "buss_schemm";
 @import "cabinet-section";

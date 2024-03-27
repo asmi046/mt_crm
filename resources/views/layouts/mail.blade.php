@@ -50,7 +50,7 @@
             <thead>
                 <tr>
                     <th>
-                        <img src="https://crm.mirturizma46.ru/img/logo.png" alt="">
+                        <img style="width:104px;" src="https://crm.mirturizma46.ru/img/logo.png" alt="">
                         <h3>Туристическое агентство «МирТуризма 46»</h3>
                     </th>
                 </tr>

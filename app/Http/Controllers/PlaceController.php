@@ -33,7 +33,7 @@ class PlaceController extends Controller
         $log = new LogAction();
         $log->handle("Обновлено место", $msg_t);
 
-        Mail::to(explode(",",config('consultation.mailadresat')))->send(new PlaceMail($place));
+        Mail::to(get_send_adress())->send(new PlaceMail($place));
 
 
         return redirect()->route('order-edit', $order_id)
@@ -53,7 +53,7 @@ class PlaceController extends Controller
         $log = new LogAction();
         $log->handle("Удалено место", $msg_t);
 
-        Mail::to(explode(",",config('consultation.mailadresat')))->send(new DeletePlaceMail($place));
+        Mail::to(get_send_adress())->send(new DeletePlaceMail($place));
 
 
         $place->delete();

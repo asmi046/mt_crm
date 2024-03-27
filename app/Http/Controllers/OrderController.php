@@ -45,7 +45,7 @@ class OrderController extends Controller
 
         $log->handle("Создана бронь", $tg_msg);
 
-        Mail::to(explode(",",config('consultation.mailadresat')))->send(new OrderMail($order));
+        Mail::to(get_send_adress())->send(new OrderMail($order));
 
         return [
             "order" => $order,
@@ -61,7 +61,7 @@ class OrderController extends Controller
         $tg_msg = $message_get->handle($order);
         $tmp = $tgsender->handle($tg_msg);
 
-        Mail::to(explode(",",config('consultation.mailadresat')))->send(new DeleteOrderMail($order));
+        Mail::to(get_send_adress())->send(new DeleteOrderMail($order));
 
         $log = new LogAction();
         $log->handle("Удалена бронь", $tg_msg);

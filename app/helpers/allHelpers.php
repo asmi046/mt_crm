@@ -1,5 +1,16 @@
 <?php
 
+if (!function_exists("get_send_adress")) {
+    function get_send_adress() {
+        $adr_list = explode(",",config('consultation.mailadresat'));
+
+        if (auth()->user()->role === 'agent') {
+            $adr_list[] = auth()->user()->email;
+        }
+        return $adr_list;
+    }
+}
+
 if (!function_exists("buss_schemm")) {
     function buss_schemm(string $schem_name) {
         $all_buss = [

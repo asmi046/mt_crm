@@ -1,4 +1,4 @@
-<figure class="image is-96x96 mr-5">
+<figure class="logo_elem">
     <img class="is-rounded" src="{{ asset('img/logo.png')}}" alt="Мир туризма">
 </figure>
 
