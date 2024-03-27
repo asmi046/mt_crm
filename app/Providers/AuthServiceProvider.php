@@ -34,5 +34,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('get_all_orders', function (User $user) {
             return ($user->role === "admin") || ($user->role === "worker");
         });
+
+        Gate::define('chenge_user', function (User $user) {
+            return ($user->role === "admin") || ($user->role === "worker");
+        });
     }
 }

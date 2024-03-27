@@ -13,6 +13,11 @@
         <p>Пользователь: <strong>{{ auth()->user()->name }}</strong></p>
     </div>
 
+    @can('chenge_user')
+        <x-work-at-name></x-work-at-name>
+    @endcan
+
+
     <x-sidebar.navigation></x-sidebar.navigation>
 
     <footer>

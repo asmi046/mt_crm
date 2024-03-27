@@ -104,6 +104,27 @@ a:hover{
 
 }
 
+.work_at_name {
+    margin: 10px 0;
+    font-size: 14px;
+    p{
+        margin-bottom: 10px;
+    }
+
+    a{
+        color: $main_color;
+        padding: 3px 10px;
+        border-radius: 5px;
+        border: 1px dotted $main_color;
+        margin: 0 5px 5px 0;
+        text-decoration: none;
+        &:hover,
+        &.active {
+            color:white;
+            background-color: $main_color;
+        }
+    }
+}
 
 @import "bron-styles";
 @import "buss_schemm";
