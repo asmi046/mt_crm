@@ -21,7 +21,7 @@
             </div>
             <br>
             <div class="box">
-                <h2>Актуальная информация:</h2>
+                <h2>Общие информация по рейсам:</h2>
                 <div class="informers informers_i3">
 
                     <div class="informer ">
@@ -40,6 +40,41 @@
                     </div>
 
                 </div>
+            </div>
+            <br>
+            <div class="box">
+                <h2>Загрузка по рейсам:</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Направление</th>
+                            <th>Даты выезда</th>
+                            <th>Продано мест</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($zagruzka as $key => $item)
+                            @php
+                                $index = 0;
+                            @endphp
+                            @foreach ($item as $skey => $sitem )
+                                <tr>
+                                    @if ($index == 0)
+                                        <td rowspan="{{ count($item) }}">{{ $key }}</td>
+                                    @endif
+
+                                    <td>{{ $skey }}</td>
+                                    <td>{{ $sitem }}</td>
+                                </tr>
+                                @php
+                                    $index++;
+                                @endphp
+                            @endforeach
+
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
 
         </div>
