@@ -25,3 +25,13 @@ button,
         border-color: orangered;
     }
 }
+
+.b_green{
+    background-color: $green_color;
+    border-color: $green_color;
+
+    &:hover {
+        background-color: green;
+        border-color: green;
+    }
+}

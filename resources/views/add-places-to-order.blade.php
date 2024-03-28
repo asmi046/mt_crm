@@ -16,7 +16,7 @@
     <div class="main">
         <div class="page_container ">
             <div class="box">
-                <h1>Добавление места к брони №{{$reis->id}}</h1>
+                <h1>Добавление места к брони №{{$order->id}}</h1>
                 <div class="page_reis_info">
                     <p><strong>Пункт следования: </strong> {{$punkt}}</p>
                     <br>
@@ -29,7 +29,7 @@
                 </div>
                 <br>
                 <br>
-                <x-a-icon href="{{route('proezd-bron', ['direction' => $reis->direction->id, 'punct' => $punkt])}}" icon="fa-solid fa-arrow-rotate-left">Выбрать другой рейс</x-a-icon>
+                <x-a-icon href="{{route('order-edit', $order->id)}}" icon="fa-solid fa-arrow-rotate-left">Вернуться к редактированию брони №{{$order->id}}</x-a-icon>
             </div>
 
             <div class="box pt_10">
@@ -38,6 +38,8 @@
                     reis="{{ $reis->id }}"
                     punkt="{{ $punkt }}"
                     user="{{ auth()->user()->role }}"
+                    action="add"
+                    :order="{{ $order->id }}"
                     :reservedt="{{ json_encode($reserved_t); }}"
                     :reservedo="{{ json_encode($reserved_o); }}"
                     ></buss-schemm>

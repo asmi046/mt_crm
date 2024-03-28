@@ -53,6 +53,26 @@ class OrderController extends Controller
         ];
     }
 
+    public function add_place(Request $request) {
+        $place_service = new PlacesServices();
+        $data = $request->all();
+
+        if (
+            !$place_service->chec_reserved_places($data['tuda'], 't', $data['reis_id']) || !$place_service->chec_reserved_places($data['obratno'], 'o', $data['reis_id'])
+        )
+        return [
+            "order" => null,
+            "message" => "Одно из мест уже занято обновите страницу и выберите новые места"
+        ];
+
+        $place_service->rezerv_places($data['tuda'], $data['order_id'], $data['reis_id'], $data['punkt'], 't', "Курск - ".$data['punkt']);
+        $place_service->rezerv_places($data['obratno'], $data['order_id'], $data['reis_id'], $data['punkt'], 'o', $data['punkt']." - Курск");
+
+        return [
+            "message" => "Места добавлены"
+        ];
+    }
+
     public function delete_order($id) {
         $order = Order::where('id', $id)->first();
 

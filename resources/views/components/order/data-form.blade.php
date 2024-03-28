@@ -61,9 +61,14 @@
 @if (session('success_order'))
     <p class="success">{{ session('success_order') }}</p>
 @endif
-<div class="wrapper c2">
+<div class="wrapper c3">
     <div class="coll">
         <button type="submit" class="button">Сохранить</button>
+    </div>
+
+    <div class="coll">
+        <a class="button b_green" href="{{ route('add-places', ['reis' => $item->reis_id, 'order' => $item->id]) }}">Добавить место</a>
+
     </div>
 
     <div class="coll">

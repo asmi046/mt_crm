@@ -15,11 +15,19 @@
                 <p>Место: <strong>{{ item }}</strong> <span class="napr">←</span></p>
                 <p>Направление: <strong>{{ punkt + ' - Курск' }} </strong></p>
             </div>
-            <button
+
+            <button v-if="action == 'create'"
                 @click.prevent="createOrder"
                 class="button"
                 v-show="(todaSelect.length > 0) || (obratnoSelect.length > 0)"
                 >Оформить заказ</button>
+
+            <button v-else
+                @click.prevent="addPlace"
+                class="button"
+                v-show="(todaSelect.length > 0) || (obratnoSelect.length > 0)"
+                >Добавить места</button>
+
         </div>
 
     </div>
@@ -32,12 +40,28 @@ import { jsx } from 'vue/jsx-runtime'
 
 export default {
   components: { BussElem },
-    props: ['schema', 'punkt', 'reis', 'reservedt', 'reservedo', 'user'],
+    props: ['schema', 'punkt', 'reis', 'reservedt', 'reservedo', 'user', 'action', 'order'],
 
     setup(props) {
 
         let todaSelect = ref([])
         let obratnoSelect = ref([])
+
+        const addPlace = () => {
+            let tiken = document.querySelector('meta[name="_token"]').content;
+            console.log(props.order)
+            axios.post('/order/add_place', {
+                'reis_id': props.reis,
+                'punkt': props.punkt,
+                'order_id': props.order,
+                'tuda': todaSelect.value,
+                'obratno': obratnoSelect.value,
+            })
+            .then((resp) => {
+                window.location.href = "/orders/order-edit/"+props.order
+            })
+            .catch(error => console.log(error));
+        }
 
         const createOrder = () => {
             let tiken = document.querySelector('meta[name="_token"]').content;
@@ -71,7 +95,9 @@ export default {
             todaSelect,
             obratnoSelect,
             user:props.user,
-            createOrder
+            action:props.action,
+            createOrder,
+            addPlace
         }
     }
 }

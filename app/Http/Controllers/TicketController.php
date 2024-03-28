@@ -36,6 +36,30 @@ class TicketController extends Controller
         ]);
     }
 
+
+    public function add_places($reis, $order) {
+        $reis = Reis::where('id', $reis)->first();
+        $order = Order::where('id', $order)->first();
+        $punkt = $order->punkt;
+
+        $schema = buss_schemm($reis->reis_bus->schema);
+
+        $place_service = new PlacesServices();
+        $reserves_places = $place_service->get_reserved_places($reis->id);
+
+        // dd($reserves_places);
+
+        return view('add-places-to-order', [
+            'reis' => $reis,
+            'order' => $order,
+            'punkt' => $punkt,
+            'reserved_t' => $reserves_places['t'],
+            'reserved_o' => $reserves_places['o'],
+            "schema" => $schema
+        ]);
+
+    }
+
     public function order_edit(int $id) {
         $order = Order::where('id', $id)->first();
         if ($order->punkt)

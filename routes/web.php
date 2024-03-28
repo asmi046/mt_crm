@@ -35,6 +35,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/proezd-bron/{direction?}/{punct?}', [ProezdBronController::class, "index"])->name('proezd-bron');
     Route::get('/hotel-bron', [HotelBronController::class, "index"])->name('hotel-bron');
     Route::get('/select-places/{reis}/{punkt?}', [TicketController::class, "index"])->name('select-places');
+    Route::get('/add-places/{reis}/{order}', [TicketController::class, "add_places"])->name('add-places');
     Route::get('/orders', [TicketController::class, "all_orders"])->name('all_orders');
     Route::get('/orders/order-edit/{id}', [TicketController::class, "order_edit"])->name('order-edit');
 
