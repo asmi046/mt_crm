@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Log extends Model
 {
@@ -22,5 +23,10 @@ class Log extends Model
     public function user()
     {
         return $this->hasOne(User::class, "id", "user_id");
+    }
+
+
+    public function scopeFilter($builder, QueryFilter $filter) {
+        return $filter->apply($builder);
     }
 }

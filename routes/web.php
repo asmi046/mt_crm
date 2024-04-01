@@ -40,6 +40,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/orders/order-edit/{id}', [TicketController::class, "order_edit"])->name('order-edit');
 
     Route::get('/show_log', [LogController::class, "index"])->name('show_log');
+    Route::get('/show_log/{id}', [LogController::class, "detail"])->name('show_log_detale');
 });
 
 Route::middleware('guest')->group(function () {
