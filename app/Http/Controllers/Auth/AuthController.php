@@ -7,11 +7,13 @@ use App\Actions\LogAction;
 
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Actions\TelegramSendAction;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegisterFormRequest;
+use App\Actions\UserRegisterMessageGetAction;
 
 
 class AuthController extends Controller
@@ -77,7 +79,7 @@ class AuthController extends Controller
         return redirect(route('cabinet.home'));
     }
 
-    public function register(RegisterFormRequest $request) {
+    public function register(RegisterFormRequest $request, LogAction $log) {
         $user_data = $request->validated();
 
         $user = User::create(
@@ -89,6 +91,13 @@ class AuthController extends Controller
                 'password' => bcrypt($user_data['password']),
             ]
         );
+
+        $tgsender = new TelegramSendAction();
+        $message_get = new UserRegisterMessageGetAction();
+        $tg_msg = $message_get->handle($user);
+        $tmp = $tgsender->handle($tg_msg);
+
+        $log->handle("Регистрация нового пользователя", $tg_msg, $user);
 
         return redirect()->route('register')->with("user_registred", "Ваша заявка принята наши менеджеры проверят данные и откроют доступ.");
     }
