@@ -56,28 +56,30 @@
             </div>
 
             <div class="box pt_10">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Время</th>
-                            <th>Событие</th>
-                            <th>Пользователь</th>
-                            <th>Упроавление</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($log as $item)
+                <div class="table_wrapper">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{date("d.m.Y H:i", strtotime($item->created_at))}}</td>
-                                <td>{{ $item->event }}</td>
-                                <td>{{ $item->user->name }} ({{ $item->user->agency }})</td>
-                                <td>
-                                    <x-a-icon href="{{ route('show_log_detale', $item->id) }}" icon="fa-solid fa-pen-to-square">Детали</x-a-icon>
-                                </td>
+                                <th>Время</th>
+                                <th>Событие</th>
+                                <th>Пользователь</th>
+                                <th>Упроавление</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($log as $item)
+                                <tr>
+                                    <td>{{date("d.m.Y H:i", strtotime($item->created_at))}}</td>
+                                    <td>{{ $item->event }}</td>
+                                    <td>{{ $item->user->name }} ({{ $item->user->agency }})</td>
+                                    <td>
+                                        <x-a-icon href="{{ route('show_log_detale', $item->id) }}" icon="fa-solid fa-pen-to-square">Детали</x-a-icon>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <x-pagination :tovars="$log"></x-pagination>
             </div>
 

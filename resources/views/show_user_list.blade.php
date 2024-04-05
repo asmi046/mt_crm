@@ -38,42 +38,45 @@
                 @if (session('user_activate'))
                         <p class="success">{{ session('user_activate') }}</p>
                 @endif
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Имя</th>
-                            <th>Агентство</th>
-                            <th>Телефон</th>
-                            <th>e-mail</th>
-                            <th>Статус</th>
-                            <th>Упроавление</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $item)
-                            <tr>
-                                <td>{{ $item->name }} </td>
-                                <td>{{ $item->agency }} </td>
-                                <td>{{ $item->phone }} </td>
-                                <td>{{ $item->email }} </td>
-                                @if ($item->email_verified_at)
-                                    <td><span style="color:green">Активен</span></td>
-                                @else
-                                    <td><span style="color:red">Заблокирован</span></td>
-                                @endif
 
-                                <td>
+                <div class="table_wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Имя</th>
+                                <th>Агентство</th>
+                                <th>Телефон</th>
+                                <th>e-mail</th>
+                                <th>Статус</th>
+                                <th>Упроавление</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $item)
+                                <tr>
+                                    <td>{{ $item->name }} </td>
+                                    <td>{{ $item->agency }} </td>
+                                    <td>{{ $item->phone }} </td>
+                                    <td>{{ $item->email }} </td>
                                     @if ($item->email_verified_at)
-                                        <x-a-icon href="{{ route('user_deactivate', $item->id) }}" icon="fa-solid fa-pen-to-square">Заблокировать</x-a-icon>
+                                        <td><span style="color:green">Активен</span></td>
                                     @else
-                                        <x-a-icon href="{{ route('user_activate', $item->id) }}" icon="fa-solid fa-pen-to-square">Активировать</x-a-icon>
+                                        <td><span style="color:red">Заблокирован</span></td>
                                     @endif
 
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                    <td>
+                                        @if ($item->email_verified_at)
+                                            <x-a-icon href="{{ route('user_deactivate', $item->id) }}" icon="fa-solid fa-pen-to-square">Заблокировать</x-a-icon>
+                                        @else
+                                            <x-a-icon href="{{ route('user_activate', $item->id) }}" icon="fa-solid fa-pen-to-square">Активировать</x-a-icon>
+                                        @endif
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <x-pagination :tovars="$users"></x-pagination>
             </div>
 

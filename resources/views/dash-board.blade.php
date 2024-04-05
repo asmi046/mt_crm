@@ -63,37 +63,38 @@
             <br>
             <div class="box">
                 <h2>Загрузка по рейсам:</h2>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Направление</th>
-                            <th>Даты выезда</th>
-                            <th>Продано мест</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($zagruzka as $key => $item)
-                            @php
-                                $index = 0;
-                            @endphp
-                            @foreach ($item as $skey => $sitem )
-                                <tr>
-                                    @if ($index == 0)
-                                        <td rowspan="{{ count($item) }}">{{ $key }}</td>
-                                    @endif
-
-                                    <td>{{ $skey }}</td>
-                                    <td>{{ $sitem }}</td>
-                                </tr>
+                <div class="table_wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Направление</th>
+                                <th>Даты выезда</th>
+                                <th>Продано мест</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($zagruzka as $key => $item)
                                 @php
-                                    $index++;
+                                    $index = 0;
                                 @endphp
-                            @endforeach
+                                @foreach ($item as $skey => $sitem )
+                                    <tr>
+                                        @if ($index == 0)
+                                            <td rowspan="{{ count($item) }}">{{ $key }}</td>
+                                        @endif
 
-                        @endforeach
-                    </tbody>
-                </table>
+                                        <td>{{ $skey }}</td>
+                                        <td>{{ $sitem }}</td>
+                                    </tr>
+                                    @php
+                                        $index++;
+                                    @endphp
+                                @endforeach
+
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>

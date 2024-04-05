@@ -66,6 +66,7 @@
 
             <div class="box pt_10">
                 @if ($all_order->count() > 0 )
+                <div class="table_wrapper">
                     <table>
                         <thead>
                             <tr>
@@ -101,6 +102,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 @else
                     <p>Нет ни одной брони. <br><br><a class="button" href="{{ route('proezd-bron') }}">Оформить бронь</a></p>
                 @endif

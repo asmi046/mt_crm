@@ -37,3 +37,20 @@
 
 
 }
+
+@media (max-width:480px) {
+    .informers {
+        flex-direction: column;
+    }
+
+    .informers_i2 .informer,
+    .informers_i3 .informer
+    {
+        width: unset;
+        margin: 5% 0;
+    }
+
+    .informers .informer .carecter.sm_size {
+        font-size: 28px;
+    }
+}

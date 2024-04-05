@@ -18,10 +18,12 @@ class LogController extends Controller
 
         foreach ($filter as $item) {
             $filter_setings['event'][$item->event] = 1;
-            $filter_setings['user'][$item->user->id] = $item->user->agency."(".$item->user->name.")";
+
+            if ($item->user)
+                $filter_setings['user'][$item->user->id] = $item->user->agency."(".$item->user->name.")";
         }
 
-        $log = Log::filter($request)->paginate(15);
+        $log = Log::filter($request)->paginate(15)->withQueryString();
         return view('show_log',[
             'log' => $log,
             'filter_settings' => $filter_setings

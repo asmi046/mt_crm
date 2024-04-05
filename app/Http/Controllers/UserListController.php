@@ -25,7 +25,7 @@ class UserListController extends Controller
     }
 
     public function index(UserFilter $request) {
-        $users = User::filter($request)->paginate(15);
+        $users = User::filter($request)->paginate(15)->withQueryString();
 
         return view('show_user_list',[
             'users' => $users,

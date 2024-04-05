@@ -104,6 +104,14 @@ a:hover{
 
 }
 
+@media (max-width:480px) {
+    .wrapper.c_3 *,
+    .wrapper.c_2 *
+    {
+        width: 100%;
+    }
+}
+
 .work_at_name {
     margin: 10px 0;
     font-size: 14px;
@@ -146,6 +154,20 @@ a:hover{
 
 .required {
     color:red;
+}
+
+@media (max-width:480px) {
+    .start-form {
+        margin: 20px
+    }
+
+    .start-form footer {
+        flex-direction: column;
+        .button{
+            text-align: center;
+            margin: 5px 0
+        }
+    }
 }
 
 @import "bron-styles";
