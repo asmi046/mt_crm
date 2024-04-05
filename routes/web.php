@@ -40,6 +40,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/orders', [TicketController::class, "all_orders"])->name('all_orders');
     Route::get('/orders/order-edit/{id}', [TicketController::class, "order_edit"])->name('order-edit');
 
+    Route::get('/user_deactivate/{id}', [UserListController::class, "deactivate"])->name('user_deactivate');
+    Route::get('/user_activate/{id}', [UserListController::class, "activate"])->name('user_activate');
     Route::get('/user_list', [UserListController::class, "index"])->name('user_list');
 
     Route::get('/show_log', [LogController::class, "index"])->name('show_log');

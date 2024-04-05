@@ -41,6 +41,8 @@
                             <th>Имя</th>
                             <th>Агентство</th>
                             <th>Телефон</th>
+                            <th>e-mail</th>
+                            <th>Статус</th>
                             <th>Упроавление</th>
                         </tr>
                     </thead>
@@ -50,8 +52,20 @@
                                 <td>{{ $item->name }} </td>
                                 <td>{{ $item->agency }} </td>
                                 <td>{{ $item->phone }} </td>
+                                <td>{{ $item->email }} </td>
+                                @if ($item->email_verified_at)
+                                    <td><span style="color:green">Активен</span></td>
+                                @else
+                                    <td><span style="color:red">Заблокирован</span></td>
+                                @endif
+
                                 <td>
-                                    {{-- <x-a-icon href="{{ route('show_log_detale', $item->id) }}" icon="fa-solid fa-pen-to-square">Детали</x-a-icon> --}}
+                                    @if ($item->email_verified_at)
+                                        <x-a-icon href="{{ route('user_deactivate', $item->id) }}" icon="fa-solid fa-pen-to-square">Заблокировать</x-a-icon>
+                                    @else
+                                        <x-a-icon href="{{ route('user_activate', $item->id) }}" icon="fa-solid fa-pen-to-square">Активировать</x-a-icon>
+                                    @endif
+
                                 </td>
                             </tr>
                         @endforeach
