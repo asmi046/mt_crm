@@ -35,6 +35,9 @@
             </div>
 
             <div class="box pt_10">
+                @if (session('user_activate'))
+                        <p class="success">{{ session('user_activate') }}</p>
+                @endif
                 <table>
                     <thead>
                         <tr>
