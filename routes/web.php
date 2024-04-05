@@ -49,6 +49,9 @@ Route::middleware(['auth','verified'])->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
+    Route::get('/register', [AuthController::class, "show_register_form"])->name('register');
+    Route::post('/register_do', [AuthController::class, "register"])->name('register_do');
+
     Route::get('/', [IndexController::class, "index"])->name('login');
     Route::post('/login_do', [AuthController::class, "login"])->name("login_do");
 });

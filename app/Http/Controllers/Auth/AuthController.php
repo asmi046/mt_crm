@@ -25,7 +25,7 @@ class AuthController extends Controller
     }
 
     public function show_register_form() {
-        return view('auth.register');
+        return view('register');
     }
 
 
@@ -85,17 +85,12 @@ class AuthController extends Controller
                 'name' => $user_data['name'],
                 'email' => $user_data['email'],
                 'phone' => $user_data['phone'],
+                'agency' => $user_data['agency'],
                 'password' => bcrypt($user_data['password']),
             ]
         );
 
-        if ($user) {
-            event(new Registered($user));
-            auth('web')->login($user);
-            return redirect(route('verification.notice'));
-        }
-
-        return redirect(route('home'));
+        return redirect()->route('register')->with("user_registred", "Ваша заявка принята наши менеджеры проверят данные и откроют доступ.");
     }
 
 

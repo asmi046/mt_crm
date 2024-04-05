@@ -53,6 +53,10 @@
                 </footer>
 
             </form>
+            <div class="bottom_lnk_box">
+                <a class="free_center_lnk" href="{{ route('register') }}">Регистрация в сервисе</a>
+            </div>
+
         </div>
     </section>
 @endsection

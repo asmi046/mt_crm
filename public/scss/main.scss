@@ -133,6 +133,21 @@ a:hover{
     }
 }
 
+.free_center_lnk{
+    margin: 20px auto;
+    display: inline-block;
+    color: $main_color
+
+}
+
+.bottom_lnk_box {
+    display: flex
+}
+
+.required {
+    color:red;
+}
+
 @import "bron-styles";
 @import "buss_schemm";
 @import "cabinet-section";
