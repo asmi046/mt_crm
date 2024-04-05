@@ -48,3 +48,14 @@
 .pagination__block-dot {
 	margin-right: 10px;
 }
+
+@media (max-width:480px) {
+    .pagination__next,
+    .pagination__back {
+        display: none;
+    }
+
+    .pagination__numbers {
+        min-width: 20px;
+    }
+}
