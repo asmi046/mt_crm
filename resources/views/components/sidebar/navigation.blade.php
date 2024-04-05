@@ -16,4 +16,8 @@
         <x-sb-nav-btn :active="(Route::currentRouteName() === 'show_log')?true:''" :href="route('show_log')" icon="fa-solid fa-microscope">Лог системы</x-sb-nav-btn>
     @endcan
 
+    @can('see_stat')
+        <x-sb-nav-btn :active="(Route::currentRouteName() === 'user_list')?true:''" :href="route('user_list')" icon="fa-solid fa-users">Список пользователей</x-sb-nav-btn>
+    @endcan
+
 </nav>

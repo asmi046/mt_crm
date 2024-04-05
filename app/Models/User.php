@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Filters\QueryFilter;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
@@ -54,5 +55,9 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPassword($token, $this->email));
+    }
+
+    public function scopeFilter($builder, QueryFilter $filter) {
+        return $filter->apply($builder);
     }
 }
