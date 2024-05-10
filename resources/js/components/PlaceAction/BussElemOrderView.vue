@@ -43,6 +43,7 @@
 
 
         for (let i =0; i<props.mesta.length; i++)
+            if (props.mesta[i].direction == props.symbol)
                 mesta.value[props.mesta[i].number] = props.mesta[i]
 
         console.log(mesta.value)
