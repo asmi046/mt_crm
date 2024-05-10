@@ -72,7 +72,6 @@
                             <tr>
                                 <th>№ брони</th>
                                 <th>Забронировал</th>
-                                <th>Состояние</th>
                                 <th>Дата брони</th>
                                 <th>Рейс</th>
                                 <th>Пункт следования</th>
@@ -86,7 +85,6 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->user->name }} <br>({{ $item->user->agency }})</td>
-                                    <td>{{ $item->state }}</td>
                                     <td>{{ date("d.m.Y H:i", strtotime($item->created_at)) }}</td>
                                     <td>№{{ $item->reis->id }}
                                         <strong>{{ date("d.m.Y", strtotime($item->reis->start_to_date))}}</strong>
