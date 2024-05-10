@@ -36,7 +36,6 @@ class TicketController extends Controller
         ]);
     }
 
-
     public function add_places($reis, $order) {
         $reis = Reis::where('id', $reis)->first();
         $order = Order::where('id', $order)->first();

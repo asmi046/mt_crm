@@ -105,6 +105,16 @@
 
             </div>
 
+            <div class="box pt_10">
+                <h2>Рассадка в автобусе</h2>
+                <bron-place-view
+                    :reis="{{ $order->reis->id }}"
+                    punkt="{{ $order->punkt }}"
+                    :mesta="{{ $order->mesta }}"
+                    :schema="{{ json_encode(buss_schemm($order->reis->reis_bus->schema)) }}"
+                ></bron-place-view>
+            </div>
+
         </div>
     </div>
 </section>

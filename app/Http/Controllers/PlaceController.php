@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Place;
 use App\Actions\LogAction;
+use Illuminate\Http\Request;
 use App\Mail\Place\PlaceMail;
 use App\Actions\TelegramSendAction;
 use App\Mail\Place\DeletePlaceMail;
@@ -39,6 +40,19 @@ class PlaceController extends Controller
         return redirect()->route('order-edit', $order_id)
             ->with('success_user', 'Данные пользователя сохранены')
             ->with('success_user_id', $id);
+    }
+
+    public function place_replace(Request $request) {
+        $palce_id = $request->input('place_id');
+        $palce_new_number = $request->input('palce_new_number');
+
+        $palce = Place::where('id', $palce_id)->first();
+
+        if (!$palce) abort(403,"Не найдено место для пересадки");
+
+        $palce->update([
+            'number' => $palce_new_number
+        ]);
     }
 
     public function place_delete(int $id) {

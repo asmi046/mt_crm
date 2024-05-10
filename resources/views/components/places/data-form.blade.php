@@ -1,5 +1,5 @@
 <form method="POST" action="{{ route('place_edit', $item->id) }}">
-    <div class="wrapper c_2 mb_20">
+    <div class="wrapper c_3 mb_20">
         <div class="coll">
             <x-a-icon href="#" dataname="placeid" datavalue="{{ $item->id }}" wrapclass="place_copy" icon="fa-solid fa-copy">Копировать</x-a-icon>
         </div>
@@ -7,6 +7,17 @@
         <div class="coll">
             <x-a-icon href="#" dataname="placeid" datavalue="{{ $item->id }}" wrapclass="place_paste" icon="fa-solid fa-paste ">Вставить</x-a-icon>
         </div>
+
+        <div class="coll">
+            <plice-replace
+                title="Пересадка"
+                :item="{{ json_encode($item) }}"
+                :reis="{{ $item->reis->id }}"
+                punkt="{{ $item->order->punkt }}"
+                :schema="{{ json_encode(buss_schemm($item->reis->reis_bus->schema)) }}"
+            ></plice-replace>
+        </div>
+
     </div>
     @csrf
     <input type="hidden" name="order_id" value="{{ $item->order_id }}">

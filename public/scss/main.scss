@@ -105,8 +105,8 @@ a:hover{
 }
 
 @media (max-width:480px) {
-    .wrapper.c_3 *,
-    .wrapper.c_2 *
+    .wrapper.c_3 > *,
+    .wrapper.c_2 > *
     {
         width: 100%;
     }
@@ -170,6 +170,25 @@ a:hover{
     }
 }
 
+.replace_information {
+    flex: 1;
+    margin: 0 30px;
+    .select_place,
+    .pasenger {
+        background-color: orange;
+        padding: 7px 10px;
+        border-radius: $border_rad;
+
+    }
+
+    .select_place {
+        background-color: $green_color;
+        color: white;
+    }
+
+}
+
+@import "popup";
 @import "bron-styles";
 @import "buss_schemm";
 @import "cabinet-section";

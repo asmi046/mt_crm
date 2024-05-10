@@ -53,6 +53,11 @@ class OrderController extends Controller
         ];
     }
 
+    public function get_reserved($id) {
+        $place_service = new PlacesServices();
+        return $place_service->get_reserved_places($id);
+    }
+
     public function add_place(Request $request) {
         $place_service = new PlacesServices();
         $data = $request->all();
