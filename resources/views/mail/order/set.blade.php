@@ -1,8 +1,8 @@
 @extends('layouts.mail')
 
 @section('main')
-    <h1>Оформлена бронь</h1>
-    <p><strong>Оформил:</strong> {{ $formData['user']['name']}} ({{ $formData['user']['agency']}})</P>
+    <h1>{{ $action }} бронь</h1>
+    <p><strong>Пользователь:</strong> {{ $formData['user']['name']}} ({{ $formData['user']['agency']}})</P>
     <p><strong>Рейс:</strong> № {{ $formData['reis']['id']}} {{date("d.m.Y", strtotime($formData['reis']['start_to_date']))." ".date("d.m.Y", strtotime($formData['reis']['start_to_date']))}}
     {{ $formData['reis']['direction']['start_punkt'] }} {{ $formData['reis']['direction']['end_punkt'] }}
     </p>

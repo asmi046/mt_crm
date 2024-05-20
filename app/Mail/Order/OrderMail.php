@@ -22,10 +22,12 @@ class OrderMail extends Mailable
      */
 
     public $formData;
+    public $action;
 
-    public function __construct($formData)
+    public function __construct($formData, $action = "Создана")
     {
         $this->formData = $formData;
+        $this->action = $action;
     }
 
     /**
@@ -37,7 +39,7 @@ class OrderMail extends Mailable
     {
         return new Envelope(
             // from: new Address("mirturizma046@yandex.ru", "МирТуризма"),
-            subject: 'Оформлена бронь',
+            subject: 'Создана бронь',
         );
 
 

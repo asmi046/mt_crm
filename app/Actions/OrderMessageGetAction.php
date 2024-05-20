@@ -3,11 +3,11 @@
 namespace App\Actions;
 
 class OrderMessageGetAction {
-    public function handle($order) {
+    public function handle($order, $action = "Создана") {
         $message = "";
 
-        $message .= "<b>Оформлена бронь</b>\n\r";
-        $message .= "<b>Оформил: </b>".$order->user->name." (".$order->user->agency.")\n\r";
+        $message .= "<b>".$action." бронь</b>\n\r";
+        $message .= "<b>Пользователь: </b>".$order->user->name." (".$order->user->agency.")\n\r";
         $message .= "<b>Рейс: </b>".
         "№". $order->reis->id ." ".date("d.m.Y", strtotime($order->reis->start_to_date))." ".date("d.m.Y", strtotime($order->reis->start_to_date))
         ." ".$order->reis->direction->start_punkt." ".$order->reis->direction->end_punkt."\n\r";

@@ -6,6 +6,26 @@ use App\Models\Place;
 
 class PlacesServices {
 
+    public function place_is_fill($place) {
+        if (empty($place->f)) return false;
+        if (empty($place->i)) return false;
+        if (empty($place->o)) return false;
+        // if (empty($place->doc_type)) return false;
+        // if (empty($place->doc_n)) return false;
+        // if (empty($place->dr)) return false;
+        return true;
+    }
+
+    public function all_place_in_order_fill($order) {
+        foreach ($order->mesta as $item) {
+            if (!$this->place_is_fill($item)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public function get_reserved_places(int $reis_id) {
         $all_places = Place::where('reis_id', $reis_id)->get();
 
