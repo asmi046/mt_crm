@@ -51,9 +51,15 @@
 
                             <tbody>
                                 @foreach ($reises as $item)
+
+                                    @php
+                                        $itt = ($item->direction->end_punkt === "Ялта")?"Крым":$item->direction->end_punkt;
+                                        $itts = ($sel_p === "Ялта")?"Крым":$sel_p;
+                                    @endphp
+
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ !empty($sel_p)?"Курск - ".$sel_p:$item->direction->start_punkt." - ".$item->direction->end_punkt }}</td>
+                                        <td>{{ !empty($itts)?"Курск - ".$itts:$item->direction->start_punkt." - ".$itt }}</td>
                                         <td>{{ date("d.m.Y", strtotime($item->start_to_date)) }}</td>
                                         <td>{{ date("d.m.Y", strtotime($item->prib_out_date)) }}</td>
                                         <td>
