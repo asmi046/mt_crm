@@ -13,6 +13,14 @@ use Illuminate\Support\Carbon;
 
 class DashBoardController extends Controller
 {
+    protected function get_mesta_stat($places) {
+        $count = 0;
+        foreach ($places as $item)
+            $count += ($item->direction === 't')?1:0;
+
+        return $count;
+    }
+
     public function index() {
 
         $place_count = Place::count();
@@ -28,7 +36,7 @@ class DashBoardController extends Controller
 
         foreach ($order as $item)
             $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] =
-            $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] + count($item->mesta);
+            $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] + $this->get_mesta_stat($item->mesta);
 
         $total_sum = Order::all()->sum('price');
         $avanc_sum = Order::all()->sum('avanc');
