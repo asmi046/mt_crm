@@ -28,7 +28,7 @@ class DashBoardController extends Controller
 
         foreach ($order as $item)
             $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] =
-            $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] + 1;
+            $zagruzka[$item->reis->direction->name][date("d.m.Y", strtotime($item->reis->start_to_date)). " - ".date("d.m.Y", strtotime($item->reis->prib_out_date))] + count($item->mesta);
 
         $total_sum = Order::all()->sum('price');
         $avanc_sum = Order::all()->sum('avanc');
