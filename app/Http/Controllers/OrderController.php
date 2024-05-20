@@ -93,7 +93,7 @@ class OrderController extends Controller
 
         $order->delete();
 
-        return redirect()->route('all_orders');
+        return redirect()->route('proezd-bron');
     }
 
     public function save_order(OrderRequest $request, int $id) {
