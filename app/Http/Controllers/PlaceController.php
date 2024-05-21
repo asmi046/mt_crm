@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Place;
 use App\Actions\LogAction;
 use Illuminate\Http\Request;
-use App\Mail\Order\OrderMail;
+use App\Mail\Order\OrderAcceptMail;
 use App\Mail\Place\PlaceMail;
 use App\Services\PlacesServices;
 use App\Actions\TelegramSendAction;
 use App\Mail\Place\DeletePlaceMail;
 use Illuminate\Support\Facades\Mail;
-use App\Actions\OrderMessageGetAction;
+use App\Actions\OrderAcceptMessageGetAction;
 use App\Http\Requests\PlaceFormRequest;
 use App\Actions\PlaceEditMessageGetAction;
 use App\Actions\PlaceDeleteMessageGetAction;
@@ -30,17 +30,18 @@ class PlaceController extends Controller
         $place->update($data);
         $fill_after_update = $place_services->all_place_in_order_fill($place->order()->first());
 
-        dump($fill_before_update, $fill_after_update);
+        // dump($fill_before_update, $fill_after_update);
 
         if (!$fill_before_update && $fill_after_update) {
+            $filled_order = $place->order()->first();
             $tgsender = new TelegramSendAction();
-            $message_get = new OrderMessageGetAction();
-            $tg_msg = $message_get->handle($place->order, "Оформлена");
+            $message_get = new OrderAcceptMessageGetAction();
+            $tg_msg = $message_get->handle($filled_order);
             $tmp = $tgsender->handle($tg_msg);
 
             $log->handle("Оформлена бронь", $tg_msg);
 
-            Mail::to(get_send_adress())->send(new OrderMail($place->order, "Оформлена"));
+            Mail::to(get_send_adress())->send(new OrderAcceptMail($filled_order));
         }
 
         if ($fill_before_update && $fill_after_update) {

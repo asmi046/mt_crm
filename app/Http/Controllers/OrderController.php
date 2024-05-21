@@ -45,7 +45,7 @@ class OrderController extends Controller
 
         $log->handle("Создана бронь", $tg_msg);
 
-        Mail::to(get_send_adress())->send(new OrderMail($order));
+        // Mail::to(get_send_adress())->send(new OrderMail($order));
 
         return [
             "order" => $order,
