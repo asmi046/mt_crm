@@ -42,5 +42,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('chenge_user', function (User $user) {
             return ($user->role === "admin") || ($user->role === "worker");
         });
+
+        Gate::define('see_report', function (User $user) {
+            return $user->role === "admin";
+        });
     }
 }

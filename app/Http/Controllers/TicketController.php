@@ -6,6 +6,7 @@ use App\Models\Reis;
 
 use App\Models\Hotel;
 use App\Models\Order;
+use App\Models\Punkt;
 use App\Filters\OrderFilter;
 use Illuminate\Http\Request;
 use App\Services\PlacesServices;
@@ -64,7 +65,7 @@ class TicketController extends Controller
         if ($order->punkt)
             $hotels = Hotel::where('city', $order->punkt)->get();
 
-        return view('order-edit', ['order' => $order, 'hotels' => $hotels]);
+        return view('order-edit', ['puncts' => $order->reis->direction->puncts, 'order' => $order, 'hotels' => $hotels]);
     }
 
     public function all_orders(OrderFilter $request) {

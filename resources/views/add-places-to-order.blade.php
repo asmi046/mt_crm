@@ -17,16 +17,7 @@
         <div class="page_container ">
             <div class="box">
                 <h1>Добавление места к брони №{{$order->id}}</h1>
-                <div class="page_reis_info">
-                    <p><strong>Пункт следования: </strong> {{$punkt}}</p>
-                    <br>
-                    <p><strong>Направление: </strong> {{$reis->direction->name}}</p>
-                    <p><strong>Выезд из Курска: </strong> {{date("d.m.Y", strtotime($reis->start_to_date)) }}</p>
-                    <p><strong>Прибытие на место: </strong>{{date("d.m.Y", strtotime($reis->prib_to_date)) }}</p>
-                    <p><strong>Выезд обратно: </strong>{{date("d.m.Y", strtotime($reis->start_out_date)) }}</p>
-                    <p><strong>Прибытие в Курск: </strong>{{date("d.m.Y", strtotime($reis->prib_out_date)) }}</p>
-                    <p><strong>Автобус: </strong>{{ $reis->reis_bus->name }}</p>
-                </div>
+                <x-reis.page-reis-info :reis="$reis" :punkt="$punkt"></x-reis.page-reis-info>
                 <br>
                 <br>
                 <x-a-icon href="{{route('order-edit', $order->id)}}" icon="fa-solid fa-arrow-rotate-left">Вернуться к редактированию брони №{{$order->id}}</x-a-icon>

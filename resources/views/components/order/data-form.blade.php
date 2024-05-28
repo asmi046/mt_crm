@@ -32,14 +32,32 @@
 <div class="field">
     <label class="label">Проживание в отеле</label>
     <div class="control">
-        <select name="hotel_id" id="">
+        <select name="hotel_id" id="hotel_select_ch">
             <option value="" @selected($item->hotel_id == null)>Без проживания</option>
 
             @foreach ($hotels as $hotel)
                 <option @selected($item->hotel_id === $hotel->id) value="{{ $hotel->id }}">{{ $hotel->name }}</option>
             @endforeach
-            {{-- <option @selected($item->state === "Черновик") value="Черновик">Черновик</option>
-            <option @selected($item->state === "Подтвержденный") value="Подтвержденный">Подтвержденный</option> --}}
+
+        </select>
+    </div>
+
+    @error('state')
+        <p class="error">{{$message}}</p>
+    @enderror
+</div>
+
+<div class="field">
+    <label class="label">Пункт следования</label>
+    <div class="control">
+        <select onchange="hotel_select_ch.value=''" name="punkt" id="">
+
+            <option disabled value="" @selected($item->punkt == null)>Выберите пункт следования</option>
+
+            @foreach ($puncts as $punct)
+                <option @selected($item->punkt === $punct->name) value="{{ $punct->name }}">{{ $punct->name }}</option>
+            @endforeach
+
         </select>
     </div>
 

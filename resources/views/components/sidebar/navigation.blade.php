@@ -20,4 +20,11 @@
         <x-sb-nav-btn :active="(Route::currentRouteName() === 'user_list')?true:''" :href="route('user_list')" icon="fa-solid fa-users">Список пользователей</x-sb-nav-btn>
     @endcan
 
+    @can('see_report')
+        <x-sb-nav-btn :active="(
+        (Route::currentRouteName() === 'reports')||
+        (Route::currentRouteName() === 'rassadca')
+        )?true:''" :href="route('reports')" icon="fa-solid fa-flag">Выгрузки</x-sb-nav-btn>
+    @endcan
+
 </nav>

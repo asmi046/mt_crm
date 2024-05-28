@@ -22,3 +22,13 @@ table {
         background-color: #EBEBEB;
     }
 }
+
+.bus_table {
+    tr:nth-child(2n) td {
+        background-color: white;
+    }
+
+    th {
+        text-align: center;
+    }
+}
