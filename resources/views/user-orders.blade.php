@@ -22,7 +22,7 @@
 
             <div class="box pt_10">
                 <form class="filter_form" action="{{ route('all_orders') }}">
-                    <div class="wrapper c_2">
+                    <div class="wrapper c_3">
 
                         <div class="field">
                             <label class="label">Пункт следования</label>
@@ -47,6 +47,13 @@
                                     @endforeach
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label checkbox_label">
+                                <input @checked( (request('only_agency') === "on") ) type="checkbox" name="only_agency" id="">
+                                <span>Показать агентские брони</span>
+                            </label>
                         </div>
                     </div>
 
@@ -84,7 +91,12 @@
                             @foreach ($all_order as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->user->name }} <br>({{ $item->user->agency }})</td>
+                                    <td>
+                                        {{ $item->user->name }} <br>({{ $item->user->agency }})
+                                        @if ($item->user->role === "agent")
+                                            <span class="agent_label">Агент</span>
+                                        @endif
+                                    </td>
                                     <td>{{ date("d.m.Y H:i", strtotime($item->created_at)) }}</td>
                                     <td>№{{ $item->reis->id }}
                                         <strong>{{ date("d.m.Y", strtotime($item->reis->start_to_date))}}</strong>

@@ -25,3 +25,18 @@ textarea {
     height: unset;
     padding: 5px calc(.75em - 1px);
 }
+
+
+.checkbox_label {
+    display: flex;
+    input {
+        width:15px;
+        height:15px;
+        border: none;
+        box-shadow:none
+    }
+
+    span{
+        margin: auto auto auto 10px;
+    }
+}

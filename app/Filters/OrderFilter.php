@@ -25,4 +25,11 @@ class OrderFilter extends QueryFilter {
                         ->orWhere('comment', "LIKE", "%".$serch."%");
             });
     }
+
+    public function only_agency($only_agency) {
+        if (!empty($only_agency))
+            $this->builder->whereHas('user', function ($query) use ($only_agency) {
+                $query->where('role',  'agent');
+            });
+    }
 }
