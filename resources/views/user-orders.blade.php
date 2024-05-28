@@ -94,6 +94,7 @@
                                     <td>
                                         {{ $item->user->name }} <br>({{ $item->user->agency }})
                                         @if ($item->user->role === "agent")
+                                            <br>
                                             <span class="agent_label">Агент</span>
                                         @endif
                                     </td>
