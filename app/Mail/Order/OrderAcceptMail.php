@@ -22,10 +22,12 @@ class OrderAcceptMail extends Mailable
      */
 
     public $formData;
+    public $user_role;
 
     public function __construct($formData)
     {
         $this->formData = $formData;
+        $this->user_role = auth()->user()->role;
     }
 
     /**
@@ -37,7 +39,7 @@ class OrderAcceptMail extends Mailable
     {
         return new Envelope(
             // from: new Address("mirturizma046@yandex.ru", "МирТуризма"),
-            subject: 'Оформлена бронь',
+            subject: 'Оформлена бронь'.(($this->user_role === "agent")?" (Агент)":""),
         );
 
 
