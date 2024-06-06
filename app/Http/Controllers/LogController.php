@@ -14,6 +14,7 @@ class LogController extends Controller
         $filter_setings = [
             'event' => [],
             'user' => [],
+            'reis' => [],
         ];
 
         foreach ($filter as $item) {
@@ -21,9 +22,12 @@ class LogController extends Controller
 
             if ($item->user)
                 $filter_setings['user'][$item->user->id] = $item->user->agency."(".$item->user->name.")";
+
+            if ($item->reis)
+                $filter_setings['reis'][$item->reis->id] = reis_table_text($item->reis);
         }
 
-        $log = Log::filter($request)->paginate(15)->withQueryString();
+        $log = Log::filter($request)->orderBy('created_at', 'DESC')->paginate(15)->withQueryString();
         return view('show_log',[
             'log' => $log,
             'filter_settings' => $filter_setings

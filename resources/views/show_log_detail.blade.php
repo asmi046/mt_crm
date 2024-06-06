@@ -17,7 +17,9 @@
         <div class="page_container ">
             <div class="box">
                 <h1>Запись №{{ $item->id }} {{ $item->event }}</h1>
-                <p>Пользователь: {{ $item->user->name }} ({{ $item->user->agency }})</p>
+                <p>Пользователь: @if ($item->user)
+                    {{ $item->user->name }} ({{ $item->user->agency }})</p>
+                @endif
 
             </div>
 

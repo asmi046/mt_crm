@@ -14,15 +14,31 @@ class Log extends Model
         "event",
         "user_id",
         "info",
+        "field_id",
+        "place_number",
+        "order_id",
+        "reis_id",
     ];
 
     public $with = [
-        'user'
+        'user',
+        'reis',
+        'order',
     ];
 
     public function user()
     {
         return $this->hasOne(User::class, "id", "user_id");
+    }
+
+    public function reis()
+    {
+        return $this->hasOne(Reis::class, "id", "reis_id");
+    }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class, "id", "order_id");
     }
 
 

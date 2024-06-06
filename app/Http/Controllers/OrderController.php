@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Mail\Order\OrderMail;
 use App\Services\PlacesServices;
 
+use App\Services\LogDataServices;
 use App\Actions\TelegramSendAction;
 use App\Http\Requests\OrderRequest;
 use App\Mail\Order\DeleteOrderMail;
@@ -43,7 +44,11 @@ class OrderController extends Controller
         $tg_msg = $message_get->handle($order);
         $tmp = $tgsender->handle($tg_msg);
 
-        $log->handle("Создана бронь", $tg_msg);
+        $log->handle("Создана бронь", $tg_msg,
+            field_id: $order->id,
+            order_id: $order->id,
+            reis_id: $order->reis->id
+        );
 
         // Mail::to(get_send_adress())->send(new OrderMail($order));
 
@@ -89,7 +94,11 @@ class OrderController extends Controller
         Mail::to(get_send_adress())->send(new DeleteOrderMail($order));
 
         $log = new LogAction();
-        $log->handle("Удалена бронь", $tg_msg);
+        $log->handle("Удалена бронь", $tg_msg,
+            field_id: $order->id,
+            order_id: $order->id,
+            reis_id: $order->reis->id
+        );
 
         $order->delete();
 
@@ -101,11 +110,17 @@ class OrderController extends Controller
 
         $order = Order::where('id', $id)->first();
 
-        $log = new LogAction();
-        $log->handle("Обновлена информация о брони", "Обновлена информация о брони №".$id);
-
+        $old_order = clone $order;
         $order->update($data);
-        // dd($data,$order);
+
+        $log = new LogAction();
+        $log_data = new LogDataServices();
+
+        $log->handle("Обновлена информация о брони", $log_data->create_order_update_data($order, $old_order),
+            field_id: $id,
+            order_id: $id,
+            reis_id: $order->reis->id,
+        );
 
         return redirect()->route('order-edit', $id)->with('success_order', 'Данные заказа сохранены');
     }

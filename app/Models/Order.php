@@ -24,7 +24,8 @@ class Order extends Model
     public $with = [
         'reis',
         'user',
-        'mesta'
+        'mesta',
+        'hotel'
     ];
 
     public function hotel()

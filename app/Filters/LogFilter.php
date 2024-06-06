@@ -18,55 +18,36 @@ class LogFilter extends QueryFilter {
             });
     }
 
-    // public function search_str($search_str) {
-    //     if (!empty($search_str))
-    //         $this->builder->where(function ($query)   use ($search_str) {
-    //             $query->where("description","LIKE", "%".$search_str."%")
-    //                     ->orWhere("keywords","LIKE", "%".$search_str."%");
-    //         });
-    // }
 
-    // public function autor($autor) {
-    //     if (!empty($autor))
-    //         $this->builder->whereIn("autor",  $autor);
-    // }
+    public function serch($serch) {
+        if (!empty($serch))
+            $this->builder->where('info', "LIKE", "%".$serch."%");
 
-    // public function vid_ed($vid_ed) {
-    //     if (!empty($vid_ed))
-    //         $this->builder->whereHas('vid_ed', function ($query) use ($vid_ed) {
-    //             $query->whereIn('economic_action_type_id', $vid_ed);
-    //         });
-    // }
+    }
 
-    // public function zak_result($zak_result) {
-    //     if (!empty($zak_result))
-    //         $this->builder->whereIn("zak_result",  $zak_result);
-    // }
+    public function date_start($date_start) {
+        if (!empty($date_start))
+            $this->builder->where("created_at", ">=",  $date_start);
+    }
 
-    // public function procedure($procedure) {
-    //     if (!empty($procedure))
-    //         $this->builder->whereIn("procedure",  $procedure);
-    // }
+    public function date_finish($date_finish) {
+        if (!empty($date_finish))
+            $this->builder->where("created_at", "<=",  date("Y-m-d", strtotime($date_finish." +1 day")));
+    }
 
-    // public function curent_stage($curent_stage) {
-    //     if (!empty($curent_stage))
-    //         $this->builder->whereIn("curent_stage",  $curent_stage);
-    // }
+    public function reis($reis) {
+        if (!empty($reis))
+            $this->builder->where("reis_id",   $reis);
+    }
 
-    // public function curent_status($curent_status) {
-    //     if (!empty($curent_status))
-    //         $this->builder->whereIn("curent_status",  $curent_status);
-    // }
+    public function place($place) {
+        if (!empty($place))
+            $this->builder->where("place_number",   $place);
+    }
 
-
-    // public function publication_period_begin($publication_period_begin) {
-    //     if (!empty($publication_period_begin))
-    //         $this->builder->where("create_data", '>', date("Y-m-d H:i:s", strtotime($publication_period_begin)));
-    // }
-
-    // public function publication_period_end($publication_period_end) {
-    //     if (!empty($publication_period_end))
-    //         $this->builder->where("create_data", '<', date("Y-m-d H:i:s", strtotime($publication_period_end)));
-    // }
+    public function bron($bron) {
+        if (!empty($bron))
+            $this->builder->where("order_id",  $bron);
+    }
 
 }

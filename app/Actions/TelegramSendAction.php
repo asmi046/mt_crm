@@ -4,6 +4,9 @@ namespace App\Actions;
 
 class TelegramSendAction {
     public function handle($text = "") {
+        $t_send = config('telegram.tg_send_accept');
+        if ($t_send == false) return;
+
         $t_token = config('telegram.tg_token');
         $arr_chat = config('telegram.tg_coresp');
 

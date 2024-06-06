@@ -1,5 +1,18 @@
 <?php
 
+if (!function_exists("order_table_text")) {
+    function order_table_text($order) {
+        return "№".$order->id." ".$order->punkt." ".count($order->mesta)." места";
+    }
+}
+
+if (!function_exists("reis_table_text")) {
+    function reis_table_text($reis) {
+        return  "№". $reis->id." ".$reis->direction->start_punkt." - ".$reis->direction->end_punkt." (".date("d.m.Y", strtotime($reis->start_to_date))." ".date("d.m.Y", strtotime($reis->start_to_date))
+        .")";
+    }
+}
+
 if (!function_exists("get_send_adress")) {
     function get_send_adress() {
         $adr_list = explode(",",config('consultation.mailadresat'));

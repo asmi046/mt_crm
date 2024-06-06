@@ -6,12 +6,22 @@ use App\Models\Log;
 use App\Actions\TelegramSendAction;
 
 class LogAction {
-    public function handle($event, $text, $user=null) {
+    public function handle($event, $text, $user=null,
+                        $field_id=null,
+                        $place_number=null,
+                        $order_id=null,
+                        $reis_id=null,
+    ) {
         Log::create(
             [
                 "event" => $event,
                 "user_id" => empty($user)?auth()->user()->id:$user->id,
                 "info" => $text,
+
+                "field_id" => $field_id,
+                "place_number" => $place_number,
+                "order_id" => $order_id,
+                "reis_id" => $reis_id,
             ]
         );
 
