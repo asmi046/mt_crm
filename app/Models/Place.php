@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place extends Model
 {
@@ -30,6 +31,15 @@ class Place extends Model
     //     'order',
     //     'reis'
     // ];
+
+
+    protected function dr(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => ($value)?date("d.m.Y", strtotime($value)):null,
+            set: fn ($value) => ($value)?date("Y-m-d", strtotime($value)):null,
+        );
+    }
 
     public function order()
     {

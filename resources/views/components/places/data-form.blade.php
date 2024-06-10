@@ -21,6 +21,7 @@
     </div>
     @csrf
     <input type="hidden" name="order_id" value="{{ $item->order_id }}">
+    <input type="hidden" name="pid" value="{{ $item->id }}">
 
     <div class="field">
         <label class="label">Фамилия</label>
@@ -85,7 +86,8 @@
     <div class="field">
         <label class="label">Дата рождения</label>
         <div class="control">
-            <input name="dr" class="input" type="date" id="place_dr_{{$item->id}}" value="{{ $item->dr }}" placeholder="">
+            {{-- <input name="dr" class="input" type="date" id="place_dr_{{$item->id}}" value="{{ $item->dr }}" placeholder=""> --}}
+            <input name="dr" class="input input_date" type="text" id="place_dr_{{$item->id}}" value="{{ $item->dr }}" placeholder="__.__.____">
         </div>
 
         @error('dr')

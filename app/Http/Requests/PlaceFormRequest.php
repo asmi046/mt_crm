@@ -14,6 +14,20 @@ class PlaceFormRequest extends FormRequest
         return true;
     }
 
+
+    /**
+     * Получить сообщения об ошибках для определенных правил валидации.
+     *
+     * @return array
+    */
+
+     public function messages()
+     {
+         return [
+             'dr.date' => 'Неверный формат даты',
+         ];
+     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +41,7 @@ class PlaceFormRequest extends FormRequest
             'o' => [],
             'doc_type' => [],
             'doc_n' => [],
-            'dr' => [],
+            'dr' => ['nullable', 'date'],
             'phone' => [],
             'comment' => [],
         ];

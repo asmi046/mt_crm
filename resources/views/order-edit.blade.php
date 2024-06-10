@@ -44,6 +44,11 @@
                     <p class="success">{{ session('success_user') }}</p>
                 @endif
 
+
+                @foreach ($errors->all() as $error)
+                    <p class="error">{{ $error }}</p>
+                @endforeach
+
                 <div class="wrapper c_2 places_list">
                     <div class="coll">
                         <p class="mb_20"><strong>{{ $order->reis->direction->start_punkt }} - {{ $order->punkt }}</strong></p>
@@ -51,7 +56,7 @@
                         @foreach ($order->mesta as $item)
                             @if ($item->direction === 't')
                                 <details
-                                    @if (session('success_user_id') && session('success_user_id') == $item->id )
+                                    @if ((session('success_user_id') && session('success_user_id') == $item->id ) || (old('pid') == $item->id))
                                         open
                                     @endisset
                                 >
@@ -80,7 +85,7 @@
                         @foreach ($order->mesta as $item)
                             @if ($item->direction === 'o')
                             <details
-                                @if (session('success_user_id') && session('success_user_id') == $item->id )
+                                @if ((session('success_user_id') && session('success_user_id') == $item->id ) || (old('pid') == $item->id))
                                     open
                                 @endisset
                             >
