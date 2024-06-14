@@ -39,7 +39,7 @@ class OrderAcceptMail extends Mailable
     {
         return new Envelope(
             // from: new Address("mirturizma046@yandex.ru", "МирТуризма"),
-            subject: 'Оформлена бронь'.(($this->user_role === "agent")?" (Агент)":""),
+            subject: (($this->user_role === "agent")?" (Агент) ":"").'Оформлена бронь',
         );
 
 
