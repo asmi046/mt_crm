@@ -30,6 +30,7 @@
                                 <th>Ф.И.О</th>
                                 <th>Телефон</th>
                                 <th>Документ</th>
+                                <th>Забронировал</th>
                                 <th>Пункт прибытия</th>
                             </tr>
                         </thead>
@@ -40,6 +41,7 @@
                                     <td>{{ $item->f }} {{ $item->i }} {{ $item->o }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->doc_type }} {{ $item->doc_n }}</td>
+                                    <td>{{ ($item->order->user->role === 'agency')?"Агент":"Мир туризма" }}</td>
                                     <td>{{ $item->order->punkt }}</td>
                                 </tr>
                             @endforeach
