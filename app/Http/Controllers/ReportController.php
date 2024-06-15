@@ -45,4 +45,37 @@ class ReportController extends Controller
             'reis' => $reis,
         ]);
     }
+
+    public function list(int $reis_id, string $direction) {
+
+
+        $place_service = new PlacesServices();
+
+        if ($direction == 't') {
+            $reis = Reis::where('id', $reis_id)->first();
+            $reserves_places = $place_service->get_reserved_places($reis->id);
+            $reserves_places = $reserves_places['t'];
+            $schema = buss_schemm($reis->reis_bus->schema);
+        }
+        else {
+            $reis_pr = Reis::where('id', $reis_id)->first();
+            $reis = Reis::where('start_out_date', $reis_pr->prib_to_date)->where('direction_id', $reis_pr->direction_id)->first();
+            if ($reis) {
+                $reserves_places = $place_service->get_reserved_places($reis->id);
+                $reserves_places = $reserves_places['o'];
+                $schema = buss_schemm($reis->reis_bus->schema);
+            } else {
+                $reserves_places = null;
+                $schema = null;
+            }
+        }
+
+
+
+        return view('reports-list', [
+            'reserves_places' => $reserves_places,
+            'schema' => $schema,
+            'reis' => $reis,
+        ]);
+    }
 }

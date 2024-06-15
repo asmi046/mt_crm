@@ -45,6 +45,11 @@
                                         <x-a-icon href="{{route('rassadca', ['reis_id'=>$item->id, 'direction'=>'t'])}}" icon="fa-solid fa-arrow-right">Отвозим (Рассадка)</x-a-icon>
                                         <br>
                                         <x-a-icon href="{{route('rassadca', ['reis_id'=>$item->id, 'direction'=>'o'])}}" icon="fa-solid fa-arrow-left">Забираем (Рассадка)</x-a-icon>
+                                        <br>
+                                        <br>
+                                        <x-a-icon href="{{route('list', ['reis_id'=>$item->id, 'direction'=>'t'])}}" icon="fa-solid fa-list">Отвозим (Список)</x-a-icon>
+                                        <br>
+                                        <x-a-icon href="{{route('list', ['reis_id'=>$item->id, 'direction'=>'o'])}}" icon="fa-solid fa-list">Забираем (Список)</x-a-icon>
                                     </td>
                                 </tr>
                             @endforeach
