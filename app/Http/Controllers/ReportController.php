@@ -76,6 +76,66 @@ class ReportController extends Controller
             'reserves_places' => $reserves_places,
             'schema' => $schema,
             'reis' => $reis,
+            'direction' => $direction
         ]);
+    }
+
+    public function list_csv(int $reis_id, string $direction) {
+
+
+        $place_service = new PlacesServices();
+
+        if ($direction == 't') {
+            $reis = Reis::where('id', $reis_id)->first();
+            $reserves_places = $place_service->get_reserved_places($reis->id);
+            $reserves_places = $reserves_places['t'];
+            $schema = buss_schemm($reis->reis_bus->schema);
+        }
+        else {
+            $reis_pr = Reis::where('id', $reis_id)->first();
+            $reis = Reis::where('start_out_date', $reis_pr->prib_to_date)->where('direction_id', $reis_pr->direction_id)->first();
+            if ($reis) {
+                $reserves_places = $place_service->get_reserved_places($reis->id);
+                $reserves_places = $reserves_places['o'];
+                $schema = buss_schemm($reis->reis_bus->schema);
+            } else {
+                $reserves_places = null;
+                $schema = null;
+            }
+        }
+
+
+
+        $headers = [
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=galleries.csv',
+            'Expires' => '0',
+            'Pragma' => 'public'
+        ];
+
+        $callback = function() use ($reserves_places)
+        {
+                $FH = fopen('php://output', 'w');
+
+                fputcsv($FH, ['Ф.И.О', 'Дата рождения', 'Телефон', 'Документ', 'Забронировал', 'Проживание',  'Пункт прибытия'], ";");
+
+                foreach ($reserves_places as $item) {
+                    fputcsv($FH, [
+                        $item->f .' '. $item->i .' '. $item->o,
+                        $item->dr,
+                        $item->phone,
+                        $item->doc_n,
+                        (($item->order->user->role === 'agency')?"Агент":"Мир туризма"),
+                        (($item->order->hotel)?$item->order->hotel->name:"Проезд"),
+                        $item->order->punkt
+                    ],";");
+                }
+
+                fclose($FH);
+        };
+
+        return response()->stream($callback, 200, $headers);
+
     }
 }

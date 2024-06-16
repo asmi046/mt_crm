@@ -19,6 +19,10 @@
                 <h1>{{ $title }}</h1>
                 @if ($reis)
                     <x-reis.page-reis-info :reis="$reis"></x-reis.page-reis-info>
+
+                    <br>
+                    <br>
+                    <x-a-icon href="{{route('list_csv', ['reis_id' => $reis->id,'direction' => $direction])}}" icon="fa-solid fa-file-csv">Сохранить в CSV</x-a-icon>
                 @endif
             </div>
 
@@ -28,9 +32,11 @@
                         <thead>
                             <tr>
                                 <th>Ф.И.О</th>
+                                <th>Дата рождения</th>
                                 <th>Телефон</th>
                                 <th>Документ</th>
                                 <th>Забронировал</th>
+                                <th>Проживание</th>
                                 <th>Пункт прибытия</th>
                             </tr>
                         </thead>
@@ -39,9 +45,11 @@
                             @foreach ($reserves_places as $item)
                                 <tr>
                                     <td>{{ $item->f }} {{ $item->i }} {{ $item->o }}</td>
+                                    <td>{{ $item->dr }}</td>
                                     <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->doc_type }} {{ $item->doc_n }}</td>
+                                    <td>{{ $item->doc_n }}</td>
                                     <td>{{ ($item->order->user->role === 'agency')?"Агент":"Мир туризма" }}</td>
+                                    <td>{{ ($item->order->hotel)?$item->order->hotel->name:"Проезд" }}</td>
                                     <td>{{ $item->order->punkt }}</td>
                                 </tr>
                             @endforeach
