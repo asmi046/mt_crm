@@ -118,17 +118,25 @@ class ReportController extends Controller
         {
                 $FH = fopen('php://output', 'w');
 
-                fputcsv($FH, ['Ф.И.О', 'Дата рождения', 'Телефон', 'Документ', 'Забронировал', 'Проживание',  'Пункт прибытия'], ";");
+                fputcsv($FH, [
+                    mb_convert_encoding('Ф.И.О', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Дата рождения', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Телефон', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Документ', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Забронировал', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Проживание', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Пункт прибытия', 'windows-1251', 'utf-8')
+                ], ";");
 
                 foreach ($reserves_places as $item) {
                     fputcsv($FH, [
-                        $item->f .' '. $item->i .' '. $item->o,
-                        $item->dr,
-                        $item->phone,
-                        $item->doc_n,
-                        (($item->order->user->role === 'agency')?"Агент":"Мир туризма"),
-                        (($item->order->hotel)?$item->order->hotel->name:"Проезд"),
-                        $item->order->punkt
+                        mb_convert_encoding($item->f .' '. $item->i .' '. $item->o, 'windows-1251', 'utf-8'),
+                        mb_convert_encoding($item->dr, 'windows-1251', 'utf-8'),
+                        mb_convert_encoding($item->phone, 'windows-1251', 'utf-8'),
+                        mb_convert_encoding($item->doc_n, 'windows-1251', 'utf-8'),
+                        mb_convert_encoding((($item->order->user->role === 'agent')?"Агент":"Мир туризма"), 'windows-1251', 'utf-8'),
+                        mb_convert_encoding((($item->order->hotel)?$item->order->hotel->name:"Проезд"), 'windows-1251', 'utf-8'),
+                        mb_convert_encoding($item->order->punkt, 'windows-1251', 'utf-8')
                     ],";");
                 }
 
