@@ -134,7 +134,7 @@ class ReportController extends Controller
                         mb_convert_encoding($item->dr, 'windows-1251', 'utf-8'),
                         mb_convert_encoding($item->phone, 'windows-1251', 'utf-8'),
                         mb_convert_encoding($item->doc_n, 'windows-1251', 'utf-8'),
-                        mb_convert_encoding((($item->order->user->role === 'agent')?"Агент":"Мир туризма"), 'windows-1251', 'utf-8'),
+                        mb_convert_encoding((($item->order->user->role === 'agent')?"(Агент) ".$item->order->user->agency:"Мир туризма"), 'windows-1251', 'utf-8'),
                         mb_convert_encoding((($item->order->hotel)?$item->order->hotel->name:"Проезд"), 'windows-1251', 'utf-8'),
                         mb_convert_encoding($item->order->punkt, 'windows-1251', 'utf-8')
                     ],";");
