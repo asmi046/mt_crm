@@ -31,6 +31,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>Бронь №</th>
                                 <th>Ф.И.О</th>
                                 <th>Дата рождения</th>
                                 <th>Телефон</th>
@@ -44,6 +45,7 @@
                         <tbody>
                             @foreach ($reserves_places as $item)
                                 <tr>
+                                    <td>{{ $item->order->id }}</td>
                                     <td>{{ $item->f }} {{ $item->i }} {{ $item->o }}</td>
                                     <td>{{ $item->dr }}</td>
                                     <td>{{ $item->phone }}</td>

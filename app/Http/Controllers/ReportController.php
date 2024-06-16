@@ -119,6 +119,7 @@ class ReportController extends Controller
                 $FH = fopen('php://output', 'w');
 
                 fputcsv($FH, [
+                    mb_convert_encoding('Бронь №', 'windows-1251', 'utf-8'),
                     mb_convert_encoding('Ф.И.О', 'windows-1251', 'utf-8'),
                     mb_convert_encoding('Дата рождения', 'windows-1251', 'utf-8'),
                     mb_convert_encoding('Телефон', 'windows-1251', 'utf-8'),
@@ -130,6 +131,7 @@ class ReportController extends Controller
 
                 foreach ($reserves_places as $item) {
                     fputcsv($FH, [
+                        mb_convert_encoding($item->order->id, 'windows-1251', 'utf-8'),
                         mb_convert_encoding($item->f .' '. $item->i .' '. $item->o, 'windows-1251', 'utf-8'),
                         mb_convert_encoding($item->dr, 'windows-1251', 'utf-8'),
                         mb_convert_encoding($item->phone, 'windows-1251', 'utf-8'),
