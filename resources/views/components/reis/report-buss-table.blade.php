@@ -11,8 +11,7 @@
                         @if (isset($reservesplaces[$place]))
                             {{ $reservesplaces[$place]->f }} {{ $reservesplaces[$place]->i }} {{ $reservesplaces[$place]->o }} <br>
                             {{ $reservesplaces[$place]->order->punkt }} <br>
-                            {{ $reservesplaces[$place]->phone }} <br>
-                            {{ $reservesplaces[$place]->doc_type }} {{ $reservesplaces[$place]->doc_n }}
+                            {{ $reservesplaces[$place]->phone }}
                         @endif
                     @endif
                 </td>

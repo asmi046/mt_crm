@@ -104,12 +104,12 @@ class ReportController extends Controller
             }
         }
 
-
+        $file_name = $reis->direction->name.'_'.$reis->start_to_date.'_'.$direction.'.csv';
 
         $headers = [
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
             'Content-type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename=galleries.csv',
+            'Content-Disposition' => 'attachment; filename='.$file_name,
             'Expires' => '0',
             'Pragma' => 'public'
         ];

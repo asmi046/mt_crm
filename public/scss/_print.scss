@@ -1,0 +1,30 @@
+@media print {
+    .cabinet_section .sidebar {
+        display: none;
+    }
+    .cabinet_section .main {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        margin-top: 0;
+    }
+
+    .page_reis_info {
+        display: flex;
+        flex-wrap: wrap;
+
+        p {
+            width:33%;
+        }
+    }
+
+    .mobile_menu_btn {
+        display: none;
+    }
+
+    .bus_table td{
+        font-size: 16px;
+    }
+}
