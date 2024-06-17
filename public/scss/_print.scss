@@ -1,4 +1,9 @@
 @media print {
+    .cabinet_section .main .page_container {
+        width: 100%;
+        margin: auto auto;
+    }
+
     .cabinet_section .sidebar {
         display: none;
     }
@@ -16,7 +21,8 @@
         flex-wrap: wrap;
 
         p {
-            width:33%;
+            width:30%;
+            font-size: 14px;
         }
     }
 
