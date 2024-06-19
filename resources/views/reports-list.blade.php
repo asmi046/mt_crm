@@ -28,37 +28,39 @@
 
             <div class="box pt_10">
                 @if ($reis)
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Бронь №</th>
-                                <th>Ф.И.О</th>
-                                <th>Дата рождения</th>
-                                <th>Телефон</th>
-                                <th>Документ</th>
-                                <th>Забронировал</th>
-                                <th>Проживание</th>
-                                <th>Пункт прибытия</th>
-                                <th>Комментарий</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @foreach ($reserves_places as $item)
+                    <div class="table_wrapper">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>{{ $item->order->id }}</td>
-                                    <td>{{ $item->f }} {{ $item->i }} {{ $item->o }}</td>
-                                    <td>{{ $item->dr }}</td>
-                                    <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->doc_n }}</td>
-                                    <td>{{ ($item->order->user->role === 'agent')?"(Агент) ".$item->order->user->agency:"Мир туризма" }}</td>
-                                    <td>{{ ($item->order->hotel)?$item->order->hotel->name:"Проезд" }}</td>
-                                    <td>{{ $item->order->punkt }}</td>
-                                    <td>{{ $item->comment }}</td>
+                                    <th>Бронь №</th>
+                                    <th>Ф.И.О</th>
+                                    <th>Дата рождения</th>
+                                    <th>Телефон</th>
+                                    <th>Документ</th>
+                                    <th>Забронировал</th>
+                                    <th>Проживание</th>
+                                    <th>Пункт прибытия</th>
+                                    <th>Комментарий</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+
+                            <tbody>
+                                @foreach ($reserves_places as $item)
+                                    <tr>
+                                        <td>{{ $item->order->id }}</td>
+                                        <td>{{ $item->f }} {{ $item->i }} {{ $item->o }}</td>
+                                        <td>{{ $item->dr }}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->doc_n }}</td>
+                                        <td>{{ ($item->order->user->role === 'agent')?"(Агент) ".$item->order->user->agency:"Мир туризма" }}</td>
+                                        <td>{{ ($item->order->hotel)?$item->order->hotel->name:"Проезд" }}</td>
+                                        <td>{{ $item->order->punkt }}</td>
+                                        <td>{{ $item->comment }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endif
             </div>
         </div>
