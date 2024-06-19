@@ -39,6 +39,7 @@
                                 <th>Забронировал</th>
                                 <th>Проживание</th>
                                 <th>Пункт прибытия</th>
+                                <th>Комментарий</th>
                             </tr>
                         </thead>
 
@@ -53,6 +54,7 @@
                                     <td>{{ ($item->order->user->role === 'agent')?"(Агент) ".$item->order->user->agency:"Мир туризма" }}</td>
                                     <td>{{ ($item->order->hotel)?$item->order->hotel->name:"Проезд" }}</td>
                                     <td>{{ $item->order->punkt }}</td>
+                                    <td>{{ $item->comment }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

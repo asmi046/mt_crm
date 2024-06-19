@@ -126,7 +126,8 @@ class ReportController extends Controller
                     mb_convert_encoding('Документ', 'windows-1251', 'utf-8'),
                     mb_convert_encoding('Забронировал', 'windows-1251', 'utf-8'),
                     mb_convert_encoding('Проживание', 'windows-1251', 'utf-8'),
-                    mb_convert_encoding('Пункт прибытия', 'windows-1251', 'utf-8')
+                    mb_convert_encoding('Пункт прибытия', 'windows-1251', 'utf-8'),
+                    mb_convert_encoding('Комментарий', 'windows-1251', 'utf-8')
                 ], ";");
 
                 foreach ($reserves_places as $item) {
@@ -138,7 +139,8 @@ class ReportController extends Controller
                         mb_convert_encoding($item->doc_n, 'windows-1251', 'utf-8'),
                         mb_convert_encoding((($item->order->user->role === 'agent')?"(Агент) ".$item->order->user->agency:"Мир туризма"), 'windows-1251', 'utf-8'),
                         mb_convert_encoding((($item->order->hotel)?$item->order->hotel->name:"Проезд"), 'windows-1251', 'utf-8'),
-                        mb_convert_encoding($item->order->punkt, 'windows-1251', 'utf-8')
+                        mb_convert_encoding($item->order->punkt, 'windows-1251', 'utf-8'),
+                        mb_convert_encoding($item->comment, 'windows-1251', 'utf-8')
                     ],";");
                 }
 
