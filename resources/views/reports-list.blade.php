@@ -40,7 +40,8 @@
                                     <th>Забронировал</th>
                                     <th>Проживание</th>
                                     <th>Пункт прибытия</th>
-                                    <th>Комментарий</th>
+                                    <th>Комментарий места</th>
+                                    <th>Комментарий заказа</th>
                                 </tr>
                             </thead>
 
@@ -56,6 +57,7 @@
                                         <td>{{ ($item->order->hotel)?$item->order->hotel->name:"Проезд" }}</td>
                                         <td>{{ $item->order->punkt }}</td>
                                         <td>{{ $item->comment }}</td>
+                                        <td>{{ ($item->order->comment === "Заказ зарегистрирован")?"":$item->order->comment }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
