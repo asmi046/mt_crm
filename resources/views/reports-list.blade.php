@@ -22,7 +22,7 @@
 
                     <br>
                     <br>
-                    <x-a-icon href="{{route('list_csv', ['reis_id' => $reis->id,'direction' => $direction])}}" icon="fa-solid fa-file-csv">Сохранить в CSV</x-a-icon>
+                    <x-a-icon href="{{route('list_csv', ['reis_id' => $reis_pr->id,'direction' => $direction])}}" icon="fa-solid fa-file-csv">Сохранить в CSV</x-a-icon>
                 @endif
             </div>
 

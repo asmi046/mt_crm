@@ -76,6 +76,7 @@ class ReportController extends Controller
             'reserves_places' => $reserves_places,
             'schema' => $schema,
             'reis' => $reis,
+            'reis_pr' => $reis_pr,
             'direction' => $direction
         ]);
     }
