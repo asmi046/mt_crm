@@ -53,6 +53,7 @@ class ReportController extends Controller
 
         if ($direction == 't') {
             $reis = Reis::where('id', $reis_id)->first();
+            $reis_pr = $reis;
             $reserves_places = $place_service->get_reserved_places($reis->id);
             $reserves_places = $reserves_places['t'];
             $schema = buss_schemm($reis->reis_bus->schema);
