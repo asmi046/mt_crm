@@ -39,7 +39,7 @@ class OrderMail extends Mailable
     {
         return new Envelope(
             // from: new Address("mirturizma046@yandex.ru", "МирТуризма"),
-            subject: 'Создана бронь',
+            subject: '(АГЕНТ) Создана бронь',
         );
 
 

@@ -50,7 +50,9 @@ class OrderController extends Controller
             reis_id: $order->reis->id
         );
 
-        // Mail::to(get_send_adress())->send(new OrderMail($order));
+        if (auth()->user()->role === 'agent') {
+            Mail::to(get_send_adress())->send(new OrderMail($order));
+        }
 
         return [
             "order" => $order,
