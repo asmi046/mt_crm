@@ -126,7 +126,7 @@
                                     <td>{{date("d.m.Y H:i", strtotime($item->created_at))}}</td>
                                     <td>{{ $item->event }}</td>
                                     <td>{{ ($item->reis)?reis_table_text($item->reis):"" }}</td>
-                                    <td>{{ ($item->order)?order_table_text($item->order):"" }}</td>
+                                    <td>{{ ($item->order)?order_table_text($item->order):$item->order }}</td>
                                     <td>{{ $item->place_number }}</td>
                                     <td>{{ ($item->user)?$item->user->name:"" }} ({{ ($item->user)?$item->user->agency:"" }})</td>
                                     <td>
