@@ -57,11 +57,36 @@
                         </div>
                     </div>
 
+
+
                     <div class="wrapper c_1">
                         <div class="field">
-                            <label class="label">Свободный поиск</label>
+                            <label class="label">Телефон / номер документа</label>
                             <div class="control">
-                                <input name="serch" class="input" type="text" placeholder="Введите часть комментария, или часть имени клиента">
+                                <input name="serch" class="input" value="{{ request('serch') ?? "" }}" type="text" placeholder="Введите часть комментария, или часть имени клиента">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wrapper c_3">
+                        <div class="field">
+                            <label class="label">Фамилия </label>
+                            <div class="control">
+                                <input name="f" value="{{ request('f') ?? "" }}" class="input" type="text" placeholder="Введите фамилию пассажира">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Имя</label>
+                            <div class="control">
+                                <input name="i" class="input" type="text" placeholder="Введите имя пассажира">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Отчество</label>
+                            <div class="control">
+                                <input name="o" class="input" type="text" placeholder="Введите отчество пассажира">
                             </div>
                         </div>
                     </div>

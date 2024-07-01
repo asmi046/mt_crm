@@ -15,14 +15,35 @@ class OrderFilter extends QueryFilter {
             $this->builder->where("reis_id",  $reis_id);
     }
 
+    public function f($f) {
+        if (!empty($f))
+            $this->builder->whereHas('mesta', function ($query) use ($f) {
+                $query->where("f", "LIKE", "%".$f."%");
+            });
+    }
+
+    public function i($i) {
+        if (!empty($i))
+            $this->builder->whereHas('mesta', function ($query) use ($i) {
+                $query->where("i", "LIKE", "%".$i."%");
+            });
+    }
+
+    public function o($o) {
+        if (!empty($o))
+            $this->builder->whereHas('mesta', function ($query) use ($o) {
+                $query->where("o", "LIKE", "%".$o."%");
+            });
+    }
+
+
+
     public function serch($serch) {
         if (!empty($serch))
             $this->builder->whereHas('mesta', function ($query) use ($serch) {
-                $query->where('f', "LIKE", "%".$serch."%")
-                        ->orWhere('i', "LIKE", "%".$serch."%")
-                        ->orWhere('o', "LIKE", "%".$serch."%")
-                        ->orWhere('phone', "LIKE", "%".$serch."%")
-                        ->orWhere('comment', "LIKE", "%".$serch."%");
+                $query->where('phone', "LIKE", "%".$serch."%")
+                        ->orWhere('comment', "LIKE", "%".$serch."%")
+                        ->orWhere('doc_n', "LIKE", "%".$serch."%");
             });
     }
 
