@@ -53,4 +53,27 @@ class OrderFilter extends QueryFilter {
                 $query->where('role',  'agent');
             });
     }
+
+    public function order($order) {
+        if (!empty($order)) {
+            if ( $order === "nbr_up" )
+                $this->builder->orderBy('id', "ASC");
+
+            if ( $order === "nbr_down" )
+                $this->builder->orderBy('id', "DESC");
+
+            if ( $order === "data_up" )
+                $this->builder->orderBy('created_at', "ASC");
+
+            if ( $order === "data_down" )
+                $this->builder->orderBy('created_at', "DESC");
+
+            if ( $order === "punct_up" )
+                $this->builder->orderBy('punkt', "ASC");
+
+            if ( $order === "punct_down" )
+                $this->builder->orderBy('punkt', "DESC");
+
+        }
+    }
 }

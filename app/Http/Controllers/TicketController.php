@@ -75,12 +75,14 @@ class TicketController extends Controller
             $filter = Order::all();
             $all_user_order =  Order::select()
                     ->filter($request)
-                    ->get();
+                    ->paginate(70)
+                    ->withQueryString();
         } else {
             $filter = Order::where('user_id', $user_id)->get();
             $all_user_order =  Order::where('user_id', $user_id)
                     ->filter($request)
-                    ->get();
+                    ->paginate(70)
+                    ->withQueryString();
         }
 
 

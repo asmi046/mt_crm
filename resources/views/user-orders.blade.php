@@ -91,6 +91,22 @@
                         </div>
                     </div>
 
+                    <div class="wrapper c_1">
+                        <div class="field">
+                            <label class="label">Сортировать</label>
+                            <div class="control">
+                                <select name="order" id="f_places_count">
+                                    <option value="nbr_up" @selected((request('order') === "nbr_up") || (empty(request('order'))) ) order>По номеру брони &darr; </option>
+                                    <option value="nbr_down" @selected(request('order') === "nbr_down") order>По номеру брони &uarr;</option>
+                                    <option value="data_up" @selected(request('order') === "data_up") order>По дате брони &darr; </option>
+                                    <option value="data_down" @selected(request('order') === "data_down") order>По дате брони &uarr;</option>
+                                    <option value="punct_up" @selected(request('order') === "punct_up") order>По пункту следования &darr; </option>
+                                    <option value="punct_down" @selected(request('order') === "punct_down") order>По пункту следования &uarr;</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="button">Найти</button>
                     <x-a-icon href="{{ route('all_orders') }}" icon="fa-solid fa-ban pl_10">Сбросить</x-a-icon>
                 </form>
@@ -143,6 +159,7 @@
                     <p>Нет ни одной брони. <br><br><a class="button" href="{{ route('proezd-bron') }}">Оформить бронь</a></p>
                 @endif
 
+                <x-pagination :tovars="$all_order"></x-pagination>
             </div>
 
         </div>
