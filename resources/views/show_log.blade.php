@@ -27,7 +27,7 @@
                             <label class="label">Событие</label>
                             <div class="control">
                                 <select name="event" id="f_places_count">
-                                    <option value="%" @selected(("%" == request('event')) || (empty(request('event'))) ) disabled>Все события</option>
+                                    <option value="" @selected((request('event') === "") || (empty(request('event'))) )>Все события</option>
                                     @foreach ($filter_settings['event'] as $key => $item)
                                         <option value="{{ $key }}" @selected($key === request('event'))>{{ $key }}</option>
                                     @endforeach
@@ -39,7 +39,7 @@
                             <label class="label">Пользователь</label>
                             <div class="control">
                                 <select name="user" id="f_places_count">
-                                    <option value="%" @selected(("%" == request('user')) || (empty(request('user'))) ) disabled>Все пользователи</option>
+                                    <option value="" @selected((request('user') === "") || (empty(request('user'))) )>Все пользователи</option>
 
                                     @foreach ($filter_settings['user'] as $key => $item)
                                         <option @selected($key == request('user')) value="{{$key}}" >{{ $item }}</option>
@@ -74,12 +74,12 @@
 
                     <div class="wrapper c_3">
                         <div class="field">
-                            <label class="label">Рейс</label>
+                            <label class="label">Рейс {{ request('reis') }}</label>
                             <div class="control">
                                 <select name="reis" id="f_places_count">
-                                    <option value="%" @selected(("%" == request('reis')) || (empty(request('reis'))) ) disabled>Все рейсы</option>
+                                    <option value="" @selected((request('reis') === "") || (empty(request('reis'))) )>Все рейсы</option>
                                     @foreach ($filter_settings['reis'] as $key => $item)
-                                        <option value="{{ $key }}" @selected($key === request('reis'))>{{ $item }}</option>
+                                        <option value="{{ $key }}" @selected(request('reis') == $key)>{{ $item }}</option>
                                     @endforeach
                                 </select>
                             </div>

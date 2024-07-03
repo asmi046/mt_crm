@@ -53,7 +53,7 @@
                                         <td>{{ $item->dr }}</td>
                                         <td>{{ $item->phone }}</td>
                                         <td>{{ $item->doc_n }}</td>
-                                        <td>{{ ($item->order->user->role === 'agent')?"(Агент) ".$item->order->user->agency:"Мир туризма" }}</td>
+                                        <td>{{ ($item->order->user->role === 'agent')?"(АГЕНТ) ".$item->order->user->agency:"Мир туризма" }}</td>
                                         <td>{{ ($item->order->hotel)?$item->order->hotel->name:"Проезд" }}</td>
                                         <td>{{ $item->order->punkt }}</td>
                                         <td>{{ $item->comment }}</td>

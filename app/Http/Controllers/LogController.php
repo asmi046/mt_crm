@@ -27,6 +27,8 @@ class LogController extends Controller
                 $filter_setings['reis'][$item->reis->id] = reis_table_text($item->reis);
         }
 
+        // dump($filter_setings);
+
         $log = Log::filter($request)->orderBy('created_at', 'DESC')->paginate(15)->withQueryString();
         return view('show_log',[
             'log' => $log,

@@ -6,7 +6,7 @@ class OrderDeleteMessageGetAction {
     public function handle($order) {
         $message = "";
 
-        $message .= "<b>Удалена бронь</b>\n\r";
+        $message .= "<b>Удалена бронь №".$order->id."</b>\n\r";
         $message .= "<b>Оформил: </b>".$order->user->name." (".$order->user->agency.")\n\r";
         $message .= "<b>Рейс: </b>".
         "№". $order->reis->id ." ".date("d.m.Y", strtotime($order->reis->start_to_date))." ".date("d.m.Y", strtotime($order->reis->start_to_date))

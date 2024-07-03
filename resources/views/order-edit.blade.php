@@ -20,7 +20,12 @@
                 <div class="wrapper c_2">
                     <div class="coll">
                         <div class="page_reis_info">
-                            <p><strong>Состояние: </strong> {{$order->state}}</p>
+                            <p><strong>Оформил: </strong>
+                                @if ($order->user->role === "agent")
+                                    <span class="agent_label">Агент</span>
+                                @endif
+                                {{$order->user->name}} ({{$order->user->agency}})
+                            </p>
                             <p><strong>Направление: </strong> {{$order->reis->direction->name}}</p>
                             <p><strong>Пункт следования: </strong> {{$order->punkt}}</p>
                             <p><strong>Рейс: </strong> №{{ $order->reis->id }}

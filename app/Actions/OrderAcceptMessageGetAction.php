@@ -6,7 +6,7 @@ class OrderAcceptMessageGetAction {
     public function handle($order, $action = "Создана") {
         $message = "";
 
-        $message .= "<b>".$action." бронь".((auth()->user()->role === "agent")?" (Агент)":"")."</b>\n\r";
+        $message .= "<b>".$action." бронь №".$order->id.((auth()->user()->role === "agent")?" (АГЕНТ)":"")."</b>\n\r";
         $message .= "<b>Пользователь: </b>".$order->user->name." (".$order->user->agency.")\n\r";
         $message .= "<b>Рейс: </b>".
         "№". $order->reis->id ." ".date("d.m.Y", strtotime($order->reis->start_to_date))." ".date("d.m.Y", strtotime($order->reis->start_to_date))
