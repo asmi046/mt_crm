@@ -27,7 +27,7 @@ class PlacesServices {
 
 
     public function get_reserved_places(int $reis_id) {
-        $all_places = Place::where('reis_id', $reis_id)->get();
+        $all_places = Place::with('order')->where('reis_id', $reis_id)->get();
 
         $returned_data = [
             't' => [],
@@ -37,6 +37,8 @@ class PlacesServices {
         {
             // $returned_data[$item->direction][] = $item->number;
             $returned_data[$item->direction][$item->number] = $item;
+
+
             if (
                 (auth()->user()->role === 'agent') &&
                 ($returned_data[$item->direction][$item->number]->order->user_id !== auth()->user()->id)
@@ -51,6 +53,8 @@ class PlacesServices {
                 $returned_data[$item->direction][$item->number]->doc_n = "";
                 $returned_data[$item->direction][$item->number]->phone = "";
                 $returned_data[$item->direction][$item->number]->comment = "";
+                $returned_data[$item->direction][$item->number]->order = null;
+
             }
 
         }

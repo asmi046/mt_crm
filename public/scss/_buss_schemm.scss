@@ -42,6 +42,17 @@
                     text-align: center;
                     border-radius: $border_rad;
                     cursor:pointer;
+                    position: relative;
+
+                    .agent_label_circl {
+                        position: absolute;
+                        right: 3px;
+                        top:3px;
+                        width:10px;
+                        height:10px;
+                        border-radius: 6px;
+                        background-color: orange;
+                    }
 
                     &.empty {
                         background-color: white;
