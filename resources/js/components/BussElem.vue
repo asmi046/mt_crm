@@ -21,6 +21,7 @@
                     :title="get_pasenger_name(reserved[mesto])"
                     >
                     {{ (mesto >= 0)?mesto:'' }}
+                    <div v-if="reserved[mesto] && (reserved[mesto].order.user.role == 'agent')" ></div>
                 </div>
             </div>
         </div>
@@ -75,7 +76,7 @@ export default {
             // if (props.user == "agent")  return ""
 
             if (!mesto) return ""
-            return  ((mesto.f)?mesto.f:"")+' '+((mesto.i)?mesto.i:"")+' '+((mesto.o)?mesto.o:"")
+            return  ((mesto.f)?mesto.f:"")+' '+((mesto.i)?mesto.i:"")+' '+((mesto.o)?mesto.o:"")+' '+((mesto.order.user.role == 'agent')?"(Агент)":"")
         }
 
         return {
