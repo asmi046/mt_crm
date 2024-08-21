@@ -7,6 +7,11 @@
     {{ $formData['reis']['direction']['start_punkt'] }} {{ $formData['reis']['direction']['end_punkt'] }}
     </p>
     <p> <strong>Пункт прибывания</strong> {{  $formData['punkt'] }}</p>
+
+    @if ($formData['hotel'])
+        <p><strong>Отель:</strong> {{  $formData['hotel']['name'] }}</p>
+    @endif
+
     <P><strong>Коментарий:</strong> {{ $formData['comment']}}</P>
     <h2>Места:</h2>
     @foreach ($formData['mesta'] as $item)

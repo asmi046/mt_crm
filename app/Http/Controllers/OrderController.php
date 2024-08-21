@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 
 use App\Actions\LogAction;
+use App\Mail\Order\HotelSet;
 use Illuminate\Http\Request;
 use App\Mail\Order\OrderMail;
-use App\Services\PlacesServices;
 
+use App\Services\PlacesServices;
 use App\Services\LogDataServices;
 use App\Actions\TelegramSendAction;
 use App\Http\Requests\OrderRequest;
@@ -114,6 +115,7 @@ class OrderController extends Controller
 
         $old_order = clone $order;
         $order->update($data);
+        $order->save();
 
         $log = new LogAction();
         $log_data = new LogDataServices();
@@ -123,6 +125,10 @@ class OrderController extends Controller
             order_id: $id,
             reis_id: $order->reis->id,
         );
+
+        $order = Order::where('id', $id)->first();
+        if ($order->hotel && !$old_order->hotel)
+            Mail::to(get_send_adress())->send(new HotelSet($order));
 
         return redirect()->route('order-edit', $id)->with('success_order', 'Данные заказа сохранены');
     }
