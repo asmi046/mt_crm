@@ -3,8 +3,8 @@
 @section('main')
     <h1>Оформлена бронь №{{  $formData['id'] }}</h1>
     <p><strong>Пользователь:</strong> {{ $formData['user']['name']}} ({{ $formData['user']['agency']}})</P>
-    <p><strong>Рейс:</strong> № {{ $formData['reis']['id']}} {{date("d.m.Y", strtotime($formData['reis']['start_to_date']))." ".date("d.m.Y", strtotime($formData['reis']['start_to_date']))}}
-    {{ $formData['reis']['direction']['start_punkt'] }} {{ $formData['reis']['direction']['end_punkt'] }}
+    <p><strong>Рейс:</strong> № {{ $formData['reis']['id']}} <strong>из Курска</strong> {{date("d.m.Y", strtotime($formData['reis']['start_to_date']))}} <strong>в Курск</strong> {{date("d.m.Y", strtotime($formData['reis']['start_out_date']))}}
+        <strong>Напрпвление</strong> {{ $formData['reis']['direction']['start_punkt'] }} - {{ $formData['reis']['direction']['end_punkt'] }}
     </p>
     <p> <strong>Пункт прибывания</strong> {{  $formData['punkt'] }}</p>
 

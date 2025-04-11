@@ -72,7 +72,7 @@ export default {
                 'price': 0,
                 'avanc': 0,
                 'state': "Черновик",
-                'comment': "Заказ зарегистрирован",
+                'comment': "",
                 'tuda': todaSelect.value,
                 'obratno': obratnoSelect.value,
             })
