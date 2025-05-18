@@ -28,7 +28,8 @@
         "optimize": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan optimize\"",
         "optimize_all": "npm run optimize && npm run cache_clear && npm run cache_view && npm run cache_route && npm run cache_config",
         "orchid_user": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru && /opt/php/8.1/bin/php artisan orchid:admin admin asmi046@gmail.com 123\"",
-        "deploy_m": "vite build && npm run send_vite_build && npm run pull_rep && npm run optimize_all"
+        "chmode": "ssh u1731342@31.31.198.62 \"cd www/crm.mirturizma46.ru/public/ && chmod -R 775 build\"",
+        "deploy_m": "vite build && npm run send_vite_build && npm run pull_rep && npm run optimize_all && npm run chmode"
     },
     "devDependencies": {
         "axios": "^1.6.1",

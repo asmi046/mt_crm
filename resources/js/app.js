@@ -53,7 +53,7 @@ import IMask from 'imask';
 document.addEventListener("DOMContentLoaded", () => {
     let all_phone = document.querySelectorAll("input[type=tel]")
         for (let i = 0; i < all_phone.length; i++)
-            IMask( all_phone[i], {mask: '+{7} (000) 000-00-00'})
+            IMask( all_phone[i], {mask: '+0 (000) 000-00-00'})
 
     let all_date_field = document.querySelectorAll("input.input_date")
         for (let i = 0; i < all_date_field.length; i++)
