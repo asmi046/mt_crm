@@ -17,7 +17,7 @@ class Direction extends Model
     ];
 
     public function puncts() {
-        return $this->belongsToMany(Punkt::class);
+        return $this->belongsToMany(Punkt::class)->orderBy('order', 'ASC');
     }
 
     public function reises() {
