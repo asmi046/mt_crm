@@ -11,7 +11,8 @@
                         @if (isset($reservesplaces[$place]))
                             {{ $reservesplaces[$place]->f }} {{ $reservesplaces[$place]->i }} {{ $reservesplaces[$place]->o }} <br>
                             {{ $reservesplaces[$place]->order->punkt }} <br>
-                            {{ $reservesplaces[$place]->phone }}
+                            {{ $reservesplaces[$place]->phone }} <br>
+                            {{ ($reservesplaces[$place]->order->hotel)?$reservesplaces[$place]->order->hotel->name:"Без проживания" }}
                         @endif
                     @endif
                 </td>

@@ -38,6 +38,7 @@ class ReportController extends Controller
         }
 
 
+        // dd($reserves_places);
 
         return view('reports-rassadka', [
             'reserves_places' => $reserves_places,
